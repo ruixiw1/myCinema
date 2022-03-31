@@ -1,0 +1,203 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: underline;
+  color: black;
+  font-size: larger;
+
+}
+
+li a:hover {
+  background-color: #d9b13b;
+  text-decoration: none;
+}
+
+nav {
+  background-color: #f5c842;
+  margin-bottom: 5px;
+}
+
+nav img {
+  display: block;
+  margin: auto;
+}
+
+* {
+  font-family: Oswald;
+}
+
+body {
+  margin: 0%;
+  
+}
+
+.todayHeader {
+  background-color: #f5c842;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+  padding: 2px 0 2px 0;
+  border: 2px solid white;
+}
+
+.checkoutCon {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+}
+
+.checkoutButt {
+  border-radius: 25px;
+  background-color: #f5c842;
+  padding: 1em 1em 1em 1em;
+  margin-right: 2em;
+  margin-top: 1em;
+  width: fit-content;
+  text-decoration: none;
+  color: black;
+}
+
+.checkoutButt:hover {
+  background-color: #d9b13b;
+}
+
+.todayDeal {
+  background-color: gray;
+  width: 99%;
+  margin: auto;
+  height: 100%;
+  /* max-height: 600px; */
+  background-color: hsla(200,40%,30%,.4);
+  background-image:   
+    url('https://78.media.tumblr.com/cae86e76225a25b17332dfc9cf8b1121/tumblr_p7n8kqHMuD1uy4lhuo1_540.png'), 
+    url('https://78.media.tumblr.com/66445d34fe560351d474af69ef3f2fb0/tumblr_p7n908E1Jb1uy4lhuo1_1280.png'),
+    url('https://78.media.tumblr.com/8cd0a12b7d9d5ba2c7d26f42c25de99f/tumblr_p7n8kqHMuD1uy4lhuo2_1280.png'),
+    url('https://78.media.tumblr.com/5ecb41b654f4e8878f59445b948ede50/tumblr_p7n8on19cV1uy4lhuo1_1280.png'),
+    url('https://78.media.tumblr.com/28bd9a2522fbf8981d680317ccbf4282/tumblr_p7n8kqHMuD1uy4lhuo3_1280.png');
+  background-repeat: repeat-x;
+  background-position: 
+    0 20%,
+    0 100%,
+    0 50%,
+    0 100%,
+    0 0;
+  background-size: 
+    2500px,
+    800px,
+    500px 200px,
+    1000px,
+    400px 260px;
+  animation: 50s para infinite linear;
+
+}
+
+.itemDisplayContainer {
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.itemDisplayContainer img {
+  height: 200px;
+  width: 200px;
+}
+
+.itemDisplayContainer .dealItem {
+  margin: 2em 2em 2em 2em;
+}
+
+.dealItem {
+  background-color: #f5c842;
+  padding: 3px;
+}
+
+html {
+  background: #ded8c1;
+}
+
+footer {
+  text-align: center;
+  padding: 3px 0 3px 0;
+}
+
+.loginWindow {
+  border: 2px solid black;
+  width: 30%;
+  padding: 1em 2em 3em 2em;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  margin-top: 2em;
+  background-color: #fcfaf2;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.loginWindow label {
+  width: 80px;
+  display: inline-block;
+  text-align: left;
+  margin-bottom: 10px;
+}
+.loginWindow input{
+  width: 15em;
+}
+
+.loginWindow button {
+  height: 40px;
+  width: 100%
+}
+
+
+.buttonBox {
+  margin-top: 1em;
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+}
+
+.toggleContainer {
+  width: 90%;
+  margin-bottom: 3em;
+  align-items: baseline;
+}
+
+.toggleContainer button {
+  border: 2px solid transparent;
+  border-bottom: 2px solid #e0e0e0;
+  color: #616161;
+  padding: 20px;
+  font-size: large;
+  width: 49%;
+  height: fit-content;
+  margin: 0;
+}
+
+button a {
+  text-decoration: none;
+  color: #616161;
+}
+
+.toggleButton:hover {
+  background-color: #f5c842;
+}
+
+.toggleButton:active {
+  box-shadow: 0 2px gainsboro;
+  transform: translateY(2px);
+}
