@@ -17,7 +17,6 @@
     margin-left: 45%;
     margin-top: 50px;
     overflow: hidden;
-    text-decoration:underline;
     font: bold 300% 'Oswald', monospace;
 	border-right: .1em solid black;
 	width: 16.5em; 
@@ -31,22 +30,22 @@
   
 .logo:hover {
     background-position: 20 0px;
-    text-decoration:none;
+    text-decoration:underline;
     text-shadow: 0px 1px rgb(255, 255, 255);
 }
   
 a.button-header {
     display:inline-block;
 	padding:0.35em 1.2em;
+    font-family:'Roboto',sans-serif;
 	border:0.1em solid #FFFFFF;
 	margin:0 1em 0.3em 0;
 	border-radius:0.15em;
 	box-sizing: border-box;
 	text-decoration:none;
-	font-family: 'Oswald';
 	font-weight:380;
 	color:#FFFFFF;
-	margin-left: 23%;
+	margin-left: 15%;
 	transition: all 0.2s;
 }
 
