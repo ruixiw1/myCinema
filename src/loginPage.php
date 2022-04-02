@@ -1,3 +1,6 @@
+<?php
+include_once('connection.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,14 +16,49 @@
         #LogIn-Toggle {
             border-bottom: 2px solid gray;
         }
-
     </style>
 </head>
 
 <body>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
+        $username = htmlspecialchars($_POST['user_name']);
+        $password = htmlspecialchars($_POST['user_password']);
+
+        $connection = DBConnection::get_instance()->get_connection();
+        $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . $password . "'";
+
+        $result = mysqli_query($connection, $sql);
+        if ($result != false) {
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                session_start();
+                $_SESSION["id"] = $row["id"];
+                $_SESSION["username"] = $username;
+                $_SESSION["logged_in"] = true;
+
+                setcookie("username", $username, time() + (86400 * 30), "/");
+
+                header('Location:index.php');
+            } else {
+                // Password is not valid, display a generic error message
+                $login_err = "Invalid username or password.";
+            }
+        } else {
+            // Password is not valid, display a generic error message
+            $login_err = "Invalid username or password.";
+        }
+    } else {
+        $login_err = "Something went wrong. Please try later";
+    }
+}
+?>
     <nav>
-    <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <a href="index.php"><span>
+                <h1 class="logo">shopster.</h1>
+            </span></a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php">home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
@@ -47,7 +85,14 @@
                     <label for="user-phone">Password</label>
                     <input type="password" name="user_password" class="form-control" id="user-password" placeholder="Password" required>
                 </div>
-                <br>
+                <?php
+                if (!empty($login_err)) {
+                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                } else {
+                    echo '<br>';
+                }
+                ?>
+
                 <a href="">Forgot Password</a>
                 <br>
                 <br>
