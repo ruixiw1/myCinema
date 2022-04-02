@@ -20,13 +20,13 @@
 <body>
     <nav>
     <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul>
-                <li><a href="./index.php">home</a></li>
-                <li><a href="#news">products</a></li>
-                <li><a href="#contact">about</a></li>
+                <li><a class="button-header" href="./index.php">home</a></li>
+                <li><a class="button-header" href="#news">products</a></li>
+                <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                echo '<li style="float:right"><a class="active" href="./loginPage.php">Log in</a></li>';
+                echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log in</a></li>';
                 ?>
             </ul>
         </div>
@@ -47,10 +47,13 @@
                     <label for="user-phone">Password</label>
                     <input type="password" name="user_password" class="form-control" id="user-password" placeholder="Password" required>
                 </div>
+                <br>
                 <a href="">Forgot Password</a>
                 <br>
+                <br>
+
                 <div class='buttonBox'>
-                    <button type="submit" class="submittButt">Login</button>
+                    <button type="submit" class="submittButton">Login</button>
                 </div>
             </form>
         </div>
