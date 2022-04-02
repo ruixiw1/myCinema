@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopster | Log in</title>
     <link href="./style/main.css" rel="stylesheet">
+    <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <style>
         #SignUp-Toggle {
@@ -17,14 +18,14 @@
 
 <body>
     <nav>
-        <a class="logoMain" href="index.php"><img src="./img/logo.png" alt=""></a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <ul>
-                <li><a href="./index.php">home</a></li>
-                <li><a href="#news">products</a></li>
-                <li><a href="#contact">about</a></li>
+                <li><a class="button-header" href="./index.php">home</a></li>
+                <li><a class="button-header" href="#news">products</a></li>
+                <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                echo '<li style="float:right"><a class="active" href="./loginPage.php">Log in</a></li>';
+                echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log in</a></li>';
                 ?>
             </ul>
         </div>
@@ -51,7 +52,7 @@
             </div>
             <br><br>
             <div class='buttonBox'>
-                <button type="submit" class="submittButt">Login</button>
+                <button type="submit" class="submittButton">Sign Up</button>
             </div>
         </form>
     </div>

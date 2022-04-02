@@ -20,7 +20,7 @@
                 <li><a class="button-header" href="#news">products</a></li>
                 <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                echo '<li style="float:right"><a class="active" href="./loginPage.php"><strong>Log in</strong></a></li>';
+                echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log in</a></li>';
                 ?>
             </ul>
         </div>
@@ -32,7 +32,7 @@
             ?>
         </div>
         <div class="todayHeader">
-            <p>- TODAY'S DEALS -</p>
+            <p>-   TODAY'S DEALS   -</p>
         </div>
         <div class="itemDisplayContainer">
             <div class="dealItem">
