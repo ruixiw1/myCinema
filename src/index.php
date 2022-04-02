@@ -1,3 +1,6 @@
+<?php
+ session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +23,12 @@
                 <li><a class="button-header" href="#news">products</a></li>
                 <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log in</a></li>';
+                 if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
+                 }
+                 else{
+                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</a></li>';
+                 }
                 ?>
             </ul>
         </div>
