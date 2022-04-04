@@ -110,7 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </body>
 
 <footer>
-    Shopster &copy; 2022
+    <div style="color:white;">
+        Shopster &copy; 2022
+    </div>
 </footer>
 
 </html>
