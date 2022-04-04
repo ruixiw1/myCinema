@@ -46,9 +46,9 @@ require_once('connection.php');
             </span></a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
-                <li><a class="button-header" href="./index.php">home</a></li>
+                <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
-                <li><a class="button-header" href="#contact">about</a></li>
+                <li><a class="button-header" href="#contact">about</i></a></li>
                 <?php
                 echo '<li style="float:right"><a class="active" href="./loginPage.php">Log in</a></li>';
                 ?>
