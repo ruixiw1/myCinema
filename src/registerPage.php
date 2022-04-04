@@ -50,7 +50,7 @@ require_once('connection.php');
                 <li><a class="button-header" href="#news">products</a></li>
                 <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log in</a></li>';
+                echo '<li style="float:right"><a class="active" href="./loginPage.php">Log in</a></li>';
                 ?>
             </ul>
         </div>
