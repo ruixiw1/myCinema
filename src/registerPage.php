@@ -45,7 +45,7 @@ require_once('connection.php');
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="#news">products</a></li>
+                <li><a class="button-header" href="./productPage.php">products</a></li>
                 <li><a class="button-header" href="#contact">about</i></a></li>
                 <?php
                  if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
