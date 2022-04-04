@@ -39,7 +39,8 @@ nav img {
 }
 
 body {
-    margin: 0%;
+    margin: 0;
+    width: 100%;
 }
 
 .todayHeader {
@@ -109,10 +110,11 @@ body {
     padding: 3px;
     box-shadow: 1px 3px 5px rgb(0 0 0 / 0.5);
 }
-}
 
 html {
     background: #ded8c1;
+    margin: 0;
+    width: 100%;
 }
 
 footer {
