@@ -17,10 +17,7 @@ include_once('connection.php');
             border-bottom: 2px solid gray;
         }
     </style>
-</head>
-
-<body>
-<?php
+    <?php
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
         $username = htmlspecialchars($_POST['user_name']);
@@ -54,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
+</head>
+
+<body>
     <nav>
         <a href="index.php"><span>
                 <h1 class="logo">shopster.</h1>
