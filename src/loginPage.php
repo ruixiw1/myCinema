@@ -2,7 +2,7 @@
 include_once('connection.php');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="background">
 
 <head>
     <meta charset="UTF-8">
