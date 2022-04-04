@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
                 setcookie("username", $username, time() + (86400 * 30), "/");
 
-                header('Location:index.php');
+                header('Location:static/redirectLogin.html');
             } else {
                 // Password is not valid, display a generic error message
                 $login_err = "Invalid username or password.";
@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <a href="index.php"><span>
                 <h1 class="logo">shopster.</h1>
             </span></a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
