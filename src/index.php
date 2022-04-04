@@ -19,15 +19,15 @@
         <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
-                <li><a class="button-header" href="./index.php">home</a></li>
+                <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
-                <li><a class="button-header" href="#contact">about</a></li>
+                <li><a class="button-header" href="#contact">about</i></a></li>
                 <?php
                  if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
                  }
                  else{
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</a></li>';
+                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</a></li>';
                  }
                 ?>
             </ul>
@@ -43,7 +43,8 @@
             <p>-   TODAY'S DEALS   -</p>
         </div>
         <div class="itemDisplayContainer">
-             <div class="dealItem">
+             <div class="itemDisplayContainer">
+            <div class="dealItem">
                 <a href=""><img  src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a03158c1-8969-4e5f-acea-37eef71cf0b7/air-jordan-1-retro-high-og-shoe-PLe8kL.png" alt=""></a>
                 <p class="product-text">Product</p>
                 <a href="" class="button1">
