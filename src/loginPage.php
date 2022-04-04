@@ -54,17 +54,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 </head>
 
 <body>
-    <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
+<nav>
+        <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
                 <li><a class="button-header" href="#contact">about</i></a></li>
                 <?php
-                echo '<li style="float:right"><a class="active" href="./loginPage.php">Log in</a></li>';
+                 if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
+                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
+                 }
+                 else{
+                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</a></li>';
+                 }
                 ?>
             </ul>
         </div>
