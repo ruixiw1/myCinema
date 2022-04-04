@@ -44,7 +44,7 @@ require_once('connection.php');
         <a href="index.php"><span>
                 <h1 class="logo">shopster.</h1>
             </span></a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php">home</a></li>
                 <li><a class="button-header" href="#news">products</a></li>
