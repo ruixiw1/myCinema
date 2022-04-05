@@ -1,8 +1,8 @@
 <?php
-include_once('connection.php');
+require_once('connection.php');
 ?>
 <!DOCTYPE html>
-<html lang="en" class="background">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -18,56 +18,57 @@ include_once('connection.php');
         }
     </style>
     <?php
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
-        $username = htmlspecialchars($_POST['user_name']);
-        $password = htmlspecialchars($_POST['user_password']);
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
+            $username = htmlspecialchars($_POST['user_name']);
+            $password = htmlspecialchars($_POST['user_password']);
 
-        $connection = DBConnection::get_instance()->get_connection();
-        $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . $password . "'";
+            $connection = DBConnection::get_instance()->get_connection();
+            $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . $password . "'";
 
-        $result = mysqli_query($connection, $sql);
-        if ($result != false) {
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                session_start();
-                $_SESSION["id"] = $row["id"];
-                $_SESSION["username"] = $username;
-                $_SESSION["logged_in"] = true;
+            $result = mysqli_query($connection, $sql);
+            if ($result != false) {
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    session_start();
+                    $_SESSION["id"] = $row["id"];
+                    $_SESSION["username"] = $username;
+                    $_SESSION["logged_in"] = true;
 
-                setcookie("username", $username, time() + (86400 * 30), "/");
+                    setcookie("username", $username, time() + (86400 * 30), "/");
 
-                header('Location:static/redirectLogin.html');
+                    header('Location:static/redirectLogin.html');
+                } else {
+                    // Password is not valid, display a generic error message
+                    $login_err = "Invalid username or password.";
+                }
             } else {
                 // Password is not valid, display a generic error message
                 $login_err = "Invalid username or password.";
             }
         } else {
-            // Password is not valid, display a generic error message
-            $login_err = "Invalid username or password.";
+            $login_err = "Something went wrong. Please try later";
         }
-    } else {
-        $login_err = "Something went wrong. Please try later";
     }
-}
-?>
+    ?>
 </head>
 
-<body>
-<nav>
-        <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
+<body class="background">
+    <nav>
+        <a href="index.php"><span>
+                <h1 class="logo">shopster.</h1>
+            </span></a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="#news">products</a></li>
-                <li><a class="button-header" href="#contact">about</i></a></li>
+                <li><a class="button-header" href="./product.php">products</a></li>
+                <li><a class="button-header" href="#contact">about</a></li>
                 <?php
-                 if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
-                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
-                 }
-                 else{
-                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</a></li>';
-                 }
+                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</i></a></li>';
+                } else {
+                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
+                }
                 ?>
             </ul>
         </div>
