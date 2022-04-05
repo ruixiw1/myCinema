@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once ('./php/component.php');
+require_once('./php/component.php');
 require_once('./connection.php');
 $database = DBConnection::get_instance();
 $database->createUserTable();
@@ -27,12 +27,12 @@ $database->createProductTable();
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./product.php">products</a></li>
+                <li><a class="button-header" href="./productPage.php">products</a></li>
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
                     echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
-                    echo "<li style='margin:center'><a class='userHello'><i>Hello, " .$_SESSION['username']. "</i></a></li>";
+                    echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
                 }
@@ -52,18 +52,18 @@ $database->createProductTable();
         </div>
         <div class="itemDisplayContainer">
             <div class="itemDisplayContainer">
-            <?php
+                <?php
                 $result = $database->getSpecialItem();
-                while ($row = mysqli_fetch_assoc($result)){
+                while ($row = mysqli_fetch_assoc($result)) {
                     printSpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
                 }
-            ?>
+                ?>
             </div>
         </div>
-
+    </div>
 </body>
 <footer>
-   <div style="color:white;">
+    <div style="color:white;">
         Shopster &copy; 2022
     </div>
 </footer>
