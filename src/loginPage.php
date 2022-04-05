@@ -61,6 +61,7 @@ require_once('connection.php');
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
+
                 <li><a class="button-header" href="./product.php">products</a></li>
                 <li><a class="button-header" href="#contact">about</a></li>
                 <?php
@@ -111,7 +112,9 @@ require_once('connection.php');
 </body>
 
 <footer>
-    Shopster &copy; 2022
+    <div style="color:white;">
+        Shopster &copy; 2022
+    </div>
 </footer>
 
 </html>

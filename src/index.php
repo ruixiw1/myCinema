@@ -35,6 +35,7 @@ $database->createProductTable();
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
                 }
+
                 ?>
             </ul>
         </div>
@@ -61,7 +62,9 @@ $database->createProductTable();
 
 </body>
 <footer>
-    Shopster &copy; 2022
+   <div style="color:white;">
+        Shopster &copy; 2022
+    </div>
 </footer>
 
 </html>
