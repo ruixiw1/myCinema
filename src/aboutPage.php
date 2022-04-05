@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once('connection.php');
 ?>
 <!DOCTYPE html>
@@ -25,6 +26,7 @@ include_once('connection.php');
                  if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
                     echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'><i>Hello, " .$_SESSION['username']. "</i></a></li>";
+                }
                  else{
                     echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</a></li>';
                  }
