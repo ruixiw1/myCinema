@@ -1,5 +1,8 @@
 <?php
- session_start();
+session_start();
+require_once('./php/component.php');
+require_once('./connection.php');
+$database = DBConnection::get_instance();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,20 +19,21 @@
 
 <body>
     <nav>
-        <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
+        <a href="index.php"><span>
+                <h1 class="logo">shopster.</h1>
+            </span></a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</i></a></li>
+                <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
-                 if(isset($_SESSION['logged_in'])&&$_SESSION["logged_in"]=true){
+                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
                     echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
-                    echo "<li style='margin:center'><a class='userHello'><i>Hello, " .$_SESSION['username']. "</i></a></li>";
-                 }
-                 else{
-                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</a></li>';
-                 }
+                    echo "<li style='margin:center'><a class='userHello'><i>Hello, " . $_SESSION['username'] . "</i></a></li>";
+                } else {
+                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</i></a></li>';
+                }
                 ?>
             </ul>
         </div>
@@ -41,94 +45,42 @@
             ?>
         </div>
         <div class="todayHeader">
-            <p>-   PRODUCTS   -</p>
+            <p>- PRODUCTS -</p>
         </div>
+        <div class="catDropDown">
+            <form action="">
+            <div class="filter">
+            <label for="">Category:</label>
+            <select id="category_list" name="categoryID">
+                   <option value="ALL" default>ALL</option>
+                   <option value="Sneaker">Sneaker</option>
+                   <option value="T-Shrit">T-Shrit</option>
+                   <option value="Accessory">Accessory</option>
+            </select>
+            </div>
+            <div class="filter">
+            <label for="">Sort By:</label>
+            <select id="category_list" name="categoryID">
+                   <option disabled selected value> ---- </option>
+                   <option value="Sneaker">Newest</option>
+                   <option value="T-Shrit">Price (High to Low)</option>
+                   <option value="Accessory">Price (Low to High)</option>
+            </select>
+            </div>
+            <div class="filterSubmitt">
+                <button type="submit">SUBMITT</button>
+            </div>
+            </form>
+        </div>
+    
+
         <div class="itemDisplayContainer">
-             <div class="itemDisplayContainer">
-            <div class="dealItem">
-                <a href=""><img  src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/a03158c1-8969-4e5f-acea-37eef71cf0b7/air-jordan-1-retro-high-og-shoe-PLe8kL.png" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://static.nike.com/a/images/t_prod_ss/w_960,c_limit,f_auto/953f8c77-48ab-4583-b040-c04a3a93ab32/air-jordan-1-ko-chicago-release-date.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/g9qmlsrSzNY4d55HaM3HxiNa5Rs=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2021/12/01120911/ama-aj1-2.jpeg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
-            <div class="dealItem">
-                <a href=""><img src="https://www.highsnobiety.com/static-assets/thumbor/Z5LvtQYYpR69OwFjtuFbXF1zboY=/1600x1067/www.highsnobiety.com/static-assets/wp-content/uploads/2020/04/02175908/nike-air-jordan-1-mid-light-ash-release-date-price-02.jpg" alt=""></a>
-                <p class="product-text">Product</p>
-                <a href="" class="button1">
-                    Add to cart
-                </a>
-            </div>
+                <?php
+                $result = $database->getAllItem();
+                while ($row = mysqli_fetch_assoc($result)) {
+                    displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'],$row['special']);
+                }
+                ?>
         </div>
     </div>
 

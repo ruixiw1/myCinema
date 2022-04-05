@@ -93,6 +93,18 @@ class DBConnection
 			return $result;
 		}
 	}
+
+	public function getAllItem()
+	{
+		$sql = "SELECT * FROM $this->producttb";
+
+		$result = mysqli_query($this->connection, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			return $result;
+		}
+	}
+	
 }
 
 ?>
