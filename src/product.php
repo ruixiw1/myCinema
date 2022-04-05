@@ -1,10 +1,5 @@
 <?php
 session_start();
-require_once ('./php/component.php');
-require_once('./connection.php');
-$database = DBConnection::get_instance();
-$database->createUserTable();
-$database->createProductTable();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,6 +12,7 @@ $database->createProductTable();
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,44 +23,30 @@ $database->createProductTable();
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./product.php">products</a></li>
+                <li><a class="button-header" href="#news">products</a></li>
                 <li><a class="button-header" href="#contact">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</i></a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out/a></li>';
                 } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</a></li>';
                 }
-
                 ?>
             </ul>
         </div>
     </nav>
-    <div class="todayDeal">
+    <div class="productContainer">
+                <!-- display items -->
+    </div>
+    <div class="filter">
+        <div>
+
+        </div>
         <div class="checkoutCon">
             <?php
             echo '<a class="checkoutButt" href="">check out</a>';
             ?>
         </div>
-        <div class="todayHeader">
-            <p>- TODAY'S DEALS -</p>
-        </div>
-        <div class="itemDisplayContainer">
-            <div class="itemDisplayContainer">
-            <?php
-                $result = $database->getSpecialItem();
-                while ($row = mysqli_fetch_assoc($result)){
-                    printSpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
-                }
-            ?>
-            </div>
-        </div>
-
-</body>
-<footer>
-   <div style="color:white;">
-        Shopster &copy; 2022
     </div>
-</footer>
-
+</body>
 </html>

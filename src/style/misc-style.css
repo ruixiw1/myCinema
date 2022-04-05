@@ -60,7 +60,7 @@ a.button:hover {
     text-decoration: underline;
 }
 
-a.button1 {
+.button1 {
     display: inline-block;
     padding: 0.35em 1.2em;
     border: 0.1em solid #FFFFFF;
@@ -71,11 +71,15 @@ a.button1 {
     font-family: Oswald;
     font-weight: 300;
     color: #FFFFFF;
-    margin-left: 23%;
+    left: 50%;
     transition: all 0.2s;
+    width:50%;
+    margin-left:25%;
+    margin-right:25%;
+    background-color: Transparent;
 }
 
-a.button1:hover {
+.button1:hover {
     color: #000000;
     background-color: #FFFFFF;
     text-decoration: underline;
@@ -89,7 +93,7 @@ a.button1:hover {
 }
 
 .product-text {
-    margin-left: 40%;
+    text-align: center;
 }
 
 .background {

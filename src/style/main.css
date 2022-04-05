@@ -120,6 +120,8 @@ html {
 footer {
     text-align: center;
     padding: 3px 0 3px 0;
+    background-color: #ded8c1;
+
 }
 
 .loginWindow {
@@ -129,6 +131,7 @@ footer {
     display: flex;
     justify-content: center;
     margin: auto;
+    margin-bottom: 3em;
     margin-top: 2em;
     background-color: #fcfaf2;
     flex-direction: column;
