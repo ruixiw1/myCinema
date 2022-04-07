@@ -2,6 +2,7 @@
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
+require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
 $database->createUserTable();
 $database->createProductTable();
@@ -36,7 +37,6 @@ $database->createProductTable();
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
                 }
-
                 ?>
             </ul>
         </div>
@@ -44,7 +44,21 @@ $database->createProductTable();
     <div class="todayDeal">
         <div class="checkoutCon">
             <?php
-            echo '<a class="checkoutButt" href="">check out</a>';
+            if(isset($_COOKIE["shopping_cart"]))
+			{
+				$quantity = 0;
+				$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+				$cart_data = json_decode($cookie_data, true);
+				foreach($cart_data as $keys => $values){
+                    $quantity += $values["product_quantity"];
+
+                }
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
+            }
+            else{
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+            }
+
             ?>
         </div>
         <div class="todayHeader">

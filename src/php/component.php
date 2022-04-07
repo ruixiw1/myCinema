@@ -3,7 +3,7 @@ function printSpecialProduct($productname, $productprice, $productimg, $producti
 {
     $originalprice= $productprice + 100;
 
-    $element = "<div class=\"dealItem\">
+    $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
     <p style=\"text-align:center\">
@@ -11,12 +11,15 @@ function printSpecialProduct($productname, $productprice, $productimg, $producti
             <span class=\"price\">$$productprice</span>
     </p>
     <div>
-    <button type=\"submit\" href=\"\" class=\"button1\">
+    <button type=\"submit\" name=\"add_to_cart\" href=\"\" class=\"button1\">
     <input type='hidden' name='product_id' value='$productid'>
+    <input type='hidden' name='product_price' value='$productprice'>
+    <input type='hidden' name='product_name' value='$productname'>
+    <input type='hidden' name='product_img' value='$productimg'>
         Add to cart
     </button>
     </div>
-    </div>";
+    </form>";
     echo $element;
 }
 function displayAllProduct($productname, $productprice, $productimg, $productid,$special){
@@ -24,7 +27,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     
     if($special==1){
         $originalprice= $productprice + 100;
-        $element = "<div class=\"dealItem\">
+        $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
     <p style=\"text-align:center\">
@@ -32,15 +35,18 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
             <span class=\"price\">$$productprice</span>
     </p>
     <div>
-    <button type=\"submit\" href=\"\" class=\"button1\">
+    <button type=\"submit\" name=\"add_to_cart\" href=\"\" class=\"button1\">
     <input type='hidden' name='product_id' value='$productid'>
+    <input type='hidden' name='product_price' value='$productprice'>
+    <input type='hidden' name='product_name' value='$productname'>
+    <input type='hidden' name='product_img' value='$productimg'>
         Add to cart
     </button>
     </div>
-    </div>";
+    </form>";
     }
     else{
-        $element = "<div class=\"dealItem\">
+        $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
     <p style=\"text-align:center\">
@@ -52,7 +58,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
         Add to cart
     </button>
     </div>
-    </div>";
+    </form>";
     }
     echo $element;
 }
