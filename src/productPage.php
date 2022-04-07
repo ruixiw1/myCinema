@@ -30,7 +30,7 @@ $database = DBConnection::get_instance();
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
                     echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
-                    echo "<li style='margin:center'><a class='userHello'><i>Hello, " . $_SESSION['username'] . "</i></a></li>";
+                    echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</i></a></li>';
                 }
@@ -40,8 +40,22 @@ $database = DBConnection::get_instance();
     </nav>
     <div class="todayDeal">
         <div class="checkoutCon">
-            <?php
-            echo '<a class="checkoutButt" href="">check out</a>';
+        <?php
+            if(isset($_COOKIE["shopping_cart"]))
+			{
+				$quantity = 0;
+				$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+				$cart_data = json_decode($cookie_data, true);
+				foreach($cart_data as $keys => $values){
+                    $quantity += $values["product_quantity"];
+
+                }
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
+            }
+            else{
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+            }
+
             ?>
         </div>
         <div class="todayHeader">
