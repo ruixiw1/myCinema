@@ -2,6 +2,7 @@
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
+require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
 $category_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
 $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
