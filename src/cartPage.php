@@ -1,7 +1,10 @@
 <?php
     if(isset($_POST["checkOut"])){
+
+    if(isset($_COOKIE['shopping_cart'])){
     unset($_COOKIE['shopping_cart']);
-    setcookie('shopping_cart', '', time() - 3600, $path);
+    setcookie('shopping_cart', '', time() - 3600);
+    }
     }
 ?>
 <!DOCTYPE html>

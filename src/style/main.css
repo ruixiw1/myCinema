@@ -8,11 +8,12 @@ ul {
 li {
     float: left;
 }
+
 label {
     display: inline-block;
     text-align: left;
     margin-bottom: 10px;
-  }
+}
 
 li a {
     display: block;
@@ -24,9 +25,9 @@ li a {
 }
 
 li a:hover {
-  background-color: #d9b13b;
-  text-decoration: none;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    background-color: #d9b13b;
+    text-decoration: none;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
 }
 
 nav {
@@ -41,21 +42,26 @@ nav img {
 
 * {
     font-family: 'Oswald';
+
 }
 
 body {
     margin: 0;
     width: 100%;
+    position: relative;
+}
+.main{
+    min-height: 80vh;
 }
 
 .todayHeader {
-  background-color: #f5c842;
-  width: 80%;
-  text-align: center;
-  margin: auto;
-  padding: 2px 0 2px 0;
-  border: 2px solid white;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    background-color: #f5c842;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding: 2px 0 2px 0;
+    border: 2px solid white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .checkoutCon {
@@ -92,6 +98,7 @@ body {
     background-position: 0 20%, 0 100%, 0 50%, 0 100%, 0 0;
     background-size: 2500px, 800px, 500px 200px, 1000px, 400px 260px;
     animation: 50s para infinite linear;
+    min-height: 100vh;
 }
 
 .itemDisplayContainer {
@@ -127,7 +134,9 @@ footer {
     text-align: center;
     padding: 3px 0 3px 0;
     background-color: #ded8c1;
-
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }
 
 .loginWindow {
@@ -138,7 +147,7 @@ footer {
     justify-content: center;
     margin: auto;
     margin-bottom: 3em;
-    margin-top: 2em;
+    margin-top: 1vh;
     background-color: #fcfaf2;
     flex-direction: column;
     align-items: center;
@@ -211,33 +220,38 @@ button a {
 .submittButton:hover {
     box-shadow: inset 400px 0 0 0 #f5c842;
 }
-.originalPrice{
-    color:#8f8f8c;
+
+.originalPrice {
+    color: #8f8f8c;
 }
-.catDropDown{
+
+.catDropDown {
     background-color: #f5c842;
     width: 20%;
-    float:right;
+    float: right;
     margin-top: 3em;
     padding: 1em 0 0.5em 1em;
     border-radius: 20px;
     margin-right: 1em;
 
 }
-.catDropDown select{
+
+.catDropDown select {
     width: 50%;
     margin-left: 2em;
 }
 
-.filter{
+.filter {
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em;
 }
-.filter select{
- margin-right: 10px;
+
+.filter select {
+    margin-right: 10px;
 }
-.filterSubmitt button{
+
+.filterSubmitt button {
     margin: 1em auto;
     display: block;
 }

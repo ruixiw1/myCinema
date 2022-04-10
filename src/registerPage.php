@@ -60,6 +60,7 @@ require_once('connection.php');
             </ul>
         </div>
     </nav>
+    <div class="main">
     <div class="loginWindow">
         <div class="toggleContainer">
             <a href="./registerPage.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
@@ -92,7 +93,7 @@ require_once('connection.php');
             </div>
         </form>
     </div>
-
+    </div>
 </body>
 <footer>
     <div style="color:white;">

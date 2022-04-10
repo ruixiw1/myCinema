@@ -1,7 +1,7 @@
 <?php
 function printSpecialProduct($productname, $productprice, $productimg, $productid)
 {
-    $originalprice= $productprice + 100;
+    $originalprice = $productprice + 100;
 
     $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
@@ -22,11 +22,12 @@ function printSpecialProduct($productname, $productprice, $productimg, $producti
     </form>";
     echo $element;
 }
-function displayAllProduct($productname, $productprice, $productimg, $productid,$special){
-    $element="";
-    
-    if($special==1){
-        $originalprice= $productprice + 100;
+function displayAllProduct($productname, $productprice, $productimg, $productid, $special)
+{
+    $element = "";
+
+    if ($special == 1) {
+        $originalprice = $productprice + 100;
         $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
@@ -44,8 +45,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     </button>
     </div>
     </form>";
-    }
-    else{
+    } else {
         $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
