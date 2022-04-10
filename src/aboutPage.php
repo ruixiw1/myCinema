@@ -34,7 +34,7 @@ include_once('connection.php');
             </ul>
         </div>
     </nav>
-    <div>
+    <div class="main">
         <div class="todayHeader">
             <p>-   ABOUT US   -</p>
         </div>

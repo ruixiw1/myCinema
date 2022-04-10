@@ -3,6 +3,8 @@ session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
 $database = DBConnection::get_instance();
+$category_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
+$sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,10 +31,10 @@ $database = DBConnection::get_instance();
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
-                    echo '<li style="float:right"><a class="active" href="./loginPage.php">Log In</i></a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
                 }
                 ?>
             </ul>
@@ -40,19 +42,16 @@ $database = DBConnection::get_instance();
     </nav>
     <div class="todayDeal">
         <div class="checkoutCon">
-        <?php
-            if(isset($_COOKIE["shopping_cart"]))
-			{
-				$quantity = 0;
-				$cookie_data = stripslashes($_COOKIE['shopping_cart']);
-				$cart_data = json_decode($cookie_data, true);
-				foreach($cart_data as $keys => $values){
+            <?php
+            if (isset($_COOKIE["shopping_cart"])) {
+                $quantity = 0;
+                $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                $cart_data = json_decode($cookie_data, true);
+                foreach ($cart_data as $keys => $values) {
                     $quantity += $values["product_quantity"];
-
                 }
                 echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
-            }
-            else{
+            } else {
                 echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
             }
 
@@ -63,38 +62,43 @@ $database = DBConnection::get_instance();
         </div>
         <div class="catDropDown">
             <form action="">
-            <div class="filter">
-            <label for="">Category:</label>
-            <select id="category_list" name="categoryID">
-                   <option value="ALL" default>ALL</option>
-                   <option value="Sneaker">Sneaker</option>
-                   <option value="T-Shrit">T-Shrit</option>
-                   <option value="Accessory">Accessory</option>
-            </select>
-            </div>
-            <div class="filter">
-            <label for="">Sort By:</label>
-            <select id="category_list" name="categoryID">
-                   <option disabled selected value> ---- </option>
-                   <option value="Sneaker">Newest</option>
-                   <option value="T-Shrit">Price (High to Low)</option>
-                   <option value="Accessory">Price (Low to High)</option>
-            </select>
-            </div>
-            <div class="filterSubmitt">
-                <button type="submit">SUBMITT</button>
-            </div>
+                <div class="filter">
+                    <label for="">Category:</label>
+                    <select id="category_list" name="categoryID">
+                        <option value="0" default>ALL</option>
+                        <option value="1">Sneaker</option>
+                        <option value="2">T-Shrit</option>
+                        <option value="3">Accessory</option>
+                    </select>
+                </div>
+                <div class="filter">
+                    <label for="">Sort By:</label>
+                    <select id="category_list" name="sortID">
+                        <option disabled selected value> ---- </option>
+                        <option value="1">Newest</option>
+                        <option value="2">Price (High to Low)</option>
+                        <option value="3">Price (Low to High)</option>
+                    </select>
+                </div>
+                <div class="filterSubmitt">
+                    <button type="submit">SUBMITT</button>
+                </div>
             </form>
         </div>
-    
+
 
         <div class="itemDisplayContainer">
-                <?php
+            <?php
+            $result;
+            if (($category_id == NULL || $category_id ==  FALSE)&&($sort_id == NULL || $sort_id==  FALSE) ) {
                 $result = $database->getAllItem();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'],$row['special']);
-                }
-                ?>
+            } else {
+                $result = $database->getItemFilter($category_id, $sort_id);
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+                displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'], $row['special']);
+            }
+            ?>
         </div>
     </div>
 

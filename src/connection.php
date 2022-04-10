@@ -16,12 +16,11 @@ class DBConnection
 
 	private function __construct()
 	{
-		$this->connection = mysqli_connect($this->servername, $this->username, $this->password,$this->dbname);
+		$this->connection = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
 
 		if ($this->connection->connect_error) {
 			die("Connection failed: " . $this->connection->connect_error);
 		}
-
 	}
 	public function createUserTable()
 	{
@@ -38,8 +37,8 @@ class DBConnection
 		}
 	}
 	public function createProductTable()
-	{	
-		
+	{
+
 		$sql = " CREATE TABLE IF NOT EXISTS $this->producttb
                             (product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                              product_name VARCHAR (255) NOT NULL,
@@ -53,7 +52,8 @@ class DBConnection
 			return false;
 		}
 	}
-	public function initialProducts(){
+	public function initialProducts()
+	{
 		$sql = "INSERT INTO `product`( `product_name`, `price`, `image`, `special`) VALUES 
 		('aj1Blue',299,'./image/image1.webp',1),
 		('aj1Red',199,'./image/image2.webp',1),
@@ -104,7 +104,55 @@ class DBConnection
 			return $result;
 		}
 	}
-	
+
+	public function getItemFilter($catId, $sortID)
+	{
+		$sql = '';
+		if ($catId == 0 || $catId == NULL) {
+			switch ($sortID) {
+				case 1: {
+						$sql = "SELECT * FROM $this->producttb order by date_added desc";
+						break;
+					}
+				case 2: {
+						$sql = "SELECT * FROM $this->producttb order by price desc ";
+						break;
+					}
+				case 3: {
+						$sql = "SELECT * FROM $this->producttb order by price asc";
+						break;
+					}
+				default: {
+						$sql = "SELECT * FROM $this->producttb";
+					}
+			}
+		} else {
+			switch ($sortID) {
+				case 1: {
+						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by date_added desc";
+						break;
+					}
+				case 2: {
+						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by price desc ";
+						break;
+					}
+				case 3: {
+						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by price asc";
+						break;
+					}
+				default: {
+						$sql = "SELECT * FROM $this->producttb where category_id = $catId";
+					}
+			}
+		}
+
+
+		$result = mysqli_query($this->connection, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			return $result;
+		}
+	}
 }
 
 ?>
