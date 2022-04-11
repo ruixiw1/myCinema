@@ -82,7 +82,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                     </select>
                 </div>
                 <div class="filterSubmitt">
-                    <button type="submit">SUBMITT</button>
+                    <button type="submit">SUBMIT</button>
                 </div>
             </form>
         </div>
