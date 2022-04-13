@@ -12,6 +12,7 @@ include_once('connection.php');
     <title>Shopster | Log in</title>
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
 </head>
 <body>

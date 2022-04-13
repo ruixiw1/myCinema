@@ -325,11 +325,12 @@ button a {
 .itemDiv {
     width: 70%;
     margin: auto;
-    background-color: #f5c842;
+    background-color: #e6bc3e;
     border: 2px solid white;
     padding: 2em 0;
     display: flex;
     justify-content: space-around;
+    background-image: url(../image/wood-pattern.png);
 }
 
 .itemText {
