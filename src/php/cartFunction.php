@@ -1,8 +1,6 @@
 <?php 
 
 
-$message = '';
-
 if(isset($_POST["add_to_cart"]))
 {
 	if(isset($_COOKIE["shopping_cart"]))
@@ -43,7 +41,7 @@ if(isset($_POST["add_to_cart"]))
 	
 	$item_data = json_encode($cart_data);
 	setcookie('shopping_cart', $item_data, time() + (86400 * 30));
-	// header("location:index.php?success=1");
+	header("Refresh:0");
 }
 
 if(isset($_GET["action"]))
