@@ -12,6 +12,7 @@ require_once('connection.php');
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         #LogIn-Toggle {
             border-bottom: 2px solid gray;
@@ -74,40 +75,40 @@ require_once('connection.php');
         </div>
     </nav>
     <div class="main">
-    <div class="loginWindow">
-        <div class="toggleContainer">
-            <a href="./registerPage.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
-            <a href="./loginPage.php"> <button id="LogIn-Toggle" class="toggleButton">Log In</button></a>
-        </div>
-        <div class="LoginForm">
-            <form method="POST" action="">
-                <div class="form-group">
-                    <label for="user-name">Username</label>
-                    <input type="text" name="user_name" class="form-control" id="user-name" placeholder="Username" required>
-                </div>
-                <br>
-                <div class="form-group">
-                    <label for="user-phone">Password</label>
-                    <input type="password" name="user_password" class="form-control" id="user-password" placeholder="Password" required>
-                </div>
-                <?php
-                if (!empty($login_err)) {
-                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
-                } else {
-                    echo '<br>';
-                }
-                ?>
+        <div class="loginWindow">
+            <div class="toggleContainer">
+                <a href="./registerPage.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
+                <a href="./loginPage.php"> <button id="LogIn-Toggle" class="toggleButton">Log In</button></a>
+            </div>
+            <div class="LoginForm">
+                <form method="POST" action="">
+                    <div class="form-group">
+                        <label for="user-name">Username</label>
+                        <input type="text" name="user_name" class="form-control" id="user-name" placeholder="Username" required>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <label for="user-phone">Password</label>
+                        <input type="password" name="user_password" class="form-control" id="user-password" placeholder="Password" required>
+                    </div>
+                    <?php
+                    if (!empty($login_err)) {
+                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                    } else {
+                        echo '<br>';
+                    }
+                    ?>
 
-                <a href="">Forgot Password</a>
-                <br>
-                <br>
+                    <a href="">Forgot Password</a>
+                    <br>
+                    <br>
 
-                <div class='buttonBox'>
-                    <button type="submit" class="submittButton">Login</button>
-                </div>
-            </form>
+                    <div class='buttonBox'>
+                        <button type="submit" class="submittButton">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    </div>
     </div>
 
 </body>

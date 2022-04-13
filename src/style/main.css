@@ -50,7 +50,8 @@ body {
     width: 100%;
     position: relative;
 }
-.main{
+
+.main {
     min-height: 80vh;
 }
 
@@ -67,7 +68,8 @@ body {
 .checkoutCon {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 .checkoutButt {
@@ -80,6 +82,7 @@ body {
     text-decoration: none;
     color: black;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    justify-self:flex-end;
 }
 
 .checkoutButt:hover {
@@ -254,4 +257,157 @@ button a {
 .filterSubmitt button {
     margin: 1em auto;
     display: block;
+}
+
+.itemDisplay {
+    background-color: white;
+    width: 99%;
+    margin: auto;
+    height: 100%;
+    /* max-height: 600px; */
+    min-height: 100vh;
+
+}
+
+.itemDisplay span {
+    font-size: smaller;
+}
+
+.itemDes {
+    box-shadow: 3px 5px 10px black;
+    border: 2px solid white;
+    background-color: #f5c842;
+    padding: 2px 0 2px 0;
+}
+
+.itemDes h1, span {
+    margin: auto;
+    width: 95%;
+}
+
+.singleItemDisplay {
+    width: 70%;
+    margin: auto;
+}
+
+.itemPic {
+    height: 40vh;
+    width: 49%;
+}
+
+.picContain {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    background:
+        linear-gradient(to right, black 4px, transparent 4px) 0 0,
+        linear-gradient(to right, black 4px, transparent 4px) 0 100%,
+        linear-gradient(to left, black 4px, transparent 4px) 100% 0,
+        linear-gradient(to left, black 4px, transparent 4px) 100% 100%,
+        linear-gradient(to bottom, black 4px, transparent 4px) 0 0,
+        linear-gradient(to bottom, black 4px, transparent 4px) 100% 0,
+        linear-gradient(to top, black 4px, transparent 4px) 0 100%,
+        linear-gradient(to top, black 4px, transparent 4px) 100% 100%;
+
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.itemPic img {
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+    background-color: white;
+}
+
+.itemDiv {
+    width: 70%;
+    margin: auto;
+    background-color: #f5c842;
+    border: 2px solid white;
+    padding: 2em 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.itemText {
+    width: 49%;
+    margin: 0;
+}
+.itemText h1{
+    margin: 0 0 0.5em 0;
+}
+
+.quantity {
+    display: flex;
+}
+
+.counter {
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 32px;
+    border: 2px solid black;
+    background-color: white;
+    margin-right: 2em;
+    margin-left: 1em;
+}
+
+.counter button {
+    border-radius: 50%;
+    background-color: transparent;
+    border: none;
+    height: 3em;
+    width: 3em;
+    font-weight: 200 !important;
+    text-align: center;
+    display: inline-block;
+    font-size:20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.counter button:active, .counter button:hover {
+    background-color:#f5c842;
+    color: white;
+  }
+  .counter input{
+      height: 50%;
+      align-self: center;
+  }
+  .button2{
+    padding: 0.35em 1.2em;
+    border: 0.1em solid #FFFFFF;
+    margin-top: 1em;
+    border-radius: 0.12em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: larger;
+    color: #FFFFFF;
+    left: 50%;
+    transition: all 0.2s;
+    width:50%;
+    margin-right: 2em;
+    background-color: Transparent;
+  }
+  .button2:hover {
+    color: #000000;
+    background-color: #FFFFFF;
+    text-decoration: underline;
+}
+
+.backButton{
+    border-radius: 25px;
+    background-color: #f5c842;
+    padding: 1em 1em 1em 1em;
+    margin-top: 1em;
+    width: 5em;
+    text-decoration: none;
+    color: black;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+    border: none;
+    height: fit-content;
 }
