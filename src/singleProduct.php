@@ -47,7 +47,7 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
             
     
         <div class="checkoutCon">
-            <button onclick="history.back()" class="backButton">back</button>
+            <button onclick="history.back()" class="backButton">&#8592;</button>
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
                 $quantity = 0;
@@ -65,9 +65,6 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
         </div>
 
         <div class='itemDiv'>
-            <!-- <div class="todayHeader">
-            <p>- TODAY'S DEALS -</p>
-        </div> -->
             <div class="itemPic">
                 <div class="picContain">
                     <img src="./image/image1 copy.png" alt="">
@@ -75,6 +72,7 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
             </div>
             <div class="itemText">
                 <h1>"Air Jordan 1 Blue"</h1>
+                <hr>
                 <h3>Date Added:10/20/2021</h3>
                 <h1>Price: 300 </h1>
                 <div class="quantity">
@@ -85,6 +83,7 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
                         <button class="add">+</button>
                     </div>
                 </div>
+                <hr>
                 <button class="button2">Add to Cart</button>
             </div>
         </div>

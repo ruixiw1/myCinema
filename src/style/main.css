@@ -68,7 +68,7 @@ body {
 .checkoutCon {
     width: 100%;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
     justify-content: space-between;
 }
 
@@ -76,8 +76,6 @@ body {
     border-radius: 25px;
     background-color: #f5c842;
     padding: 1em 1em 1em 1em;
-    margin-right: 2em;
-    margin-top: 1em;
     width: fit-content;
     text-decoration: none;
     color: black;
@@ -404,7 +402,6 @@ button a {
     border-radius: 25px;
     background-color: #f5c842;
     padding: 1em 1em 1em 1em;
-    margin-top: 1em;
     width: 5em;
     text-decoration: none;
     color: black;
