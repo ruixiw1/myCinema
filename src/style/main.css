@@ -4,6 +4,9 @@ ul {
     padding: 0;
     overflow: hidden;
 }
+hr{
+    max-width: 95%;
+}
 
 li {
     float: left;
@@ -49,11 +52,9 @@ body {
     margin: 0;
     width: 100%;
     position: relative;
+    min-height: 100vh;
 }
-
-.main {
-    min-height: 80vh;
-}
+    
 
 .todayHeader {
     background-color: #f5c842;
@@ -80,7 +81,7 @@ body {
     text-decoration: none;
     color: black;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
-    justify-self:flex-end;
+    justify-self: flex-end;
 }
 
 .checkoutButt:hover {
@@ -234,6 +235,7 @@ button a {
     padding: 1em 0 0.5em 1em;
     border-radius: 20px;
     margin-right: 1em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
 
 }
 
@@ -264,6 +266,7 @@ button a {
     height: 100%;
     /* max-height: 600px; */
     min-height: 100vh;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
 
 }
 
@@ -278,7 +281,8 @@ button a {
     padding: 2px 0 2px 0;
 }
 
-.itemDes h1, span {
+.itemDes h1,
+span {
     margin: auto;
     width: 95%;
 }
@@ -323,20 +327,26 @@ button a {
 .itemDiv {
     width: 70%;
     margin: auto;
-    background-color: #e6bc3e;
-    border: 2px solid white;
+    background-color: #f5c842;
+    border: 2px solid #333;
     padding: 2em 0;
     display: flex;
     justify-content: space-around;
     background-image: url(../image/wood-pattern.png);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
 }
 
 .itemText {
     width: 49%;
     margin: 0;
 }
-.itemText h1{
+
+.itemText h1 {
     margin: 0 0 0.5em 0;
+}
+
+.itemText p {
+    max-width: 80%;
 }
 
 .quantity {
@@ -363,21 +373,25 @@ button a {
     font-weight: 200 !important;
     text-align: center;
     display: inline-block;
-    font-size:20px;
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.2s;
 }
-.counter button:active, .counter button:hover {
-    background-color:#f5c842;
+
+.counter button:active,
+.counter button:hover {
+    background-color: #f5c842;
     color: white;
-  }
-  .counter input{
-      height: 50%;
-      align-self: center;
-  }
-  .button2{
+}
+
+.counter input {
+    height: 50%;
+    align-self: center;
+}
+
+.button2 {
     padding: 0.35em 1.2em;
-    border: 0.1em solid #FFFFFF;
+    border: 0.1em solid black;
     margin-top: 1em;
     border-radius: 0.12em;
     box-sizing: border-box;
@@ -385,20 +399,19 @@ button a {
     font-family: Oswald;
     font-weight: 300;
     font-size: larger;
-    color: #FFFFFF;
+    background-color: white;
     left: 50%;
     transition: all 0.2s;
-    width:50%;
+    width: 50%;
     margin-right: 2em;
-    background-color: Transparent;
-  }
-  .button2:hover {
+}
+
+.button2:hover {
     color: #000000;
-    background-color: #FFFFFF;
     text-decoration: underline;
 }
 
-.backButton{
+.backButton {
     border-radius: 25px;
     background-color: #f5c842;
     padding: 1em 1em 1em 1em;
@@ -408,4 +421,12 @@ button a {
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
     border: none;
     height: fit-content;
+}
+
+.button2 {
+    transition: 0.7s;
+}
+
+.button2:hover {
+    box-shadow: inset 500px 0 0 0 #f5c842;
 }
