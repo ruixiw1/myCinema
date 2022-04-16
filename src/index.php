@@ -19,6 +19,7 @@ $database->createProductTable();
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -33,7 +34,7 @@ $database->createProductTable();
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
@@ -68,7 +69,7 @@ $database->createProductTable();
                 <?php
                 $result = $database->getSpecialItem();
                 while ($row = mysqli_fetch_assoc($result)) {
-                    printSpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
+                    displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
                 }
                 ?>
             </div>

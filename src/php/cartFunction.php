@@ -22,7 +22,7 @@ if(isset($_POST["add_to_cart"]))
 		{
 			if($cart_data[$keys]["product_id"] == $_POST["product_id"])
 			{
-				$cart_data[$keys]["product_quantity"] = $cart_data[$keys]["product_quantity"] + 1;
+				$cart_data[$keys]["product_quantity"] = $cart_data[$keys]["product_quantity"] + $_POST["quantity"];
 			}
 		}
 	}
@@ -33,7 +33,7 @@ if(isset($_POST["add_to_cart"]))
 			'product_name'		=>	$_POST["product_name"],
 			'product_price'		=>	$_POST["product_price"],
 			'product_image'		=>	$_POST["product_img"],
-            'product_quantity'  =>  1
+            'product_quantity'  =>  $_POST["quantity"]
 		);
 		$cart_data[] = $item_array;
 	}
@@ -44,28 +44,21 @@ if(isset($_POST["add_to_cart"]))
 	header("Refresh:0");
 }
 
-if(isset($_GET["action"]))
+if(isset($_POST["remove_product"]))
 {
-	if($_GET["action"] == "delete")
-	{
+
 		$cookie_data = stripslashes($_COOKIE['shopping_cart']);
 		$cart_data = json_decode($cookie_data, true);
 		foreach($cart_data as $keys => $values)
 		{
-			if($cart_data[$keys]['item_id'] == $_GET["id"])
+			if($cart_data[$keys]['product_id'] == $_POST["product_id"])
 			{
 				unset($cart_data[$keys]);
 				$item_data = json_encode($cart_data);
 				setcookie("shopping_cart", $item_data, time() + (86400 * 30));
-				header("location:index.php?remove=1");
+				header("Refresh:0");
 			}
 		}
-	}
-	if($_GET["action"] == "clear")
-	{
-		setcookie("shopping_cart", "", time() - 3600);
-		header("location:index.php?clearall=1");
-	}
 }
 
 if(isset($_GET["success"]))
@@ -87,13 +80,20 @@ if(isset($_GET["remove"]))
 	</div>
 	';
 }
-if(isset($_GET["clearall"]))
-{
-	$message = '
-	<div class="alert alert-success alert-dismissible">
-		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		Your Shopping Cart has been clear...
-	</div>
-	';
+if(isset($_POST["update_product"]))
+{	
+		$newQuantity=$_POST['quantity'];
+		$cookie_data = stripslashes($_COOKIE['shopping_cart']);
+		$cart_data = json_decode($cookie_data, true);
+		foreach($cart_data as $keys => $values)
+		{
+			if($cart_data[$keys]['product_id'] == $_POST["product_id"])
+			{
+				$cart_data[$keys]['product_quantity']=$newQuantity;
+				$item_data = json_encode($cart_data);
+				setcookie("shopping_cart", $item_data, time() + (86400 * 30));
+				header("Refresh:0");
+			}
+		}
 }
 ?>

@@ -1,4 +1,8 @@
 <?php
+session_start();
+require_once('./php/component.php');
+require_once('./connection.php');
+require_once('./php/cartFunction.php');
 if (isset($_POST["checkOut"])) {
 
     if (isset($_COOKIE['shopping_cart'])) {
@@ -19,7 +23,18 @@ if (isset($_POST["checkOut"])) {
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <link href="./style/cart.css" rel="stylesheet">
+    <script>
+        function minusCheck(id){
+            var ele = document.getElementById(id);
+            if(ele.value>0){
+                ele.value--;
+            }
+        }
+    </script>
 </head>
 
 <body>
@@ -34,7 +49,7 @@ if (isset($_POST["checkOut"])) {
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="active" href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
@@ -45,7 +60,7 @@ if (isset($_POST["checkOut"])) {
     </nav>
     <div class="todayDeal">
         <div class="checkoutCon">
-            <button onclick="history.back()" class="backButton">&#8592;</button>
+            <button onclick="history.back()" class="backButton"><i class="fa-solid fa-arrow-left-long"></i></button>
             <div class="todayHeader">
                 <p>- Cart -</p>
             </div>
@@ -57,9 +72,9 @@ if (isset($_POST["checkOut"])) {
                 foreach ($cart_data as $keys => $values) {
                     $quantity += $values["product_quantity"];
                 }
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[$quantity]</a>";
             } else {
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[0]</a>";
             }
 
             ?>
@@ -69,103 +84,18 @@ if (isset($_POST["checkOut"])) {
         <div class="mainContainer">
             <div class="itemsContainer">
 
-                <?php
 
-                $total = 0;
-                // if (isset($_COOKIE['shopping_cart'])) {
-                //     if (isset($_COOKIE["shopping_cart"])) {
-                //         $cookie_data = stripslashes($_COOKIE['shopping_cart']);
-                //         $cart_data = json_decode($cookie_data, true);
-                //         foreach ($cart_data as $keys => $values) {
-                //             echo " <div class=\"items\">
-                //                     <p>$values[product_name], $values[product_price],$values[product_quantity], $values[product_image]</p>
-                //                     </div>    
-                //                 ";
-                //         }
-                //     }
-                // } else {
-                //     echo "<h5>Cart is Empty</h5>";
-                // }
+                <?php
+                if (isset($_COOKIE["shopping_cart"])) {
+                    $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                    $cart_data = json_decode($cookie_data, true);
+                    foreach ($cart_data as $keys => $values) {
+                        displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image']);
+                    }
+                }
 
                 ?>
-                <div class='cartItem'>
-                    <div class="cartItemPic">
-                        <div class="cartPicWrap">
-                            <img src="./image/image1 copy.png" alt="">
-                        </div>
-                    </div>
 
-                    <div class="itemText">
-                        <h2>"Air Jordan 1 Blue"</h2>
-                        <p>Price: 300 </p>
-                        <div class="quantity">
-                            <p>Quantitiy: </p>
-                            <div class="counter">
-                                <button class="minus">-</button>
-                                <input type="number" id="number" class="num" value='0' min='0'>
-                                <button class="add">+</button>
-                            </div>
-                        </div>
-                        <div class="cartButtonDiv">
-                            <button class="cartModButton">Update</button>
-                            <button class="cartModButton">Remove</button>
-                        </div>
-                    </div>
-
-                </div>
-                <hr>
-                <div class='cartItem'>
-                    <div class="cartItemPic">
-                        <div class="cartPicWrap">
-                            <img src="./image/image1 copy.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="itemText">
-                        <h2>"Air Jordan 1 Blue"</h2>
-                        <p>Price: 300 </p>
-                        <div class="quantity">
-                            <p>Quantitiy: </p>
-                            <div class="counter">
-                                <button class="minus">-</button>
-                                <input type="number" id="number" class="num" value='0' min='0'>
-                                <button class="add">+</button>
-                            </div>
-                        </div>
-                        <div class="cartButtonDiv">
-                            <button class="cartModButton">Update</button>
-                            <button class="cartModButton">Remove</button>
-                        </div>
-                    </div>
-
-                </div>
-                <hr>
-                <div class='cartItem'>
-                    <div class="cartItemPic">
-                        <div class="cartPicWrap">
-                            <img src="./image/image1 copy.png" alt="">
-                        </div>
-                    </div>
-
-                    <div class="itemText">
-                        <h2>"Air Jordan 1 Blue"</h2>
-                        <p>Price: 300 </p>
-                        <div class="quantity">
-                            <p>Quantitiy: </p>
-                            <div class="counter">
-                                <button class="minus">-</button>
-                                <input type="number" id="number" class="num" value='0' min='0'>
-                                <button class="add">+</button>
-                            </div>
-                        </div>
-                        <div class="cartButtonDiv">
-                            <button class="cartModButton">Update</button>
-                            <button class="cartModButton">Remove</button>
-                        </div>
-                    </div>
-
-                </div>
-                <hr>
             </div>
 
             <div class="orderDetail">
@@ -174,14 +104,21 @@ if (isset($_POST["checkOut"])) {
                 <div class="pricDetails">
                     <div class="col-md-6">
                         <?php
-                        if (isset($_COOKIE['cart'])) {
-                            $count  = count($_COOKIE['cart']);
-                            echo "<h3>Items ($count items)</h3>";
+                        if (isset($_COOKIE["shopping_cart"])) {
+                            $quantity = 0;
+                            $total = 0;
+                            $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+                            $cart_data = json_decode($cookie_data, true);
+                            foreach ($cart_data as $keys => $values) {
+                                $quantity += $values["product_quantity"];
+                                $total += $values["product_price"];
+                            }
+                            echo "<h3>Items: ($quantity)</h3>";
                         } else {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
-                        <h3>Total Amount</h3>
+                        <h3>Total Amount: <?php echo "$total" ?></h3>
                     </div>
                     <div class="col-md-6">
                         <hr>
@@ -194,16 +131,6 @@ if (isset($_POST["checkOut"])) {
                 </div>
             </div>
         </div>
-        <?php
-        if (isset($_COOKIE["shopping_cart"])) {
-            $cookie_data = stripslashes($_COOKIE['shopping_cart']);
-            $cart_data = json_decode($cookie_data, true);
-            foreach ($cart_data as $keys => $values) {
-                echo "<p>$values[product_name], $values[product_price],$values[product_quantity], $values[product_image]</p>";
-            }
-        }
-
-        ?>
         <form action="" method="post">
             <button name="checkOut" type="submit">clear cookie</button>
         </form>
