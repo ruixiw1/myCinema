@@ -43,7 +43,9 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
         </div>
     </nav>
     <div class="todayDeal">
+        
         <div class="checkoutCon">
+        <div></div>
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
                 $quantity = 0;
