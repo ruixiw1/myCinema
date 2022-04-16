@@ -118,7 +118,15 @@ if (isset($_POST["checkOut"])) {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
-                        <h3>Total Amount: <?php echo "$total" ?></h3>
+                        <h3>Total Amount: 
+                        <?php 
+                        if(isset($_COOKIE["shopping_cart"])){
+                            echo "$total";
+                        }
+                        else{
+                            echo '0';
+                        }?>
+                        </h3>
                     </div>
                     <div class="col-md-6">
                         <hr>
