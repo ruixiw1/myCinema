@@ -153,6 +153,17 @@ class DBConnection
 			return $result;
 		}
 	}
+
+	public function getSingleItem($product_id)
+	{
+		$sql = "SELECT * FROM $this->producttb where product_id = $product_id";
+
+		$result = mysqli_query($this->connection, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			return $result;
+		}
+	}
 }
 
 ?>

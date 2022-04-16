@@ -4,7 +4,7 @@ require_once('./php/component.php');
 require_once('./connection.php');
 require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
-$product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
+$product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +19,24 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+
+            $(".add").click(function(e) {
+                document.getElementById('number').value++;
+                e.preventDefault();
+            });
+
+            $(".minus").click(function(e) {
+                if (document.getElementById('number').value > 0)
+                    document.getElementById('number').value--;
+                e.preventDefault();
+            });
+
+        });
+    </script>
 
 </head>
 
@@ -34,7 +52,7 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class="button-header"href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
@@ -47,7 +65,7 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
 
 
         <div class="checkoutCon">
-            <button onclick="history.back()" class="backButton">&#8592;</button>
+            <button onclick="history.back()" class="backButton"><i class="fa-solid fa-arrow-left-long"></i></button>
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
                 $quantity = 0;
@@ -56,16 +74,16 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
                 foreach ($cart_data as $keys => $values) {
                     $quantity += $values["product_quantity"];
                 }
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[$quantity]</a>";
             } else {
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[0]</a>";
             }
 
             ?>
         </div>
 
-        <div class='itemDiv'>
-            <div class="itemPic">
+        <form class='itemDiv' method="POST">
+            <!-- <div class="itemPic">
                 <div class="picContain">
                     <img src="./image/image1 copy.png" alt="">
                 </div>
@@ -76,10 +94,14 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
                 <hr>
                 <h1>Product Detail</h1>
                 <p>The Air Jordan 1 High Dark Marina Blue arrives with a smooth black leather upper with Dark Marina Blue overlays and Swooshes. On the ankle wrap, a black Jordan Wings logo pays homage to the origins of the Air Jordan 1. From there, a contrasting white and blue Air sole completes the design.
-                The Air Jordan 1 High Dark Marina Blue releases in February of 2022.</p>
+                    The Air Jordan 1 High Dark Marina Blue releases in February of 2022.</p>
                 <h3>Date Added:10/20/2021</h3>
-                <h1>Price: $300 </h1>
+                <h1>Price:
+                <s class="originalPrice">$100</s>
+                <span class="price">$80</span> 
+                </h1>
                 <div class="quantity">
+            
                     <h1>Quantitiy: </h1>
                     <div class="counter">
                         <button class="minus">-</button>
@@ -89,8 +111,14 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
                 </div>
                 <hr>
                 <button class="button2">Add to Cart</button>
-            </div>
-        </div>
+            </div> -->
+            <?php
+            $result = $database->getSingleItem($product_id);
+            while ($row = mysqli_fetch_assoc($result)) {
+                displayItemDetail($row['product_id'], $row['product_name'], $row['price'], $row['image'], $row['special'], $row['date_added'], $row['product_detail'], $row['color']);
+            }
+            ?>
+        </form>
     </div>
 
 </body>
@@ -99,19 +127,5 @@ $product_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
         Shopster &copy; 2022
     </div>
 </footer>
-<script>
-    $(document).ready(function() {
-
-        $(".add").click(function() {
-            document.getElementById('number').value++;
-        });
-
-        $(".minus").click(function() {
-            if (document.getElementById('number').value > 0)
-                document.getElementById('number').value--;
-        });
-
-    });
-</script>
 
 </html>
