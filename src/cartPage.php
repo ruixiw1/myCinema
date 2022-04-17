@@ -39,9 +39,9 @@ if (isset($_POST["checkOut"])) {
 
 <body>
     <nav>
-        <a href="index.php"><span>
+        <a href="index.php">
                 <h1 class="logo">shopster.</h1>
-            </span></a>
+            </a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
@@ -118,7 +118,7 @@ if (isset($_POST["checkOut"])) {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
-                        <h3>Total Amount: 
+                        <h3>Total Amount:$ 
                         <?php 
                         if(isset($_COOKIE["shopping_cart"])){
                             echo "$total";
