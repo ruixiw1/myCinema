@@ -26,16 +26,24 @@ require_once('connection.php');
             $username = htmlspecialchars($_POST['user_name']);
             $password = htmlspecialchars($_POST['user_password']);
             $email = htmlspecialchars($_POST['email']);
-
-            $connection = DBConnection::get_instance()->get_connection();
-            $sql = "INSERT INTO user_info (`username`, `password`, `email`) VALUES ('" . $username . "','" . $password . "','" . $email . "')";
-            $result = mysqli_query($connection, $sql);
-            if ($result != false) {
-                echo ("<script type='text/javascript'> console.log($msg);</script>");
-                header('Location: static/redirectSignUp.html');
-            } else {
-                $login_err = "Invalid Info.";
-            }
+			
+			$number = preg_match('@[0-9]@', $password);
+			$uppercase = preg_match('@[A-Z]@', $password);
+			$lowercase = preg_match('@[a-z]@', $password);
+			$specialChars = preg_match('@[^\w]@', $password);
+			if(strlen($password) < 8 || !$number || !$uppercase || !$specialChars) {
+				$login_err = "Password must have at least 8 characters, a number, a capital letter, and a special character";
+			}else{
+				$connection = DBConnection::get_instance()->get_connection();
+				$sql = "INSERT INTO user_info (`username`, `password`, `email`) VALUES ('" . $username . "','" . $password . "','" . $email . "')";
+				$result = mysqli_query($connection, $sql);
+				if ($result != false) {
+					echo ("<script type='text/javascript'> console.log($msg);</script>");
+					header('Location: static/redirectSignUp.html');
+				} else {
+					$login_err = "Invalid Info.";
+				}
+			}
         }
     }
     ?>
@@ -71,18 +79,20 @@ require_once('connection.php');
         <form id="register-form" method="POST">
             <div class="form-group">
                 <label for="Email">Email:</label>
-                <input class="input-form" name="email" placeholder="Email Address" required>
+                <input class="input-form" type="email" name="email" placeholder="Email Address" required>
             </div>
             <br>
             <div class="form-group">
-                <label for="Email">Username:</label>
-                <input class="input-form" name="user_name" placeholder="Username" required>
+                <label>Username:</label>
+                <input name="user_name" placeholder="Username" required>
             </div>
             <br>
             <div class="form-group">
-                <label for="Email">Password:</label>
-                <input class="input-form" name="user_password" placeholder="Password" required>
-            </div>
+                <label>Password:</label>
+                <input type="password" class="input-form" name="user_password" placeholder="Password" required>
+			</div>
+			
+			
             <br><?php
                 if (!empty($login_err)) {
                     echo '<div class="alert alert-danger">' . $login_err . '</div>';
