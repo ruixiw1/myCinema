@@ -39,9 +39,9 @@ if (isset($_POST["checkOut"])) {
 
 <body>
     <nav>
-        <a href="index.php"><span>
+        <a href="index.php">
                 <h1 class="logo">shopster.</h1>
-            </span></a>
+            </a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
