@@ -15,6 +15,7 @@ include_once('connection.php');
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
