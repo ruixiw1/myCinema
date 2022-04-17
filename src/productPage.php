@@ -20,6 +20,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -55,9 +56,9 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                 foreach ($cart_data as $keys => $values) {
                     $quantity += $values["product_quantity"];
                 }
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [$quantity]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[$quantity]</a>";
             } else {
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[0]</a>";
             }
 
             ?>

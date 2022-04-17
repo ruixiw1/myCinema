@@ -33,7 +33,7 @@ if(isset($_POST["add_to_cart"]))
 			'product_name'		=>	$_POST["product_name"],
 			'product_price'		=>	$_POST["product_price"],
 			'product_image'		=>	$_POST["product_img"],
-            'product_quantity'  =>  $_POST["quantity"]
+            'product_quantity'  =>  $_POST["quantity"],
 		);
 		$cart_data[] = $item_array;
 	}
@@ -61,25 +61,7 @@ if(isset($_POST["remove_product"]))
 		}
 }
 
-if(isset($_GET["success"]))
-{
-	$message = '
-	<div class="alert alert-success alert-dismissible">
-	  	<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-	  	Item Added into Cart
-	</div>
-	';
-}
 
-if(isset($_GET["remove"]))
-{
-	$message = '
-	<div class="alert alert-success alert-dismissible">
-		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-		Item removed from Cart
-	</div>
-	';
-}
 if(isset($_POST["update_product"]))
 {	
 		$newQuantity=$_POST['quantity'];
@@ -96,4 +78,3 @@ if(isset($_POST["update_product"]))
 			}
 		}
 }
-?>

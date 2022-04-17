@@ -1,7 +1,7 @@
 <?php
 function displaySpecialProduct($productname, $productprice, $productimg, $productid)
 {
-    $originalprice = $productprice + 100;
+    $originalprice = $productprice + 50;
 
     $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\" alt=\"\"></a>
@@ -28,7 +28,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     $element = "";
 
     if ($special == 1) {
-        $originalprice = $productprice + 100;
+        $originalprice = $productprice + 50;
         $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\" alt=\"\"></a>
     <p class=\"product-text\">\"$productname\"</p>
@@ -73,7 +73,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
 {
     $element = "";
     if ($special == 1) {
-        $originalprice = $productPrice + 100;
+        $originalprice = $productPrice + 50;
         $element = "
         <div class=\"itemPic\">
         <div class=\"picContain\">
@@ -145,6 +145,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
 
 function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg){
     $element='';
+    
     $element="<div class='cartItem'>
     <div class=\"cartItemPic\">
         <div class=\"cartPicWrap\">
@@ -172,6 +173,7 @@ function displayCartItem($productId,$productName,$productPrice,$productQuantity,
 
 </div>
 <hr>";
+
 echo $element;
 
 }

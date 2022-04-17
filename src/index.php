@@ -19,6 +19,7 @@ $database->createProductTable();
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
@@ -54,9 +55,9 @@ $database->createProductTable();
                 foreach ($cart_data as $keys => $values) {
                     $quantity += $values["product_quantity"];
                 }
-                echo "<a class=\"checkoutButt\" id=\"checkNum\"href=\"./cartPage.php\">check out [$quantity]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[$quantity]</a>";
             } else {
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\">check out [0]</a>";
+                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[0]</a>";
             }
 
             ?>

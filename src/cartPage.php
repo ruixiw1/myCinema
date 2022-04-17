@@ -118,7 +118,7 @@ if (isset($_POST["checkOut"])) {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
-                        <h3>Total Amount: 
+                        <h3>Total Amount:$ 
                         <?php 
                         if(isset($_COOKIE["shopping_cart"])){
                             echo "$total";
