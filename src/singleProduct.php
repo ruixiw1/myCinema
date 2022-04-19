@@ -83,35 +83,6 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
         </div>
 
         <form class='itemDiv' method="POST">
-            <!-- <div class="itemPic">
-                <div class="picContain">
-                    <img src="./image/image1 copy.png" alt="">
-                </div>
-            </div>
-            <div class="itemText">
-                <h1>"Air Jordan 1 Blue"</h1>
-                <h3>Dark Marina Blue</h3>
-                <hr>
-                <h1>Product Detail</h1>
-                <p>The Air Jordan 1 High Dark Marina Blue arrives with a smooth black leather upper with Dark Marina Blue overlays and Swooshes. On the ankle wrap, a black Jordan Wings logo pays homage to the origins of the Air Jordan 1. From there, a contrasting white and blue Air sole completes the design.
-                    The Air Jordan 1 High Dark Marina Blue releases in February of 2022.</p>
-                <h3>Date Added:10/20/2021</h3>
-                <h1>Price:
-                <s class="originalPrice">$100</s>
-                <span class="price">$80</span> 
-                </h1>
-                <div class="quantity">
-            
-                    <h1>Quantitiy: </h1>
-                    <div class="counter">
-                        <button class="minus">-</button>
-                        <input type="number" id="number" class="num" value='0' min='0'>
-                        <button class="add">+</button>
-                    </div>
-                </div>
-                <hr>
-                <button class="button2">Add to Cart</button>
-            </div> -->
             <?php
             $result = $database->getSingleItem($product_id);
             while ($row = mysqli_fetch_assoc($result)) {
@@ -119,13 +90,16 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
             }
             ?>
         </form>
+        <br>
+        <br>
+        
+        <footer>
+            <div style="color:white;">
+                Shopster &copy; 2022
+            </div>
+        </footer>
     </div>
 
 </body>
-<footer>
-    <div style="color:white;">
-        Shopster &copy; 2022
-    </div>
-</footer>
 
 </html>

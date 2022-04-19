@@ -4,8 +4,8 @@ function displaySpecialProduct($productname, $productprice, $productimg, $produc
     $originalprice = $productprice + 50;
 
     $element = "<form method=\"post\" class=\"dealItem\">
-    <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\" alt=\"\"></a>
-    <p class=\"product-text\">\"$productname\"</p>
+    <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\"></a>
+    <p class=\"product-text\">$productname</p>
     <p style=\"text-align:center\">
             <s class=\"originalPrice\">$$originalprice</s>
             <span class=\"price\">$$productprice</span>
@@ -31,7 +31,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
         $originalprice = $productprice + 50;
         $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\" alt=\"\"></a>
-    <p class=\"product-text\">\"$productname\"</p>
+    <p class=\"product-text\">$productname</p>
     <p style=\"text-align:center\">
             <s class=\"originalPrice\">$$originalprice</s>
             <span class=\"price\">$$productprice</span>
@@ -49,8 +49,8 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     </form>";
     } else {
         $element = "<form method=\"post\" class=\"dealItem\">
-    <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\" alt=\"\"></a>
-    <p class=\"product-text\">\"$productname\"</p>
+    <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\"></a>
+    <p class=\"product-text\">$productname</p>
     <p style=\"text-align:center\">
             <span class=\"price\">$$productprice</span>
     </p>
@@ -81,7 +81,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
         </div>
     </div>
     <div class=\"itemText\">
-        <h1>\"$productName\"</h1>
+        <h1>$productName</h1>
         <h3>$color</h3>
         <hr>
         <h1>Product Detail</h1>
@@ -114,7 +114,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
         </div>
     </div>
     <div class=\"itemText\">
-        <h1>\"$productName\"</h1>
+        <h1>$productName</h1>
         <h3>$color</h3>
         <hr>
         <h1>Product Detail</h1>
@@ -154,7 +154,7 @@ function displayCartItem($productId,$productName,$productPrice,$productQuantity,
     </div>
 
     <form class=\"itemText\" method=\"POST\">
-        <h2>\"$productName\"</h2>
+        <h2>$productName</h2>
         <h3>Price: $productPrice </h3>
         <div class=\"quantity\">
             <p>Quantitiy: </p>
