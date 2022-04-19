@@ -81,7 +81,7 @@ require_once('connection.php');
                 <a href="./registerPage.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
                 <a href="./loginPage.php"> <button id="LogIn-Toggle" class="toggleButton">Log In</button></a>
             </div>
-            <div class="LoginForm">
+            <div class="loginForm">
                 <form method="POST" action="">
                     <div class="form-group">
                         <label for="user-name">Username</label>
@@ -99,8 +99,9 @@ require_once('connection.php');
                         echo '<br>';
                     }
                     ?>
-
+                    <div id = "forgotPwd">
                     <a href="">Forgot Password</a>
+                    </div>
                     <br>
                     <br>
 
