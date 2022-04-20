@@ -64,7 +64,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
             ?>
         </div>
         <div class="todayHeader">
-            <p>- PRODUCTS -</p>
+            <h3>-   PRODUCTS    -</h3>
         </div>
         <div class="catDropDown">
             <form action="">
