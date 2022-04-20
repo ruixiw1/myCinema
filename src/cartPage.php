@@ -127,10 +127,11 @@ if (isset($_POST["checkOut"])) {
                             } ?>
                         </h3>
                     </div>
+                    
                     <div class="col-md-6">
                         <hr>
                         <form action="./checkoutPage.php">
-                            <button type="submit">
+                            <button class = 'checkOutButton' type="submit">
                                 <h2>Check Out</h2>
                             </button>
                     </div>
