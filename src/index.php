@@ -78,7 +78,7 @@ $database->createProductTable();
     </div>
 </body>
 <footer>
-    <div style="color:white;">
+    <div style="color:black;">
         Shopster &copy; 2022
     </div>
 </footer>

@@ -130,11 +130,12 @@ if (isset($_POST["checkOut"])) {
                     </div>
                     <div class="col-md-6">
                         <hr>
-                        <button class="checkOutButton">
+                        <form action="./checkoutPage.php">
+                        <button type="submit">
                             <h2>Check Out</h2>
                         </button>
                     </div>
-
+                        
 
                 </div>
             </div>
@@ -145,7 +146,7 @@ if (isset($_POST["checkOut"])) {
     </div>
 </body>
 <footer>
-    <div style="color:white;">
+    <div style="color:black;">
         Shopster &copy; 2022
     </div>
 </footer>
