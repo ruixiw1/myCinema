@@ -28,9 +28,9 @@ if (isset($_POST["checkOut"])) {
     <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <link href="./style/cart.css" rel="stylesheet">
     <script>
-        function minusCheck(id){
+        function minusCheck(id) {
             var ele = document.getElementById(id);
-            if(ele.value>0){
+            if (ele.value > 0) {
                 ele.value--;
             }
         }
@@ -40,8 +40,8 @@ if (isset($_POST["checkOut"])) {
 <body>
     <nav>
         <a href="index.php">
-                <h1 class="logo">shopster.</h1>
-            </a>
+            <h1 class="logo">shopster.</h1>
+        </a>
         <div class="navbar" id="navbarNavAltMarkup">
             <ul>
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
@@ -62,7 +62,7 @@ if (isset($_POST["checkOut"])) {
         <div class="checkoutCon">
             <button onclick="history.back()" class="backButton"><i class="fa-solid fa-arrow-left-long"></i></button>
             <div class="todayHeader">
-                <h3>-   Cart    -</h3>
+                <h3>- Cart -</h3>
             </div>
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
@@ -111,31 +111,30 @@ if (isset($_POST["checkOut"])) {
                             $cart_data = json_decode($cookie_data, true);
                             foreach ($cart_data as $keys => $values) {
                                 $quantity += $values["product_quantity"];
-                                $total += $values["product_price"]*$values["product_quantity"];
+                                $total += $values["product_price"] * $values["product_quantity"];
                             }
                             echo "<h3>Items: ($quantity)</h3>";
                         } else {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
-                        <h3>Total Amount:$ 
-                        <?php 
-                        if(isset($_COOKIE["shopping_cart"])){
-                            echo "$total";
-                        }
-                        else{
-                            echo '0';
-                        }?>
+                        <h3>Total Amount:$
+                            <?php
+                            if (isset($_COOKIE["shopping_cart"])) {
+                                echo "$total";
+                            } else {
+                                echo '0';
+                            } ?>
                         </h3>
                     </div>
                     <div class="col-md-6">
                         <hr>
                         <form action="./checkoutPage.php">
-                        <button type="submit">
-                            <h2>Check Out</h2>
-                        </button>
+                            <button type="submit">
+                                <h2>Check Out</h2>
+                            </button>
                     </div>
-                        
+
 
                 </div>
             </div>
@@ -146,7 +145,7 @@ if (isset($_POST["checkOut"])) {
     </div>
 </body>
 <footer>
-    <div style="color:black;">
+    <div style="color:white;">
         Shopster &copy; 2022
     </div>
 </footer>
