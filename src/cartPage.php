@@ -62,7 +62,7 @@ if (isset($_POST["checkOut"])) {
         <div class="checkoutCon">
             <button onclick="history.back()" class="backButton"><i class="fa-solid fa-arrow-left-long"></i></button>
             <div class="todayHeader">
-                <p>- Cart -</p>
+                <h3>-   Cart    -</h3>
             </div>
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
@@ -111,7 +111,7 @@ if (isset($_POST["checkOut"])) {
                             $cart_data = json_decode($cookie_data, true);
                             foreach ($cart_data as $keys => $values) {
                                 $quantity += $values["product_quantity"];
-                                $total += $values["product_price"];
+                                $total += $values["product_price"]*$values["product_quantity"];
                             }
                             echo "<h3>Items: ($quantity)</h3>";
                         } else {

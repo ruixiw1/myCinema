@@ -35,7 +35,6 @@ li a:hover {
 
 nav {
     background-color: #f5c842;
-    margin-bottom: 5px;
 }
 
 nav img {
@@ -90,7 +89,7 @@ body {
 
 .todayDeal {
     background-color: gray;
-    width: 99%;
+    width: 100%;
     margin: auto;
     height: 100%;
     /* max-height: 600px; */
@@ -136,11 +135,9 @@ html {
 footer {
     text-align: center;
     padding: 3px 0 3px 0;
-    background-color: #ded8c1;
-    position: absolute;
+    background-color: #333;
     bottom: 0;
     width: 100%;
-    margin-top: 1em;
 }
 
 .loginWindow {
@@ -234,6 +231,7 @@ button a {
 .todayHeader {
     font-weight: 580;
     font-size: larger;
+    display: block;
 }
 
 .submittButton {
@@ -451,4 +449,13 @@ span {
 
 .button2:hover {
     box-shadow: inset 500px 0 0 0 #f5c842;
+}
+.aboutDiv{
+    margin: 0.5em auto;
+    background-color: #f5c842;
+    width: 80%;
+    text-align: center;
+    padding: 2px 0 2px 0;
+    border: 2px solid white;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
