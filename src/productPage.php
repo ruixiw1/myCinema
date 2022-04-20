@@ -35,7 +35,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
+                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
                     echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                 } else {
                     echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
