@@ -54,15 +54,13 @@ if (isset($_POST["checkOut"])) {
         </div>
     </nav>
 
-    <div class="todayHeader">
-            <h4>-   CHECKOUT    -</h4>
-        </div>
-<div class="row">
+
+    <div class="row">
   <div class="col-75">
     <div class="container">
       <form action="/action_page.php">
-      
-      <div class="row">
+
+        <div class="row">
           <div class="col-50">
             <h3>Shipping Address</h3>
             <label for="fname"><i class="fa fa-user"></i> Full Name</label>
@@ -76,13 +74,13 @@ if (isset($_POST["checkOut"])) {
               <div class="col-50">
                 <label for="state">State</label>
                 <input type="text" id="state" name="state" placeholder="GA">
-                
               </div>
               <div class="col-50">
                 <label for="zip">Zip</label>
                 <input type="text" id="zip" name="zip" placeholder="30601">
               </div>
             </div>
+          </div>
 
           <div class="col-50">
             <h3>Payment</h3>
@@ -92,50 +90,56 @@ if (isset($_POST["checkOut"])) {
             <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
             <label for="expmonth">Exp Month</label>
             <input type="text" id="expmonth" name="expmonth" placeholder="June">
+
             <div class="row">
               <div class="col-50">
                 <label for="expyear">Exp Year</label>
-                <input type="text" id="expyear" name="expyear" placeholder="2030">
+                <input type="text" id="expyear" name="expyear" placeholder="2035">
               </div>
               <div class="col-50">
                 <label for="cvv">CVV</label>
                 <input type="text" id="cvv" name="cvv" placeholder="999">
               </div>
             </div>
-
           </div>
-          
+
         </div>
         <input type="submit" value="Continue to checkout" class="btn">
       </form>
     </div>
-    <div class="col-25">
-      <div class="container">
-
-
-        <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>4</b></span></h4>
-
-
-        <p><a href="#">Integrate</a> <span class="price">$15</span></p>
-        <p><a href="#">the cart functionality</a> <span class="price">$5</span></p>
-        <p><a href="#">into here</a> <span class="price">$8</span></p>
-        <p><a href="#">lmao</a> <span class="price">$2</span></p>
-
-        <hr>
-        <hr>
-
-        <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-
-
-
-
-      </div>
-    </div>
   </div>
 
-</body>
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart
+        <span class="price" style="color:black">
+          <i class="fa fa-shopping-cart"></i>
+          <b>4</b>
+        </span>
+      </h4>
+      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
+      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
+      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
+      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
+    </div>
+  </div>
+</div>
 
-<footer>
+
+
+
+
+
+
+
+
+
+    <footer>
   Shopster &copy; 2022
 </footer>
-</html>
+
+
+
+    </html> 
