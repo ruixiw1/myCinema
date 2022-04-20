@@ -127,7 +127,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
             <h1>Quantitiy: </h1>
             <div class=\"counter\">
                 <button class=\"minus\">-</button>
-                <input type=\"number\" id=\"number\" class=\"num\" value='0' min='0'>
+                <input type=\"number\" id=\"number\" class=\"num\" value='1' name='quantity' min='0'>
                 <button class=\"add\">+</button>
             </div>
         </div>
