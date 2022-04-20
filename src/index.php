@@ -4,8 +4,6 @@ require_once('./php/component.php');
 require_once('./connection.php');
 require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
-$database->createUserTable();
-$database->createProductTable();
 ?>
 <!DOCTYPE html>
 <html lang="en">
