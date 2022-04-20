@@ -72,18 +72,18 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                     <label for="">Category:</label>
                     <select id="category_list" name="categoryID">
                         <option value="0" default>ALL</option>
-                        <option value="1">Sneaker</option>
-                        <option value="2">T-Shrit</option>
-                        <option value="3">Accessory</option>
+                        <option value="1" <?php if(isset($category_id)&&$category_id==1)echo "selected='selected'";?>>Sneaker</option>
+                        <option value="2" <?php if(isset($category_id)&&$category_id==2)echo "selected='selected'";?>>T-Shrit</option>
+                        <option value="3" <?php if(isset($category_id)&&$category_id==3)echo "selected='selected'";?>>Accessory</option>
                     </select>
                 </div>
                 <div class="filter">
                     <label for="">Sort By:</label>
                     <select id="category_list" name="sortID">
-                        <option disabled selected value> ---- </option>
-                        <option value="1">Newest</option>
-                        <option value="2">Price (High to Low)</option>
-                        <option value="3">Price (Low to High)</option>
+                        <option > ---- </option>
+                        <option value="1" <?php if(isset($sort_id)&&$sort_id==1)echo "selected='selected'"?>>Newest</option>
+                        <option value="2" <?php if(isset($sort_id)&&$sort_id==2)echo "selected='selected'"?>>Price (High to Low)</option>
+                        <option value="3" <?php if(isset($sort_id)&&$sort_id==3)echo "selected='selected'"?>>Price (Low to High)</option>
                     </select>
                 </div>
                 <div class="filterSubmitt">
