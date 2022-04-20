@@ -33,6 +33,7 @@ if (isset($_POST["checkOut"])) {
 
 <body>
 
+<<<<<<< Updated upstream
   <nav>
     <a href="index.php"><span>
         <h1 class="logo">shopster.</h1>
@@ -81,9 +82,60 @@ if (isset($_POST["checkOut"])) {
                   <label for="zip">Zip</label>
                   <input type="text" id="zip" name="zip" placeholder="10001">
                 </div>
+=======
+<nav>
+        <a href="index.php"><span>
+                <h1 class="logo">shopster.</h1>
+            </span></a>
+        <div class="navbar" id="navbarNavAltMarkup">
+            <ul>
+                <li><a class="button-header" href="./index.php"><i>home</a></li>
+                <li><a class="button-header" href="./productPage.php">products</a></li>
+                <li><a class="button-header" href="./aboutPage.php">about</a></li>
+                <?php
+                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+                    echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
+                    echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
+                } else {
+                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
+                }
+                ?>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="todayHeader">
+            <h4>-   CHECKOUT    -</h4>
+        </div>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+      <div class="row">
+          <div class="col-50">
+            <h3>Shipping Address</h3>
+            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Jerry Garcia">
+            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+            <input type="text" id="adr" name="address" placeholder="189 S Poplar Street">
+            <label for="city"><i class="fa fa-institution"></i> City</label>
+            <input type="text" id="city" name="city" placeholder="Athens">
+
+            <div class="row">
+              <div class="col-50">
+                <label for="state">State</label>
+                <input type="text" id="state" name="state" placeholder="GA">
+                
+              </div>
+              <div class="col-50">
+                <label for="zip">Zip</label>
+                <input type="text" id="zip" name="zip" placeholder="30601">
+>>>>>>> Stashed changes
               </div>
             </div>
 
+<<<<<<< Updated upstream
             <div class="col-50">
               <h3>Payment</h3>
               <label for="fname">Accepted Cards:</label>
@@ -108,16 +160,41 @@ if (isset($_POST["checkOut"])) {
                   <label for="cvv">CVV</label>
                   <input type="text" id="cvv" name="cvv" placeholder="352">
                 </div>
+=======
+          <div class="col-50">
+            <h3>Payment</h3>
+            <label for="cname">Name on Card</label>
+            <input type="text" id="cname" name="cardname" placeholder="Michael J. Jackson">
+            <label for="ccnum">Credit card number</label>
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <label for="expmonth">Exp Month</label>
+            <input type="text" id="expmonth" name="expmonth" placeholder="June">
+            <div class="row">
+              <div class="col-50">
+                <label for="expyear">Exp Year</label>
+                <input type="text" id="expyear" name="expyear" placeholder="2030">
+              </div>
+              <div class="col-50">
+                <label for="cvv">CVV</label>
+                <input type="text" id="cvv" name="cvv" placeholder="999">
+>>>>>>> Stashed changes
               </div>
             </div>
 
           </div>
+<<<<<<< Updated upstream
           <label>
             <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
           </label>
           <input type="submit" value="Continue to checkout" class="btn">
         </form>
       </div>
+=======
+          
+        </div>
+        <input type="submit" value="Continue to checkout" class="btn">
+      </form>
+>>>>>>> Stashed changes
     </div>
     <div class="col-25">
       <div class="container">
@@ -147,9 +224,13 @@ if (isset($_POST["checkOut"])) {
 
 
 <footer>
+<<<<<<< Updated upstream
   <div style="color:white;">
     Shopster &copy; 2022
   </div>
+=======
+     Shopster &copy; 2022 
+>>>>>>> Stashed changes
 </footer>
 
 

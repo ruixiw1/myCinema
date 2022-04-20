@@ -78,9 +78,11 @@ $database->createProductTable();
     </div>
 </body>
 <footer>
+<<<<<<< Updated upstream
     <div style="color:white;">
+=======
+>>>>>>> Stashed changes
         Shopster &copy; 2022
-    </div>
 </footer>
 
 </html>
