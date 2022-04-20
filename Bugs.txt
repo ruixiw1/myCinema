@@ -1,0 +1,7 @@
+Known Bugs:
+
+duplicate usernames attempting to register 
+
+The green trees move up 1 pixel/second only on the "product" page , they move back down once they are like 1/4 of the way up. 
+
+Logout doesn't work while on product page. 
