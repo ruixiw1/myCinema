@@ -39,30 +39,29 @@ include_once('connection.php');
     </nav>
     <div class="main">
         <div class="todayHeader">
-            <h1>-   ABOUT US   -</h1>
+            <h3>-   ABOUT US   -</h3>
         </div>
-		<br><div class="todayHeader">
+		<br><div class="aboutDiv">
 			<h2> Our Story</h2>
 			<p style="text-align:left;"> &emsp; Shopster started in 2022 by a group of classmates who had a vision of making an online shopping service taylored towards university students. Our founders: George Landyn, Zongxin Ouyang, Matt Morris, and Logan </p>
 			<p style="text-align:left;"> &emsp; Whitley saw how products such as shoes were often hard to find or sold out and shopster was our solution. </p>
 		</div>
-		<br><div class="todayHeader">
+		<br><div class="aboutDiv">
 			<h2> Our Mission</h2>
 			<p style="text-align:left;"> &emsp; To keep shopping simple and fun by always putting the customer first and never compromising on quality.</p>
 		</div>
-		<br><div class="todayHeader">
+		<br><div class="aboutDiv">
 			<h2> Our Name</h2>
 			<p style="text-align:left;"> &emsp; As simple as our mission. We wanted to provide monster deals to our shoppers. Shopping + monster = shopster.</p>
 		</div>
-		
+
+        <footer style="color:white;">
+        Shopster &copy; 2022
+        </footer>
     </div>
+    
 
 </body>
 
-<footer>
-    <div style="color:black;">
-        Shopster &copy; 2022
-    </div>
-</footer>
 
 </html>

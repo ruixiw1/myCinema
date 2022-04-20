@@ -63,7 +63,7 @@ $database->createProductTable();
             ?>
         </div>
         <div class="todayHeader">
-            <p>- TODAY'S DEALS -</p>
+            <h3>-   TODAY'S DEALS   -</h3>
         </div>
         <div class="itemDisplayContainer">
             <div class="itemDisplayContainer">
