@@ -146,9 +146,7 @@ if (isset($_POST["checkOut"])) {
     </div>
 </body>
 <footer>
-    <div style="color:white;">
         Shopster &copy; 2022
-    </div>
 </footer>
 
 </html>

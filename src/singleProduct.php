@@ -94,9 +94,7 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
         <br>
         
         <footer>
-            <div style="color:white;">
                 Shopster &copy; 2022
-            </div>
         </footer>
     </div>
 

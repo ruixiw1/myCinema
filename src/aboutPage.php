@@ -55,7 +55,7 @@ include_once('connection.php');
 			<p style="text-align:left;"> &emsp; As simple as our mission. We wanted to provide monster deals to our shoppers. Shopping + monster = shopster.</p>
 		</div>
 
-        <footer style="color:white;">
+        <footer >
         Shopster &copy; 2022
         </footer>
     </div>

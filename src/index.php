@@ -76,10 +76,6 @@ $database = DBConnection::get_instance();
     </div>
 </body>
 <footer>
-<<<<<<< Updated upstream
-    <div style="color:white;">
-=======
->>>>>>> Stashed changes
         Shopster &copy; 2022
 </footer>
 

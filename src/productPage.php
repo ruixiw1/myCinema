@@ -110,9 +110,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
 
 </body>
 <footer>
-    <div style="color:white;">
         Shopster &copy; 2022
-    </div>
 </footer>
 
 </html>

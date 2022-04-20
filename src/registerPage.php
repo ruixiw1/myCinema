@@ -107,10 +107,8 @@ require_once('connection.php');
     </div>
     </div>
 </body>
-<footer style="position: absolute;">
-    <div style="color:white;">
-        Shopster &copy; 2022
-    </div>
+<footer>
+    Shopster &copy; 2022
 </footer>
 
 </html>
