@@ -135,9 +135,8 @@ html {
 footer {
     text-align: center;
     padding: 3px 0 3px 0;
-    background-color: #f5d880;
-    color:black ; 
-    position: absolute;
+    background-color:transparent;
+    color:white ; 
     bottom: 0;
     width: 100%;
     margin-top: 1em;
