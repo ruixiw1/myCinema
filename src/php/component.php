@@ -177,3 +177,15 @@ function displayCartItem($productId,$productName,$productPrice,$productQuantity,
 echo $element;
 
 }
+
+function displayCartItemWImage($productId,$productName,$productPrice,$productQuantity,$productimg){
+    $element='';
+    $element="<div class='cartItem'>
+  <div class=\"itemText\">
+    <p><b>$productName($productPrice)</b></p>
+    <hr>";
+ 
+
+echo $element;
+
+}

@@ -32,55 +32,55 @@ if (isset($_POST["checkOut"])) {
 
 
 <body>
-
 <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
-        <div class="navbar" id="navbarNavAltMarkup">
-            <ul>
-                <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</a></li>
-                <?php
-                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
-                    echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
-                } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </nav>
+     <a href="index.php"><span>
+      <h1 class="logo">shopster.</h1>
+     </span></a>
+     <div class="navbar" id="navbarNavAltMarkup">
+       <ul>
+         <li><a class="button-header" href="./index.php"><i>home</a></li>
+         <li><a class="button-header" href="./productPage.php">products</a></li>
+         <li><a class="button-header" href="./aboutPage.php">about</a></li>
+         <?php
+           if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+             echo '<li style="float:right"><a class=class="button-header"href="./logout.php">Log Out</a></li>';
+             echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
+           } else {
+             echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
+           }
+         ?>
+       </ul>
+     </div>
+   </nav>
+  
+   <div class="todayHeader">
+     <h3>- CHECKOUT -</h3>
+   </div>
 
-
-    <div class="row">
-  <div class="col-75">
-    <div class="container">
-      <form action="/action_page.php">
-
-        <div class="row">
-          <div class="col-50">
-            <h3>Shipping Address</h3>
-            <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-            <input type="text" id="fname" name="firstname" placeholder="Jerry Garcia">
-            <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-            <input type="text" id="adr" name="address" placeholder="189 S Poplar Street">
-            <label for="city"><i class="fa fa-institution"></i> City</label>
-            <input type="text" id="city" name="city" placeholder="Athens">
-
+  <div class="row">
+     <div class="col-75">
+       <div class="container">
+         <form action="/action_page.php">
             <div class="row">
-              <div class="col-50">
-                <label for="state">State</label>
-                <input type="text" id="state" name="state" placeholder="GA">
-              </div>
-              <div class="col-50">
-                <label for="zip">Zip</label>
-                <input type="text" id="zip" name="zip" placeholder="30601">
-              </div>
-            </div>
-          </div>
+               <div class="col-50">
+                 <h3>Shipping Address</h3>
+                 <label for="fname"><i class="fa fa-user"></i> Full Name</label>
+                 <input type="text" id="fname" name="firstname" placeholder="Jerry Garcia">
+                 <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
+                 <input type="text" id="adr" name="address" placeholder="189 S Poplar Street">
+                 <label for="city"><i class="fa fa-institution"></i> City</label>
+                 <input type="text" id="city" name="city" placeholder="Athens">
+                 <div class="row">
+                    <div class="col-50">
+                     <label for="state">State</label>
+                     <input type="text" id="state" name="state" placeholder="GA">
+                   </div>
+                   <div class="col-50">
+                   <label for="zip">Zip</label>
+                   <input type="text" id="zip" name="zip" placeholder="30601">
+                 </div>
+               </div>
+             </div>
 
           <div class="col-50">
             <h3>Payment</h3>
@@ -109,28 +109,50 @@ if (isset($_POST["checkOut"])) {
     </div>
   </div>
 
-  <div class="col-25">
-    <div class="container">
-      <h4>Cart
-        <span class="price" style="color:black">
-          <i class="fa fa-shopping-cart"></i>
-          <b>4</b>
-        </span>
-      </h4>
-      <p><a href="#">Product 1</a> <span class="price">$15</span></p>
-      <p><a href="#">Product 2</a> <span class="price">$5</span></p>
-      <p><a href="#">Product 3</a> <span class="price">$8</span></p>
-      <p><a href="#">Product 4</a> <span class="price">$2</span></p>
-      <hr>
-      <p>Total <span class="price" style="color:black"><b>$30</b></span></p>
-    </div>
-  </div>
+
+  <?php
+ if (isset($_COOKIE["shopping_cart"])) {
+     $quantity = 0;
+     $total = 0;
+     $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+     $cart_data = json_decode($cookie_data, true);
+     foreach ($cart_data as $keys => $values) {
+         $quantity += $values["product_quantity"];
+         $total += $values["product_price"] * $values["product_quantity"];
+     }
+    // echo "<p> Items: ($quantity)</p>";
+ } else {
+    // echo "<h3>Items: (0)</h3>";
+ }
+ ?>
+
+<div class="col-25">
+  <div class="checkoutContainer">
+      <h4>CHECKOUT INFORMATION</h4>
+          
+        
+          <?php
+            if (isset($_COOKIE["shopping_cart"])) {
+              $cookie_data = stripslashes($_COOKIE['shopping_cart']);
+              $cart_data = json_decode($cookie_data, true);
+              foreach ($cart_data as $keys => $values) {
+               displayCartItemWImage($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'],$values['product_image']);
+              }
+            }
+          ?> 
+         <h3>Total :
+           <?php
+              if (isset($_COOKIE["shopping_cart"])) {
+               echo "$$total";
+              } else {
+               echo '0';
+              } 
+            ?>   
+         </h3>
+        
+    
+  </div> 
 </div>
-
-
-
-
-
 
 
 
