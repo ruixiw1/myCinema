@@ -61,7 +61,7 @@ $database = DBConnection::get_instance();
             ?>
         </div>
         <div class="todayHeader">
-            <h3>-   TODAY'S DEALS   -</h3>
+            <h3>- TODAY'S DEALS -</h3>
         </div>
         <div class="itemDisplayContainer">
             <div class="itemDisplayContainer">
@@ -73,10 +73,10 @@ $database = DBConnection::get_instance();
                 ?>
             </div>
         </div>
+        <footer>
+            Shopster &copy; 2022
+        </footer>
     </div>
 </body>
-<footer>
-        Shopster &copy; 2022
-</footer>
 
 </html>
