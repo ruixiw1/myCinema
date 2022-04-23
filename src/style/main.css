@@ -61,7 +61,7 @@ body {
     text-align: center;
     margin: auto;
     padding: 2px 0 2px 0;
-    border: 2px solid white;
+    border: 3px solid white;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
@@ -108,6 +108,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     margin-right: 0;
+    width: 70%;
 }
 
 .itemDisplayContainer img {
@@ -252,17 +253,22 @@ button a {
 .originalPrice {
     color: #8f8f8c;
 }
+.productMain{
+    display: flex;
+   justify-content: space-around;
+}
 
 .catDropDown {
     background-color: #f5c842;
     width: 20%;
-    float: right;
     margin-top: 3em;
     padding: 1em 0 0.5em 1em;
     border-radius: 20px;
     margin-right: 1em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
-
+    height: min-content;
+    position: sticky;
+    top: 0;
 }
 
 .catDropDown select {
