@@ -66,6 +66,20 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
         <div class="todayHeader">
             <h3>- PRODUCTS -</h3>
         </div>
+        <div class="productMain">
+        <div class="itemDisplayContainer">
+            <?php
+            $result;
+            if (($category_id == NULL || $category_id ==  FALSE) && ($sort_id == NULL || $sort_id ==  FALSE)) {
+                $result = $database->getAllItem();
+            } else {
+                $result = $database->getItemFilter($category_id, $sort_id);
+            }
+            while ($row = mysqli_fetch_assoc($result)) {
+                displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'], $row['special']);
+            }
+            ?>
+        </div>
         <div class="catDropDown">
             <form action="">
                 <div class="filter">
@@ -91,24 +105,11 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                 </div>
             </form>
         </div>
-
-
-        <div class="itemDisplayContainer">
-            <?php
-            $result;
-            if (($category_id == NULL || $category_id ==  FALSE) && ($sort_id == NULL || $sort_id ==  FALSE)) {
-                $result = $database->getAllItem();
-            } else {
-                $result = $database->getItemFilter($category_id, $sort_id);
-            }
-            while ($row = mysqli_fetch_assoc($result)) {
-                displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'], $row['special']);
-            }
-            ?>
         </div>
+
         <footer>
-        Shopster &copy; 2022
-</footer>
+            Shopster &copy; 2022
+        </footer>
     </div>
 
 </body>

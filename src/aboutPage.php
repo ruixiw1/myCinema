@@ -17,7 +17,7 @@ include_once('connection.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body class="todayDeal">
     <nav>
         <a href="index.php"><span><h1 class ="logo">shopster.</h1></span></a>
         <div class="navbar" id="navbarNavAltMarkup">
@@ -37,7 +37,7 @@ include_once('connection.php');
             </ul>
         </div>
     </nav>
-    <div class="main">
+    <div class>
         <div class="todayHeader">
             <h3>-   ABOUT US   -</h3>
         </div>

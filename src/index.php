@@ -19,9 +19,10 @@ $database = DBConnection::get_instance();
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/scroll.css">
 </head>
 
-<body>
+<body class="todayDeal">
     <nav>
         <a href="index.php"><span>
                 <h1 class="logo">shopster.</h1>
@@ -42,7 +43,7 @@ $database = DBConnection::get_instance();
             </ul>
         </div>
     </nav>
-    <div class="todayDeal">
+    <div>
         <div class="checkoutCon">
             <div></div>
             <?php
@@ -61,10 +62,16 @@ $database = DBConnection::get_instance();
             ?>
         </div>
         <div class="todayHeader">
-            <h3>- TODAY'S DEALS -</h3>
+            <h3>TODAY'S DEALS</h3>
         </div>
         <div class="itemDisplayContainer">
-            <div class="itemDisplayContainer">
+            <div class="scrollContainer">
+                <?php
+                $result = $database->getSpecialItem();
+                while ($row = mysqli_fetch_assoc($result)) {
+                    displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
+                }
+                ?>
                 <?php
                 $result = $database->getSpecialItem();
                 while ($row = mysqli_fetch_assoc($result)) {

@@ -4,7 +4,8 @@ ul {
     padding: 0;
     overflow: hidden;
 }
-hr{
+
+hr {
     max-width: 95%;
 }
 
@@ -53,7 +54,7 @@ body {
     position: relative;
     min-height: 100vh;
 }
-    
+
 
 .todayHeader {
     background-color: #f5c842;
@@ -61,7 +62,7 @@ body {
     text-align: center;
     margin: auto;
     padding: 2px 0 2px 0;
-    border: 2px solid white;
+    border: 3px solid white;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
@@ -108,6 +109,7 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     margin-right: 0;
+    width: 80%;
 }
 
 .itemDisplayContainer img {
@@ -138,13 +140,13 @@ html {
 footer {
     text-align: center;
     padding: 3px 0 3px 0;
-    background-color:transparent;
-    color:white ; 
+    background-color: transparent;
+    color: white;
     position: absolute;
     bottom: 0;
     width: 100%;
     margin-top: 1em;
-  }
+}
 
 .loginWindow {
     border: 2px solid black;
@@ -159,11 +161,13 @@ footer {
     flex-direction: column;
     align-items: center;
 }
-#register-form{
+
+#register-form {
     margin: auto;
     width: 90%;
 }
-.loginForm{
+
+.loginForm {
     margin: auto;
     width: 90%;
 }
@@ -178,13 +182,15 @@ footer {
 .loginWindow input {
     width: 15em;
 }
-.form-group{
+
+.form-group {
     display: flex;
     justify-content: space-around;
     width: 80%;
     margin: auto;
 }
-#forgotPwd{
+
+#forgotPwd {
     display: flex;
     justify-content: flex-start;
     width: 80%;
@@ -253,16 +259,22 @@ button a {
     color: #8f8f8c;
 }
 
+.productMain {
+    display: flex;
+    justify-content:space-between;
+}
+
 .catDropDown {
     background-color: #f5c842;
     width: 20%;
-    float: right;
     margin-top: 3em;
     padding: 1em 0 0.5em 1em;
     border-radius: 20px;
     margin-right: 1em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
-
+    height: min-content;
+    position: sticky;
+    top: 0;
 }
 
 .catDropDown select {
@@ -456,7 +468,8 @@ span {
 .button2:hover {
     box-shadow: inset 500px 0 0 0 #f5c842;
 }
-.aboutDiv{
+
+.aboutDiv {
     margin: 0.5em auto;
     background-color: #f5c842;
     width: 80%;
