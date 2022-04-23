@@ -128,7 +128,7 @@ if (isset($_POST["checkOut"])) {
 
 <div class="col-25">
   <div class="checkoutContainer">
-      <h4>CHECKOUT INFORMATION</h4>
+      <h4>------------------------CHECKOUT DETAILS------------------------</h4>
           
         
           <?php
@@ -136,7 +136,7 @@ if (isset($_POST["checkOut"])) {
               $cookie_data = stripslashes($_COOKIE['shopping_cart']);
               $cart_data = json_decode($cookie_data, true);
               foreach ($cart_data as $keys => $values) {
-               displayCartItemWImage($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'],$values['product_image']);
+               displayCheckOutItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'],$values['product_image']);
               }
             }
           ?> 

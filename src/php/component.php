@@ -170,13 +170,21 @@ echo $element;
 
 }
 
-function displayCartItemWImage($productId,$productName,$productPrice,$productQuantity,$productimg){
-    $element='';
-    $element="<div class='cartItem'>
-  <div class=\"itemText\">
-    <p><b>$productName($productPrice)</b></p>
-    <hr>";
- 
+
+
+function displayCheckOutItem($productId,$productName,$productPrice,$productQuantity,$productimg){
+    $element='';    
+    $element="<div class='checkOutItem'>
+    <div class=\"itemText\">
+    <p><b>$productName <br> $$productPrice <br> (x$productQuantity)</b></p>
+   </div> 
+    <div class=\"checkOutItemPic\">
+        <div class=\"checkOutPicWrap\">
+            <img src=\"$productimg\">
+        </div>
+    </div>
+</div>
+<hr>";
 
 echo $element;
 
