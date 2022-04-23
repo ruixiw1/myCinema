@@ -1,0 +1,47 @@
+.itemDisplayContainer {
+    height: 500px;; 
+    position:relative; 
+    overflow:hidden;
+    width: 95%;
+    margin: auto;
+    margin-top: 2em;
+  }
+  
+  .scrollContainer {
+    position:absolute; 
+    left:0px; 
+    overflow:hidden; 
+    white-space: nowrap;
+    animation: bannermove 80s linear infinite;
+    display: flex;
+    bottom: 10%;
+  }
+  
+ 
+  .scrollContainer:hover{
+    animation-play-state: paused;
+  }
+
+  
+  @keyframes bannermove {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(-50%, 0);
+    }
+  }
+  h2{
+      width: 20px;
+      margin: 0;
+  }
+
+  .scrollHeader{
+    text-align: center;
+    background-color: #f5c842;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+    padding: 2px 0 2px 0;
+    border: 2px solid white;
+  }

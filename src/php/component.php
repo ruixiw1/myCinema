@@ -11,14 +11,6 @@ function displaySpecialProduct($productname, $productprice, $productimg, $produc
             <span class=\"price\">$$productprice</span>
     </p>
     <div>
-    <button type=\"submit\" name=\"add_to_cart\" href=\"\" class=\"button1\">
-    <input type='hidden' name='product_id' value='$productid'>
-    <input type='hidden' name='product_price' value='$productprice'>
-    <input type='hidden' name='product_name' value='$productname'>
-    <input type='hidden' name='product_img' value='$productimg'>
-    <input type='hidden' name='quantity' value='1'>
-        Add to cart
-    </button>
     </div>
     </form>";
     echo $element;
