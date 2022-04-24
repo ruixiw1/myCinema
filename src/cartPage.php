@@ -123,7 +123,7 @@ if (isset($_POST["checkOut"])) {
                         }
                         ?>
                         <h3>
-                            Total Saved:<?php
+                            Total Saved:$<?php
                             if (isset($_COOKIE["shopping_cart"])) {
                                 echo "$totalSaved";
                             } else {
@@ -152,9 +152,6 @@ if (isset($_POST["checkOut"])) {
                 </div>
             </div>
         </div>
-        <form action="" method="post">
-            <button name="checkOut" type="submit">clear cookie</button>
-        </form>
     </div>
 </body>
 <footer>
