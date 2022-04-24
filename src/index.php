@@ -27,6 +27,25 @@ while ($row = mysqli_fetch_assoc($result)) {
     <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="./style/scroll.css">
+    <style>
+        @keyframes bannermove {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-50%, 0);
+            }
+        }
+
+        .scrollContainer{
+            animation: bannermove <?php echo $numberOfSpecial * 10; ?>s linear infinite;
+        }
+
+        .scrollContainer:hover {
+            animation-play-state: paused;
+        }
+    </style>
 </head>
 
 <body class="todayDeal">
@@ -75,7 +94,7 @@ while ($row = mysqli_fetch_assoc($result)) {
         </div>
         <div class="itemDisplayContainer">
             <!-- get special items by running query on the dasebase an call function to generate as DOM element and set speed of animation by number of items-->
-            <div class="scrollContainer" style="animation: bannermove <?php echo $numberOfSpecial * 10; ?>s linear infinite;">
+            <div class="scrollContainer">
                 <?php
                 $result = $database->getSpecialItem();
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -87,7 +106,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
                 }
-            //   In case that dont have enough to special items to maintain scolling display continuously
+                //   In case that dont have enough to special items to maintain scolling display continuously
                 if ($numberOfSpecial <= 3) {
                     $extra1 = $database->getSpecialItem();
                     $extra2 = $database->getSpecialItem();
