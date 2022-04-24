@@ -1,14 +1,21 @@
 <?php
+//include class
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
 require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
+$numberOfSpecial = 0; //number Special items
+$result = $database->getSpecialItem();
+while ($row = mysqli_fetch_assoc($result)) {
+    $numberOfSpecial++;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- dependency -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,6 +39,7 @@ $database = DBConnection::get_instance();
                 <li><a class="button-header" href="./index.php"><i>home</a></li>
                 <li><a class="button-header" href="./productPage.php">products</a></li>
                 <li><a class="button-header" href="./aboutPage.php">about</a></li>
+                <!-- if statement to generate nav bar elememnt by login status -->
                 <?php
                 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
                     echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
@@ -46,6 +54,7 @@ $database = DBConnection::get_instance();
     <div>
         <div class="checkoutCon">
             <div></div>
+            <!-- dynamically shows number of item in cart -->
             <?php
             if (isset($_COOKIE["shopping_cart"])) {
                 $quantity = 0;
@@ -65,7 +74,8 @@ $database = DBConnection::get_instance();
             <h3>TODAY'S DEALS</h3>
         </div>
         <div class="itemDisplayContainer">
-            <div class="scrollContainer">
+            <!-- get special items by running query on the dasebase an call function to generate as DOM element and set speed of animation by number of items-->
+            <div class="scrollContainer" style="animation: bannermove <?php echo $numberOfSpecial * 10; ?>s linear infinite;">
                 <?php
                 $result = $database->getSpecialItem();
                 while ($row = mysqli_fetch_assoc($result)) {
@@ -76,6 +86,17 @@ $database = DBConnection::get_instance();
                 $result = $database->getSpecialItem();
                 while ($row = mysqli_fetch_assoc($result)) {
                     displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
+                }
+            //   In case that dont have enough to special items to maintain scolling display continuously
+                if ($numberOfSpecial <= 3) {
+                    $extra1 = $database->getSpecialItem();
+                    $extra2 = $database->getSpecialItem();
+                    while ($row = mysqli_fetch_assoc($extra1)) {
+                        displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
+                    }
+                    while ($row = mysqli_fetch_assoc($extra2)) {
+                        displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
+                    }
                 }
                 ?>
             </div>
