@@ -34,6 +34,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     <input type='hidden' name='product_price' value='$productprice'>
     <input type='hidden' name='product_name' value='$productname'>
     <input type='hidden' name='product_img' value='$productimg'>
+    <input type='hidden' name='special' value='$special'>
     <input type='hidden' name='quantity' value='1'>
         Add to cart
     </button>
@@ -52,6 +53,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     <input type='hidden' name='product_price' value='$productprice'>
     <input type='hidden' name='product_name' value='$productname'>
     <input type='hidden' name='product_img' value='$productimg'>
+    <input type='hidden' name='special' value='$special'>
     <input type='hidden' name='quantity' value='1'>
         Add to cart
     </button>
@@ -97,6 +99,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
             <input type='hidden' name='product_price' value='$productPrice'>
             <input type='hidden' name='product_name' value='$productName'>
             <input type='hidden' name='product_img' value='$productimg'>
+            <input type='hidden' name='special' value='$special'>
         </button>
     </div>";
     } else {
@@ -129,15 +132,16 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
         <input type='hidden' name='product_price' value='$productPrice'>
         <input type='hidden' name='product_name' value='$productName'>
         <input type='hidden' name='product_img' value='$productimg'>
+        <input type='hidden' name='special' value='$special'>
         </button>
     </div>";
     }
     echo $element;
 }
 
-function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg){
+function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg,$special){
     $element='';
-    
+    if($special==0){
     $element="<div class='cartItem'>
     <div class=\"cartItemPic\">
         <div class=\"cartPicWrap\">
@@ -164,7 +168,38 @@ function displayCartItem($productId,$productName,$productPrice,$productQuantity,
     </form>
 
 </div>
+<hr>";}
+else{
+    $originalprice = $productPrice+50;
+    $element="<div class='cartItem'>
+    <div class=\"cartItemPic\">
+        <div class=\"cartPicWrap\">
+            <img src=\"$productimg\">
+        </div>
+    </div>
+
+    <form class=\"itemText\" method=\"POST\">
+        <h2>$productName</h2>
+        <h3>Price: <s class=\"originalPrice\">$$originalprice</s> $productPrice </h3>
+        <div class=\"quantity\">
+            <p>Quantitiy: </p>
+            <div class=\"counter\">
+                <button type='button' class=\"minus\" onclick=\"minusCheck('$productId')\">-</button>
+                <input type=\"number\" id=\"$productId\" name='quantity' class=\"num\" value=\"$productQuantity\" min='0'>
+                <button type='button' class=\"add\"  onclick=\"getElementById('$productId').value++\">+</button>
+            </div>
+        </div>
+        <div class=\"cartButtonDiv\">
+            <input type='hidden' name='product_id' value='$productId'>
+            <button class=\"cartModButton\" name=\"update_product\" type='submit'>Update</button>
+            <button class=\"cartModButton\" name=\"remove_product\" type='submit'>Remove</button>
+        </div>
+    </form>
+
+</div>
 <hr>";
+
+}
 
 echo $element;
 

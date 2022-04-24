@@ -90,7 +90,7 @@ if (isset($_POST["checkOut"])) {
                     $cookie_data = stripslashes($_COOKIE['shopping_cart']);
                     $cart_data = json_decode($cookie_data, true);
                     foreach ($cart_data as $keys => $values) {
-                        displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image']);
+                        displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image'],$values['special']);
                     }
                 }
 
@@ -107,17 +107,29 @@ if (isset($_POST["checkOut"])) {
                         if (isset($_COOKIE["shopping_cart"])) {
                             $quantity = 0;
                             $total = 0;
+                            $totalSaved=0;
                             $cookie_data = stripslashes($_COOKIE['shopping_cart']);
                             $cart_data = json_decode($cookie_data, true);
                             foreach ($cart_data as $keys => $values) {
                                 $quantity += $values["product_quantity"];
                                 $total += $values["product_price"] * $values["product_quantity"];
+                                if($values["special"]==1){
+                                    $totalSaved+= $values["product_quantity"]*50;
+                                }
                             }
                             echo "<h3>Items: ($quantity)</h3>";
                         } else {
                             echo "<h3>Items: (0)</h3>";
                         }
                         ?>
+                        <h3>
+                            Total Saved:<?php
+                            if (isset($_COOKIE["shopping_cart"])) {
+                                echo "$totalSaved";
+                            } else {
+                                echo '0';
+                            } ?>
+                        </h3>
                         <h3>Total Amount:$
                             <?php
                             if (isset($_COOKIE["shopping_cart"])) {

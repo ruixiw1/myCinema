@@ -60,7 +60,7 @@ if (isset($_POST["checkOut"])) {
   <div class="row">
      <div class="col-75">
        <div class="container">
-         <form action="/action_page.php">
+         <form action="./php/paymentSuccess.php" method="POST">
             <div class="row">
                <div class="col-50">
                  <h3>Shipping Address</h3>
@@ -104,7 +104,7 @@ if (isset($_POST["checkOut"])) {
           </div>
 
         </div>
-        <input type="submit" value="Continue to checkout" class="btn">
+        <input type="submit" value="Continue to checkout" class="btn" >
       </form>
     </div>
   </div>
@@ -160,7 +160,7 @@ if (isset($_POST["checkOut"])) {
 
     <footer>
   Shopster &copy; 2022
-</footer>
+  </footer>
 
 
 
