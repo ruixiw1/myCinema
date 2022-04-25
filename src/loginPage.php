@@ -100,7 +100,7 @@ require_once('connection.php');
                     }
                     ?>
                     <div id = "forgotPwd">
-                    <a href="">Forgot Password</a>
+                    <a href="./forgotPassword.php">Forgot Password</a>
                     </div>
                     <br>
                     <br>
