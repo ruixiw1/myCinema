@@ -9,9 +9,9 @@ if (isset($_POST["reset-request-submit"])) {
 
     $expires = date("U") + 1800;
 
-    require 'connection.php'
+    require 'connection.php';
 
-    $userEmail = $_POST["email"]
+    $userEmail = $_POST["email"];
 } else {
     header("Location: ../forgotPassword.php");
 }

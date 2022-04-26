@@ -54,6 +54,8 @@
     border-radius: 20px;
     margin-left: 1em;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    position: sticky;
+    top: 0;
 }
 .cartButtonDiv{
     margin-top: 1em;
