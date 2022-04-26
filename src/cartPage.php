@@ -90,7 +90,7 @@ if (isset($_POST["checkOut"])) {
                     $cookie_data = stripslashes($_COOKIE['shopping_cart']);
                     $cart_data = json_decode($cookie_data, true);
                     foreach ($cart_data as $keys => $values) {
-                        displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image'],$values['special']);
+                        displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image'], $values['special']);
                     }
                 }
 
@@ -107,14 +107,14 @@ if (isset($_POST["checkOut"])) {
                         if (isset($_COOKIE["shopping_cart"])) {
                             $quantity = 0;
                             $total = 0;
-                            $totalSaved=0;
+                            $totalSaved = 0;
                             $cookie_data = stripslashes($_COOKIE['shopping_cart']);
                             $cart_data = json_decode($cookie_data, true);
                             foreach ($cart_data as $keys => $values) {
                                 $quantity += $values["product_quantity"];
                                 $total += $values["product_price"] * $values["product_quantity"];
-                                if($values["special"]==1){
-                                    $totalSaved+= $values["product_quantity"]*50;
+                                if ($values["special"] == 1) {
+                                    $totalSaved += $values["product_quantity"] * 50;
                                 }
                             }
                             echo "<h3>Items: ($quantity)</h3>";
@@ -124,11 +124,11 @@ if (isset($_POST["checkOut"])) {
                         ?>
                         <h3>
                             Total Saved:$<?php
-                            if (isset($_COOKIE["shopping_cart"])) {
-                                echo "$totalSaved";
-                            } else {
-                                echo '0';
-                            } ?>
+                                            if (isset($_COOKIE["shopping_cart"])) {
+                                                echo "$totalSaved";
+                                            } else {
+                                                echo '0';
+                                            } ?>
                         </h3>
                         <h3>Total Amount:$
                             <?php
@@ -139,11 +139,18 @@ if (isset($_POST["checkOut"])) {
                             } ?>
                         </h3>
                     </div>
-                    
+
                     <div class="col-md-6">
                         <hr>
-                        <form action="./checkoutPage.php">
-                            <button class = 'checkOutButton' type="submit">
+                        <?php
+                        $des;
+                        if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true)
+                            $des = '"./checkoutPage.php"';
+                        else
+                            $des = '"./loginPage.php"';
+                        ?>
+                        <form action=<?php echo $des; ?>>
+                            <button class='checkOutButton' type="submit">
                                 <h2>Check Out</h2>
                             </button>
                     </div>
@@ -152,10 +159,11 @@ if (isset($_POST["checkOut"])) {
                 </div>
             </div>
         </div>
+        <footer>
+            Shopster &copy; 2022
+        </footer>
     </div>
 </body>
-<footer>
-        Shopster &copy; 2022
-</footer>
+
 
 </html>
