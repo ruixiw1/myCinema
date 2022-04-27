@@ -28,7 +28,7 @@ else{
 
 
 $subject = "From Shopster";
-$body = "Shopster password recovery link: http://localhost/test/Shopster-main/src/resetPassword.php?email=$to";
+$body = "Shopster password reset link: http://localhost/test/Shopster-main/src/resetPassword.php?email=$to";
 $from = "csci4300grouphub@gmail.com";  // you mail
 $password = "shopster1";  // your mail password
 
