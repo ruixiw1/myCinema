@@ -164,6 +164,7 @@ class DBConnection
 			return $result;
 		}
 	}
+	
 }
 
 ?>
