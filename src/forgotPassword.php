@@ -1,5 +1,15 @@
 <?php
 require_once('connection.php');
+$msgCode = htmlspecialchars($_GET['msg']);
+
+if ($msgCode == 'success') {
+    $msg = "Email Sent";
+} else if ($msgCode == 'nofound') {
+    $msg = "No account match with this email address, Please register";
+} else if ($msgCode == 'fail') {
+    $msg = "Somthing went wrong, try again";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,44 +25,19 @@ require_once('connection.php');
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        #LogIn-Toggle {
-            border-bottom: 2px solid gray;
+        input {
+            margin: auto;
+        }
+
+        p {
+            text-align: center;
+        }
+
+        .form-div {
+            display: flex;
+            justify-content: center;
         }
     </style>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
-            $username = htmlspecialchars($_POST['user_name']);
-            $password = htmlspecialchars($_POST['user_password']);
-
-            $connection = DBConnection::get_instance()->get_connection();
-            $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . $password . "'";
-
-            $result = mysqli_query($connection, $sql);
-            if ($result != false) {
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    session_start();
-                    $_SESSION["id"] = $row["id"];
-                    $_SESSION["username"] = $username;
-                    $_SESSION["logged_in"] = true;
-
-                    setcookie("username", $username, time() + (86400 * 30), "/");
-
-                    header('Location:static/redirectLogin.html');
-                } else {
-                    // Password is not valid, display a generic error message
-                    $login_err = "Invalid username or password.";
-                }
-            } else {
-                // Password is not valid, display a generic error message
-                $login_err = "Invalid username or password.";
-            }
-        } else {
-            $login_err = "Something went wrong. Please try later";
-        }
-    }
-    ?>
 </head>
 
 <body class="background">
@@ -78,22 +63,24 @@ require_once('connection.php');
     <div class="main">
         <div class="loginWindow">
             <div class="loginForm">
-                <p> Enter the E-mail of your account to reset your password...</p>
-                <form method="post" action="php/reset-request.inc.php">
+                <form method="post" action="php/sendResetEmail.php">
+                    <p> Enter the E-mail of your account to reset your password...</p>
                     <br>
-                    <div class="form-group">
-                        <input type="text" name="email" class="form-control" placeholder="Enter your e-mail address..." required>
+                    <div class="form-div">
+                        <input class="input-form" type="email" name="email" placeholder="Email Address" required>
                     </div>
                     <br>
                     <?php
-                    if (!empty($login_err)) {
-                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                    if (!empty($msg)) {
+                        echo '<div class="form-div">' . $msg . '</div>';
                     } else {
                         echo '<br>';
                     }
                     ?>
                     <br>
-                    <button type="submit" name="reset-request-submit">Reset Password</button>
+                    <div class="form-div">
+                        <button type="submit" class="submittButton" name="reset-request-submit">Reset Password</button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -101,8 +88,8 @@ require_once('connection.php');
 
 </body>
 
-<footer >
-        Shopster &copy; 2022
+<footer>
+    Shopster &copy; 2022
 </footer>
 
 </html>
