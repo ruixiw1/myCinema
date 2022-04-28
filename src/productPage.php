@@ -87,7 +87,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
                     <select id="category_list" name="categoryID">
                         <option value="0" default>ALL</option>
                         <option value="1" <?php if (isset($category_id) && $category_id == 1) echo "selected='selected'"; ?>>Sneaker</option>
-                        <option value="2" <?php if (isset($category_id) && $category_id == 2) echo "selected='selected'"; ?>>T-Shrit</option>
+                        <option value="2" <?php if (isset($category_id) && $category_id == 2) echo "selected='selected'"; ?>>T-Shirt</option>
                         <option value="3" <?php if (isset($category_id) && $category_id == 3) echo "selected='selected'"; ?>>Accessory</option>
                     </select>
                 </div>
