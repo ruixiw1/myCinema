@@ -147,7 +147,7 @@ if (isset($_POST["checkOut"])) {
                         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true)
                             $des = '"./checkoutPage.php"';
                         else
-                            $des = '"./loginPage.php"';
+                            $des = '"./loginPageCheckOut.php"';
                         ?>
                         <form action=<?php echo $des; ?>>
                             <button class='checkOutButton' type="submit">
