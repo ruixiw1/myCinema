@@ -8,7 +8,7 @@ require_once('connection.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | Log in2</title>
+    <title>Shopster | Log in</title>
     <link href="./style/main.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="./style/misc-style.css" rel="stylesheet">
@@ -78,8 +78,8 @@ require_once('connection.php');
     <div class="main">
         <div class="loginWindow">
             <div class="toggleContainer">
-                <a href="./registerPage.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
-                <a href="./loginPage.php"> <button id="LogIn-Toggle" class="toggleButton">Log In</button></a>
+                <a href="./registerPageCheckOut.php"><button id="SignUp-Toggle" class="toggleButton">Sign Up</button></a>
+                <a href="./loginPageCheckOut.php"> <button id="LogIn-Toggle" class="toggleButton">Log In</button></a>
             </div>
             <div class="loginForm">
                 <form method="POST" action="">
