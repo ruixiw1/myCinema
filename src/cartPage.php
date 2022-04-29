@@ -18,7 +18,7 @@ if (isset($_POST["checkOut"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | cart</title>
+    <title>Shopster | Cart </title>
     <link href="./style/main.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="./style/misc-style.css" rel="stylesheet">
@@ -150,7 +150,7 @@ if (isset($_POST["checkOut"])) {
                         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true)
                             $des = '"./checkoutPage.php"';
                         else
-                            $des = '"./loginPage.php"';
+                            $des = '"./loginPageCheckOut.php"';
                         ?>
                         <form action=<?php echo $des; ?>>
                             <button class='checkOutButton' type="submit">
