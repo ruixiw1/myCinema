@@ -26,9 +26,9 @@ else{
 }
 
 
-
+$encode_to= rtrim(strtr(base64_encode($to), '+/', '-_'), '=');
 $subject = "From Shopster";
-$body = "Shopster password reset link: http://localhost/test/Shopster-main/src/resetPassword.php?email=$to";
+$body = "Shopster password reset link: http://localhost/test/Shopster-main/src/resetPassword.php?email=$encode_to";
 $from = "csci4300grouphub@gmail.com";  // you mail
 $password = "shopster1";  // your mail password
 

@@ -482,3 +482,9 @@ span {
     border: 2px solid white;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
+ nav{
+    background-image: url("../image/scar.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+ }

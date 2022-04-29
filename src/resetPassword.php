@@ -5,7 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['new_password']) && isset($_POST['re_password'])&& isset($_GET['email'])) {
         $password= htmlspecialchars($_POST['new_password']);
         $password2 = htmlspecialchars($_POST['re_password']);
-        $email = htmlspecialchars($_GET['email']);
+        $encode_email= htmlspecialchars($_GET['email']);
+        $email = base64_decode(strtr($encode_email, '-_', '+/'));
         if(strcmp($password, $password2)!=0){
             $login_err = "Password must match";
             goto ex;

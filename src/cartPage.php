@@ -93,6 +93,9 @@ if (isset($_POST["checkOut"])) {
                         displayCartItem($values['product_id'], $values['product_name'], $values['product_price'], $values['product_quantity'], $values['product_image'], $values['special']);
                     }
                 }
+                else{
+                    echo "<h1 style=\"text-align:center\">Cart is Empty</h1>";
+                }
 
                 ?>
 
