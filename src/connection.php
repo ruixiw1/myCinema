@@ -164,6 +164,23 @@ class DBConnection
 			return $result;
 		}
 	}
+	public function emailNotExist($email){
+		$sql1 = "SELECT * FROM $this->usertb where `email` = '".$email."' ";
+		$result1 = mysqli_query($this->connection, $sql1);
+
+		if (mysqli_num_rows($result1) > 0 ) {
+			return false;
+		}
+		return true;
+	}
+	public function usernameNotExist($username){
+		$sql2 = "SELECT * FROM $this->usertb where `username` = '".$username."' ";
+		$result2 = mysqli_query($this->connection, $sql2);
+		if (mysqli_num_rows($result2) > 0 ) {
+			return false;
+		}
+		return true;
+	}
 
 }	
 

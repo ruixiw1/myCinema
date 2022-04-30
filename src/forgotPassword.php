@@ -1,6 +1,8 @@
 <?php
 require_once('connection.php');
+if(isset($_GET['msg'])){
 $msgCode = htmlspecialchars($_GET['msg']);
+
 
 if ($msgCode == 'success') {
     $msg = "Email Sent";
@@ -9,7 +11,7 @@ if ($msgCode == 'success') {
 } else if ($msgCode == 'fail') {
     $msg = "Somthing went wrong, try again";
 }
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">

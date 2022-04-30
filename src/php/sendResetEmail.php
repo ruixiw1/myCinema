@@ -4,13 +4,14 @@
 
 use PHPMailer\PHPMailer\PHPMailer;
 require_once('../connection.php');
+require_once('component.php');
 
 
 $name = "Shopster";  // Name of your website or yours
 $to = htmlspecialchars($_POST['email']);  // mail of reciever
 
 $connection = DBConnection::get_instance()->get_connection();
-$sql = "SELECT * FROM user_info WHERE email = '". $to . "'";
+$sql = "SELECT * FROM user_info WHERE email = '". encrypt_decrypt($to) . "'";
 
 $result = mysqli_query($connection, $sql);
 
@@ -24,11 +25,10 @@ else{
     header("Location:../forgotPassword.php?msg=dbfail");
     die();
 }
-
-
-$encode_to= rtrim(strtr(base64_encode($to), '+/', '-_'), '=');
-$subject = "From Shopster";
-$body = "Shopster password reset link: http://localhost/test/Shopster-main/src/resetPassword.php?email=$encode_to";
+$path = 'http://localhost/test/Shopster-main/src/resetPassword.php';//change path to match your local directory path of resetPassword.php
+$encrypt_email= encrypt_decrypt($to,'encrypt');
+$subject = "Shopster: Password Reset";
+$body = "Shopster password reset link: $path?email=$encrypt_email";
 $from = "csci4300grouphub@gmail.com";  // you mail
 $password = "shopster1";  // your mail password
 

@@ -1,5 +1,6 @@
 <?php
 require_once('connection.php');
+require_once('./php/component.php');
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +27,6 @@ require_once('connection.php');
             $username = htmlspecialchars($_POST['user_name']);
             $password = htmlspecialchars($_POST['user_password']);
             $email = htmlspecialchars($_POST['email']);
-			
 			$number = preg_match('@[0-9]@', $password);
 			$uppercase = preg_match('@[A-Z]@', $password);
 			$lowercase = preg_match('@[a-z]@', $password);
@@ -34,8 +34,18 @@ require_once('connection.php');
 			if(strlen($password) < 8 || !$number || !$uppercase || !$specialChars) {
 				$login_err = "Password must have at least 8 characters, a number, a capital letter, and a special character";
 			}else{
+                $emailNotExist = DBConnection::get_instance()->emailNotExist(encrypt_decrypt($email));
+                $usernameNotExist = DBConnection::get_instance()->usernameNotExist($username);
+                if(!$emailNotExist){
+                    $login_err = "Email is already registered";
+                    goto end;
+                }
+                if(!$usernameNotExist){
+                    $login_err = "Username is already taken";
+                    goto end;
+                }
 				$connection = DBConnection::get_instance()->get_connection();
-				$sql = "INSERT INTO user_info (`username`, `password`, `email`) VALUES ('" . $username . "','" . $password . "','" . $email . "')";
+                $sql = "INSERT INTO user_info (`username`, `password`, `email`) VALUES ('" . $username . "','" . encrypt_decrypt($password) . "','" . encrypt_decrypt($email) . "')";
 				$result = mysqli_query($connection, $sql);
 				if ($result != false) {
 					echo ("<script type='text/javascript'> console.log($msg);</script>");
@@ -45,6 +55,7 @@ require_once('connection.php');
 				}
 			}
         }
+        end:
     }
     ?>
 </head>
@@ -95,7 +106,7 @@ require_once('connection.php');
 			
             <br><?php
                 if (!empty($login_err)) {
-                    echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                    echo '<div style="text-align:center;" >' . $login_err . '</div>';
                 } else {
                     echo '<br>';
                 }
