@@ -70,39 +70,39 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
                <div class="col-50">
                  <h3>Shipping Address</h3>                                               <!-- Shipping Information --> 
                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>         <!-- Name | fa fa-user is the tiny person icon -->
-                 <input type="text" id="fname" name="firstname" placeholder="full name">
+                 <input type="text" id="fname" name="firstname" placeholder="full name" required>
                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>   <!-- Address | fa fa-address-card-o is the tiny ID card icon -->
-                 <input type="text" id="adr" name="address" placeholder="address" >
+                 <input type="text" id="adr" name="address" placeholder="address" required>
                  <label for="city"><i class="fa fa-institution"></i> City</label>        <!-- City | fa fa-institution is the tiny townhall icon -->
-                 <input type="text" id="city" name="city" placeholder="city">
+                 <input type="text" id="city" name="city" placeholder="city" required>
                  <div class="row">                                                       <!-- Seperated into a new section for better organization -->
                     <div class="col-50">
                      <label for="state">State</label>                                    <!-- State -->
-                     <input type="text" id="state" name="state" placeholder="state">
+                     <input type="text" id="state" name="state" placeholder="state" required>
                     </div>
                    <div class="col-50">
                    <label for="zip">Zip</label>                                          <!-- Zip -->
-                   <input type="text" id="zip" name="zip" placeholder="zip" >
+                   <input type="text" id="zip" name="zip" placeholder="zip" required>
                    </div>
                 </div>
              </div>
           <div class="col-50">
             <h3>Payment</h3>                                                                 <!-- Payment Information -->
             <label for="cname">Name on Card</label>                                          <!-- Name -->
-            <input type="text" id="cname" name="cardname" placeholder="name">
+            <input type="text" id="cname" name="cardname" placeholder="name" required>
             <label for="ccnum">Credit card number</label>                                    <!-- Number -->
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444">
+            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
             <label for="cvv">CVV</label>                                                     <!-- CCV -->
-            <input type="text" id="cvv" name="cvv" placeholder="cvv">
+            <input type="text" id="cvv" name="cvv" placeholder="cvv" required>
             <div class="row">                                                                <!-- Seperated into a new section for better organization -->
               <div class="col-50">
               <label for="expmonth">Exp Month</label>                                        <!-- Expiration Month  -->
-              <input type="text" id="expmonth" name="expmonth" placeholder="Exp month"> 
+              <input type="text" id="expmonth" name="expmonth" placeholder="Exp month" required> 
               </div>                                   
             
               <div class="col-50">
                 <label for="expyear">Exp Year</label>                                        <!-- Expiration Year  -->
-                <input type="text" id="expyear" name="expyear" placeholder="year">
+                <input type="text" id="expyear" name="expyear" placeholder="year" required>
               </div>        
             </div>
           </div>

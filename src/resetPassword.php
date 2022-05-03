@@ -1,11 +1,12 @@
 <?php
 require_once('connection.php');
+require_once('./php/component.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if (isset($_POST['new_password']) && isset($_POST['re_password'])&& isset($_GET['email'])) {
         $password= htmlspecialchars($_POST['new_password']);
         $password2 = htmlspecialchars($_POST['re_password']);
-        $email = htmlspecialchars($_GET['email']);
+        $email= htmlspecialchars($_GET['email']);
         if(strcmp($password, $password2)!=0){
             $login_err = "Password must match";
             goto ex;
@@ -18,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $login_err = "Password must have at least 8 characters, a number, a capital letter, and a special character";
         } else {
             $connection = DBConnection::get_instance()->get_connection();
-            $sql = "UPDATE user_info SET `password` ='" . $password . "' WHERE `email` = '" . $email . "' ";
+            $sql = "UPDATE user_info SET `password` ='" . encrypt_decrypt($password) . "' WHERE `email` = '" . $email . "' ";
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
                 header('Location: static/resetSuccess.html');

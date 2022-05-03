@@ -1,4 +1,5 @@
 <?php
+//generate DOM element for special products
 function displaySpecialProduct($productname, $productprice, $productimg, $productid)
 {
     $originalprice = $productprice + 50;
@@ -15,10 +16,11 @@ function displaySpecialProduct($productname, $productprice, $productimg, $produc
     </form>";
     echo $element;
 }
+//generate DOM element for all products
 function displayAllProduct($productname, $productprice, $productimg, $productid, $special)
 {
     $element = "";
-
+    //if product is on sale
     if ($special == 1) {
         $originalprice = $productprice + 50;
         $element = "<form method=\"post\" class=\"dealItem\">
@@ -41,6 +43,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     </div>
     </form>";
     } else {
+    //regular products
         $element = "<form method=\"post\" class=\"dealItem\">
     <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\"></a>
     <p class=\"product-text\">$productname</p>
@@ -62,7 +65,7 @@ function displayAllProduct($productname, $productprice, $productimg, $productid,
     }
     echo $element;
 }
-
+//generate DOM element for item detal page
 function displayItemDetail($productId, $productName, $productPrice, $productimg, $special, $dateAdded, $detail, $color)
 {
     $element = "";
@@ -138,7 +141,7 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
     }
     echo $element;
 }
-
+//generate DOM element for items in cart
 function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg,$special){
     $element='';
     if($special==0){
@@ -206,7 +209,7 @@ echo $element;
 }
 
 
-
+////generate DOM element for item summary in check out page
 function displayCheckOutItem($productId,$productName,$productPrice,$productQuantity,$productimg){
     $element='';    
     $element="<div class='checkOutItem'>
@@ -223,4 +226,20 @@ function displayCheckOutItem($productId,$productName,$productPrice,$productQuant
 
 echo $element;
 
+}
+//encrypt and decrypt method
+function encrypt_decrypt($string, $action = 'encrypt')
+{
+    $encrypt_method = "AES-256-CBC";
+    $secret_key = 'SHOPSTER'; // user define private key
+    $secret_iv = '5fgf5HJ5g27'; // user define secret key
+    $key = hash('sha256', $secret_key);
+    $iv = substr(hash('sha256', $secret_iv), 0, 16); // sha256 is hash_hmac_algo
+    if ($action == 'encrypt') {
+        $output = openssl_encrypt($string, $encrypt_method, $key, 0, $iv);
+        $output = base64_encode($output);
+    } else if ($action == 'decrypt') {
+        $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+    }
+    return $output;
 }

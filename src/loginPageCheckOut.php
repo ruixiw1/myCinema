@@ -1,5 +1,6 @@
 <?php
 require_once('connection.php');
+require_once('./php/component.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +27,7 @@ require_once('connection.php');
             $password = htmlspecialchars($_POST['user_password']);
 
             $connection = DBConnection::get_instance()->get_connection();
-            $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . $password . "'";
+            $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . encrypt_decrypt($password) . "'";
 
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
