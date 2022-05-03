@@ -95,7 +95,7 @@ require_once('./php/component.php');
                     </div>
                     <?php
                     if (!empty($login_err)) {
-                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                        echo '<div style="text-align:center">' . $login_err . '</div>';
                     } else {
                         echo '<br>';
                     }
