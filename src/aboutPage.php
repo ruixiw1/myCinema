@@ -39,7 +39,7 @@ include_once('connection.php');
     </nav>
     <div class>
         <div class="todayHeader">
-            <h3>-   ABOUT US   -</h3>
+            <h3>-   ABOUT UFS   -</h3>
         </div>
 		<br><div class="aboutDiv">
 			<h2> Our Story</h2>

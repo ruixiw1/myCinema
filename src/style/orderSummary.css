@@ -1,0 +1,40 @@
+p { 
+    white-space: pre 
+}
+
+
+.row2 {
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+  
+    padding: 1px 1px 1px 1px;
+  }
+
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+    .row2 {
+      flex-direction: column-reverse;
+    }
+}
+
+
+.col-502 {
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
+    padding:  2px;
+    }
+
+
+    .orderDetail{
+        width: 50%;
+        text-align: center;
+        background-color: #f5c842;
+        height: fit-content;
+        border-radius: 20px;
+        margin-left: 1em;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+        position: sticky;
+        top: 0;
+    }

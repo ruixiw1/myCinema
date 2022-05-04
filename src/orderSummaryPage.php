@@ -31,13 +31,33 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
   <link href="./style/checkout.css" rel="stylesheet">
+  <link href="./style/cart.css" rel="stylesheet">
+  <link href="./style/orderSummary.css" rel="stylesheet">
 </head>
 
 
 
 
-<body> 
+<body onload="setData()"> 
   
+<script>
+       function setData(){
+        if(typeof(localStorage) != "undefined"){
+            document.getElementById("displayName").innerHTML = localStorage.name;
+            document.getElementById("displayAddress").innerHTML = localStorage.address;
+            document.getElementById("displayCity").innerHTML = localStorage.city;
+            document.getElementById("displayState").innerHTML = localStorage.state;
+            document.getElementById("displayZip").innerHTML = localStorage.zip;
+            document.getElementById("displayNameCC").innerHTML = localStorage.nameCC;
+            document.getElementById("displayCardNumber").innerHTML = localStorage.cardNumber;
+            document.getElementById("displayCardCVV").innerHTML = localStorage.cardCVV;
+            document.getElementById("displayExpMonth").innerHTML = localStorage.expMonth;
+            document.getElementById("displayExpYear").innerHTML = localStorage.expYear;
+       }
+      }
+    </script>
+    
+
   <nav> <!-- Navigation Bar  -->
      <a href="index.php"> <h1 class="logo">shopster.</h1> </a>                     <!-- Shopster logo and link back to homepage when clicked -->
      <div class="navbar" id="navbarNavAltMarkup">                   
@@ -59,93 +79,73 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
   </nav>
   
   <div class="todayHeader">
-   <h3>- CHECKOUT -</h3>  <!-- Page Header  -->
+   <h3>- Order Summary -</h3>  <!-- Page Header  -->
   </div>
 
 
 
 
   <div class="row">       
-     <div class="col-75">
+     <div class="col-50">
        <div class="container"> 
-         <form id = "form" action="static/coSummary.html" method="GET"> <!-- Shipping & Payment Form -->
             <div class="row">
-               <div class="col-50">
-                 <h3>Shipping Address</h3>                                               <!-- Shipping Information --> 
-                
-                
-                 <label for="fname"><i class="fa fa-user"></i> Full Name</label>         <!-- Name | fa fa-user is the tiny person icon -->
-                 <input type="text" id="fname" name="firstname" placeholder="full name" required>
-                 
-                 
-                 <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>   <!-- Address | fa fa-address-card-o is the tiny ID card icon -->
-                 <input type="text" id="adr" name="address" placeholder="address" required>
-                 <label for="city"><i class="fa fa-institution"></i> City</label>        <!-- City | fa fa-institution is the tiny townhall icon -->
-                 <input type="text" id="city" name="city" placeholder="city" required>
-                 <div class="row">                                                       <!-- Seperated into a new section for better organization -->
-                    <div class="col-50">
-                     <label for="state">State</label>                                    <!-- State -->
-                     <input type="text" id="state" name="state" placeholder="state" required>
-                    </div>
-                   <div class="col-50">
-                     <label for="zip">Zip</label>                                          <!-- Zip -->
-                     <input type="text" id="zip" name="zip" placeholder="zip" required>
-                   </div>  
-                  </div>
+               <div class="col-502">
+                 <h3>Shipping Address</h3>                                               <!-- Shipping Information -->                  
 
-                
+                 <div class = "row2" > 
+                 <p><b>Name: </b></p>
+                 <p id="displayName" > </p>     
+                     </div>
 
+                     <div class = "row2" > 
+                        <p><b>Address: </b></p>
+                         <p id="displayAddress" > </p>  
+                    </div> 
 
+                    <div class = "row2" > 
+                        <p><b>City & State : </b></p>
 
+                        <p id="displayCity"> </p> 
+                        <p>, </p>
+                        <p id="displayState"> </p>
+                        <p>  </p>
+                        <p id="displayZip"> </p>
+                        
+
+                    </div> 
              </div>
-          <div class="col-50">
-            <h3>Payment</h3>                                                                 <!-- Payment Information -->
-            <label for="cname">Name on Card</label>                                          <!-- Name -->
-            <input type="text" id="cname" name="cardname" placeholder="name" required>
-            <label for="ccnum">Credit card number</label>                                    <!-- Number -->
-            <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" required>
-            <label for="cvv">CVV</label>                                                     <!-- CCV -->
-            <input type="text" id="cvv" name="cvv" placeholder="cvv" required>
-            <div class="row">                                                                <!-- Seperated into a new section for better organization -->
-              <div class="col-50">
-              <label for="expmonth">Exp Month</label>                                        <!-- Expiration Month  -->
-              <input type="text" id="expmonth" name="expmonth" placeholder="Exp month" required> 
-              </div>                                   
-            
-              <div class="col-50">
-                <label for="expyear">Exp Year</label>                                        <!-- Expiration Year  -->
-                <input type="text" id="expyear" name="expyear" placeholder="year" required>
-              </div>        
+          <div class="col-502">
+            <h3>Payment Information</h3>                                                                 <!-- Payment Information -->           
+            <div class = "row2" > 
+            <p><b>Card Name: </b></p>
+            <p id="displayNameCC" > </p>     
             </div>
+            <div class = "row2"> 
+            <p><b>Card Number: </b></p>
+            <p id="displayCardNumber"> </p> 
+            </div> 
+            
+            <div class = "row2"> 
+            <p><b>Expiration Date:   </b></p>
+            <p id="displayExpMonth"> </p> 
+            <p> / </p>    
+            <p id="displayExpYear"> </p> 
+            <p><b>   CVV: </b></p>
+            <p id="displayCardCVV"> </p>     
+        </div> 
+            
+
           </div>
         </div>
-        <a href= "orderSummaryPage.php"> 
-        <input type="button" value="Continue to checkout" class="btn" onclick="submitForm()">                      <!-- Checkout button that will store the form data and send user to paymentSuccesful page -->
+        <a href= "./php/paymentSuccess.php"> 
+        <input type="button" value="COMPLETE CHECKOUT" class="btn" >                      <!-- Checkout button that will store the form data and send user to paymentSuccesful page -->
           </a> 
-      </form>
 
 
 
 
-      <script>
-        function submitForm(){
-          if(typeof(localStorage) != "undefined"){
-            localStorage.name = document.getElementById("fname").value;
-            localStorage.address = document.getElementById("adr").value;
-            localStorage.city = document.getElementById("city").value;
-            localStorage.state = document.getElementById("state").value;
-            localStorage.zip = document.getElementById("zip").value;
 
-            localStorage.nameCC = document.getElementById("cname").value;
-            localStorage.cardNumber = document.getElementById("ccnum").value;
-            localStorage.cardCVV = document.getElementById("cvv").value;
-            localStorage.expMonth = document.getElementById("expmonth").value;
-            localStorage.expYear = document.getElementById("expyear").value;
 
-          }
-            document.getElementById("form").submit();
-           }
-      </script>
 
 
 
@@ -190,7 +190,6 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
        </h3>
      </div> 
     </div>
-
 <footer> <!-- Footer  -->
     Shopster &copy; 2022
 </footer>
