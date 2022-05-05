@@ -3,6 +3,7 @@ require_once('connection.php');
 require_once('./php/component.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //Input validation and encryption
     if (isset($_POST['new_password']) && isset($_POST['re_password'])&& isset($_GET['email'])) {
         $password= htmlspecialchars($_POST['new_password']);
         $password2 = htmlspecialchars($_POST['re_password']);

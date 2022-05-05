@@ -94,8 +94,9 @@ require_once('./php/component.php');
                         <input type="password" name="user_password" class="form-control" id="user-password" placeholder="Password" required>
                     </div>
                     <?php
+                    //error message displayed
                     if (!empty($login_err)) {
-                        echo '<div class="alert alert-danger">' . $login_err . '</div>';
+                        echo '<div style="text-align:center">' . $login_err . '</div>';
                     } else {
                         echo '<br>';
                     }

@@ -1,9 +1,12 @@
 <?php
+//include classes
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
 require_once('./php/cartFunction.php');
+//DB instance
 $database = DBConnection::get_instance();
+//recieve passed data 
 $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
 ?>
 <!DOCTYPE html>
@@ -22,6 +25,7 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
     <script>
+        //update quantity script
         $(document).ready(function() {
 
             $(".add").click(function(e) {
@@ -63,7 +67,7 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
     </nav>
     <div class="todayDeal">
 
-
+        <!-- display cart button by reading the cookie_data -->
         <div class="checkoutCon">
             <button onclick="history.back()" class="backButton"><i class="fa-solid fa-arrow-left-long"></i></button>
             <?php
@@ -84,8 +88,10 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
 
         <form class='itemDiv' method="POST">
             <?php
+            //call getSingleItem to run query on database and store result in $result
             $result = $database->getSingleItem($product_id);
             while ($row = mysqli_fetch_assoc($result)) {
+                //call displayItemDetail to generate DOM elements
                 displayItemDetail($row['product_id'], $row['product_name'], $row['price'], $row['image'], $row['special'], $row['date_added'], $row['product_detail'], $row['color']);
             }
             ?>

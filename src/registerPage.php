@@ -22,6 +22,7 @@ require_once('./php/component.php');
         }
     </style>
     <?php
+    //password format check
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (isset($_POST['user_name']) && isset($_POST['user_password']) && isset($_POST['email'])) {
             $username = htmlspecialchars($_POST['user_name']);
@@ -34,6 +35,7 @@ require_once('./php/component.php');
 			if(strlen($password) < 8 || !$number || !$uppercase || !$specialChars) {
 				$login_err = "Password must have at least 8 characters, a number, a capital letter, and a special character";
 			}else{
+                //check fi email or username pre-existing
                 $emailNotExist = DBConnection::get_instance()->emailNotExist(encrypt_decrypt($email));
                 $usernameNotExist = DBConnection::get_instance()->usernameNotExist($username);
                 if(!$emailNotExist){
@@ -44,10 +46,13 @@ require_once('./php/component.php');
                     $login_err = "Username is already taken";
                     goto end;
                 }
+                //connection to DB
 				$connection = DBConnection::get_instance()->get_connection();
+                //query string
 				$sql = "INSERT INTO user_info (`username`, `password`, `email`) VALUES ('" . $username . "','" . encrypt_decrypt($password) . "','" . encrypt_decrypt($email) . "')";
 				$result = mysqli_query($connection, $sql);
 				if ($result != false) {
+                    //erroe handling
 					echo ("<script type='text/javascript'> console.log($msg);</script>");
 					header('Location: static/redirectSignUp.html');
 				} else {

@@ -1,8 +1,8 @@
 
 <?php
-
+//DB connection class
 class DBConnection
-{
+{	//Database credential
 	private $servername = "localhost";
 	private $username = "root";
 	private $password = "";
@@ -13,7 +13,7 @@ class DBConnection
 	public  $connection;
 
 	static $db_connection = null;
-
+	//mysql connection
 	private function __construct()
 	{
 		$this->connection = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
@@ -22,52 +22,8 @@ class DBConnection
 			die("Connection failed: " . $this->connection->connect_error);
 		}
 	}
-	public function createUserTable()
-	{
-		$this->con = mysqli_connect($this->servername, $this->username, $this->password, $this->dbname);
-		$sql = " CREATE TABLE IF NOT EXISTS $this->usertb
-                            (username VARCHAR (255) NOT NULL PRIMARY KEY,
-                             password VARCHAR (255) NOT NULL,
-							 email text NOT NULL
-                            );";
-		if (!mysqli_query($this->connection, $sql)) {
-			echo "Error creating table : " . mysqli_error($this->connection);
-		} else {
-			return false;
-		}
-	}
-	public function createProductTable()
-	{
 
-		$sql = " CREATE TABLE IF NOT EXISTS $this->producttb
-                            (product_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-                             product_name VARCHAR (255) NOT NULL,
-                             price decimal (10,2),
-                             image VARCHAR (100),
-							 special boolean NOT NULL default 0
-                            );";
-		if (!mysqli_query($this->connection, $sql)) {
-			echo "Error creating table : " . mysqli_error($this->connection);
-		} else {
-			return false;
-		}
-	}
-	public function initialProducts()
-	{
-		$sql = "INSERT INTO `product`( `product_name`, `price`, `image`, `special`) VALUES 
-		('aj1Blue',299,'./image/image1.webp',1),
-		('aj1Red',199,'./image/image2.webp',1),
-		('aj1white',399,'./image/image3.webp',1),
-		('aj1Silver',699,'./image/image4.webp',1),
-		('yeezy350#1',299,'./image/image5.webp',1),
-		('yeezy350#2',599,'./image/image6.jpeg',1)";
-		if (!mysqli_query($this->connection, $sql)) {
-			echo "Error creating table : " . mysqli_error($this->connection);
-		} else {
-			return false;
-		}
-	}
-
+	//return instance of DB connection
 	public static function get_instance()
 	{
 		if (is_null(self::$db_connection)) {
@@ -77,12 +33,12 @@ class DBConnection
 		return self::$db_connection;
 	}
 
-
+	//return connection variable of DBConnection
 	public function get_connection()
 	{
 		return $this->connection;
 	}
-
+	//method to run query on Database return item has special==1, on sale item
 	public function getSpecialItem()
 	{
 		$sql = "SELECT * FROM $this->producttb where special=1";
@@ -93,7 +49,7 @@ class DBConnection
 			return $result;
 		}
 	}
-
+	//method to run query and return all products
 	public function getAllItem()
 	{
 		$sql = "SELECT * FROM $this->producttb";
@@ -104,7 +60,7 @@ class DBConnection
 			return $result;
 		}
 	}
-
+	//run query to return products respect to the option passed from filter
 	public function getItemFilter($catId, $sortID)
 	{
 		$sql = '';
@@ -153,7 +109,7 @@ class DBConnection
 			return $result;
 		}
 	}
-
+	//get single item respect to the product ID
 	public function getSingleItem($product_id)
 	{
 		$sql = "SELECT * FROM $this->producttb where product_id = $product_id";
@@ -164,6 +120,7 @@ class DBConnection
 			return $result;
 		}
 	}
+	//check on if email is existing
 	public function emailNotExist($email){
 		$sql1 = "SELECT * FROM $this->usertb where `email` = '".$email."' ";
 		$result1 = mysqli_query($this->connection, $sql1);
@@ -173,6 +130,7 @@ class DBConnection
 		}
 		return true;
 	}
+	//check on if username is existing
 	public function usernameNotExist($username){
 		$sql2 = "SELECT * FROM $this->usertb where `username` = '".$username."' ";
 		$result2 = mysqli_query($this->connection, $sql2);

@@ -21,16 +21,20 @@ require_once('./php/component.php');
         }
     </style>
     <?php
+    //when form is submit
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
+            //receive username and password
             $username = htmlspecialchars($_POST['user_name']);
             $password = htmlspecialchars($_POST['user_password']);
-
+            //DB instance
             $connection = DBConnection::get_instance()->get_connection();
+            //query string
             $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . encrypt_decrypt($password) . "'";
-
+            //execute query
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
+                //session_start when credential found in database
                 if ($result->num_rows > 0) {
                     $row = $result->fetch_assoc();
                     session_start();
