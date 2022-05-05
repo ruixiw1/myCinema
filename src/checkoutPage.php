@@ -68,7 +68,7 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
   <div class="row">       
      <div class="col-75">
        <div class="container"> 
-         <form id = "form" action="static/coSummary.html" method="GET"> <!-- Shipping & Payment Form -->
+         <form id = "form" action="orderSummaryPage.php" onsubmit="submitForm()" method="POST"> <!-- Shipping & Payment Form -->
             <div class="row">
                <div class="col-50">
                  <h3>Shipping Address</h3>                                               <!-- Shipping Information --> 
@@ -76,8 +76,7 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
                 
                  <label for="fname"><i class="fa fa-user"></i> Full Name</label>         <!-- Name | fa fa-user is the tiny person icon -->
                  <input type="text" id="fname" name="firstname" placeholder="full name" required>
-                 
-                 
+
                  <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>   <!-- Address | fa fa-address-card-o is the tiny ID card icon -->
                  <input type="text" id="adr" name="address" placeholder="address" required>
                  <label for="city"><i class="fa fa-institution"></i> City</label>        <!-- City | fa fa-institution is the tiny townhall icon -->
@@ -92,11 +91,6 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
                      <input type="text" id="zip" name="zip" placeholder="zip" required>
                    </div>  
                   </div>
-
-                
-
-
-
              </div>
           <div class="col-50">
             <h3>Payment</h3>                                                                 <!-- Payment Information -->
@@ -119,10 +113,8 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
             </div>
           </div>
         </div>
-        <a href= "orderSummaryPage.php"> 
-        <input type="button" value="Continue to checkout" class="btn" onclick="submitForm()">                      <!-- Checkout button that will store the form data and send user to paymentSuccesful page -->
-          </a> 
-      </form>
+
+        <input type="submit" value="Continue to checkout" class="btn" >  
 
 
 
@@ -135,13 +127,11 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
             localStorage.city = document.getElementById("city").value;
             localStorage.state = document.getElementById("state").value;
             localStorage.zip = document.getElementById("zip").value;
-
             localStorage.nameCC = document.getElementById("cname").value;
             localStorage.cardNumber = document.getElementById("ccnum").value;
             localStorage.cardCVV = document.getElementById("cvv").value;
             localStorage.expMonth = document.getElementById("expmonth").value;
             localStorage.expYear = document.getElementById("expyear").value;
-
           }
             document.getElementById("form").submit();
            }
