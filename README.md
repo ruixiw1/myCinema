@@ -18,6 +18,9 @@ Shopster-main/src/index.html
 
 7) Done ! You should be on the website's homepage now . 
 
+8) Please refer to detail user guide if any issues are encountered
+https://docs.google.com/document/d/1MtTMMsygnryE16LQiEZ54AYuA3HCjcc6/
+
 == FUNCTIONALITY == 
 
 -Shopster acts as a website for users to visit in order to purchase high-end & sought-after sneakers and apparel in a simply, fast, and affordable process.

@@ -76,7 +76,7 @@ if ($msgCode == 'success') {
                     <br>
                     <?php
                     if (!empty($msg)) {
-                        echo '<div class="form-div">' . $msg . '</div>';
+                        echo '<div style="text-align:center">' . $msg . '</div>';
                     } else {
                         echo '<br>';
                     }

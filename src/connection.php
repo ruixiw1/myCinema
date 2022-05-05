@@ -2,7 +2,7 @@
 <?php
 //DB connection class
 class DBConnection
-{	//Database credential
+{	//Database parameters
 	private $servername = "localhost";
 	private $username = "root";
 	private $password = "";
