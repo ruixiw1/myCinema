@@ -21,7 +21,7 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Page Title & Favicon  --> 
-  <title>Shopster | CheckOut</title>
+  <title>Shopster | Summary</title>
   <link rel="icon" type="image/x-icon" href="./favicon.ico">
   
   <!-- Style Sheets  --> 
