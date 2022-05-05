@@ -15,7 +15,7 @@ $product_id = filter_input(INPUT_GET, 'product_id', FILTER_VALIDATE_INT);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <title>Shopster | main</title>
+    <title>Shopster | Detail</title>
     <link href="./style/main.css" rel="stylesheet">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">

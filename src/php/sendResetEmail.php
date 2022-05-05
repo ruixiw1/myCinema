@@ -25,7 +25,7 @@ else{
     header("Location:../forgotPassword.php?msg=dbfail");
     die();
 }
-$path = 'http://localhost/myfolder/Shopster/Shopster-main/src/resetPassword.php';//change path to match your local directory path of resetPassword.php
+$path = 'http://localhost/test/Shopster-main/src/resetPassword.php';//change path to match your local directory path of resetPassword.php
 $encrypt_email= encrypt_decrypt($to,'encrypt');
 $subject = "Shopster: Password Reset";
 $body = "Shopster password reset link: $path?email=$encrypt_email";
