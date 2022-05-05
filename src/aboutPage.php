@@ -44,7 +44,7 @@ include_once('connection.php');
 		<br><div class="aboutDiv">
 			<h2> Our Story</h2>
 			<p style="text-align:center;"> &emsp; Shopster was started in 2022 by a group of classmates who had a vision of making an online shopping service taylored towards getting the most high-end apparel and sneakers for screamingly good deals.  </p>
-			<p style="text-align:center;"> &emsp; saw how products such as shoes were often hard to find or sold out and shopster was our solution. </p>
+			<p style="text-align:center;"> &emsp; Our founders saw how products such as shoes were often hard to find or sold out and shopster was our solution. </p>
 		</div>
 		<br><div class="aboutDiv">
 			<h2> Our Mission</h2>
