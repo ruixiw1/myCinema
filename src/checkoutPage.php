@@ -117,29 +117,23 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
         <input type="submit" value="Continue to checkout" class="btn" >  
 
 
-
-
-      <script>
-        function submitForm(){
-          if(typeof(localStorage) != "undefined"){
-            localStorage.name = document.getElementById("fname").value;
-            localStorage.address = document.getElementById("adr").value;
-            localStorage.city = document.getElementById("city").value;
-            localStorage.state = document.getElementById("state").value;
-            localStorage.zip = document.getElementById("zip").value;
-            localStorage.nameCC = document.getElementById("cname").value;
-            localStorage.cardNumber = document.getElementById("ccnum").value;
-            localStorage.cardCVV = document.getElementById("cvv").value;
-            localStorage.expMonth = document.getElementById("expmonth").value;
-            localStorage.expYear = document.getElementById("expyear").value;
+      <script>  // This function is called when the form is submitted. 
+        function submitForm(){                                                  // Stores the form's data into local storage to be displayed on the next page. 
+          if(typeof(localStorage) != "undefined"){                       
+            localStorage.name = document.getElementById("fname").value;        // Name     
+            localStorage.address = document.getElementById("adr").value;       // Address
+            localStorage.city = document.getElementById("city").value;         // City 
+            localStorage.state = document.getElementById("state").value;       // State
+            localStorage.zip = document.getElementById("zip").value;           // Zip
+            localStorage.nameCC = document.getElementById("cname").value;      // Credit Card Name
+            localStorage.cardNumber = document.getElementById("ccnum").value;  // Credit Card Number
+            localStorage.cardCVV = document.getElementById("cvv").value;       // Credit Card CVV
+            localStorage.expMonth = document.getElementById("expmonth").value; // Credit Card Expiration Month
+            localStorage.expYear = document.getElementById("expyear").value;   // Credit Card Expiration Year
           }
             document.getElementById("form").submit();
            }
       </script>
-
-
-
-
     </div>
   </div>
 
