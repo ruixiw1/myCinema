@@ -44,6 +44,8 @@ if (isset($_POST["remove_product"])) {
 		if ($cart_data[$keys]['product_id'] == $_POST["product_id"]) {
 			unset($cart_data[$keys]);
 			$item_data = json_encode($cart_data);
+			setcookie('shopping_cart', '', time() - 3600,'/');
+            setcookie("shopping_cart", $item_data, time() + (86400 * 30),'/');
 			header("Refresh:0");
 		}
 	}
@@ -58,6 +60,8 @@ if (isset($_POST["update_product"])) {
 		if ($cart_data[$keys]['product_id'] == $_POST["product_id"]) {
 			$cart_data[$keys]['product_quantity'] = $newQuantity;
 			$item_data = json_encode($cart_data);
+			setcookie('shopping_cart', '', time() - 3600,'/');
+            setcookie("shopping_cart", $item_data, time() + (86400 * 30),'/');
 			header("Refresh:0");
 		}
 	}
