@@ -40,7 +40,7 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
 
 <body onload="setData()"> 
   
-<script>
+<script> // Function takes the information from submitForm() & turns from local storage to Elements 
        function setData(){
         if(typeof(localStorage) != "undefined"){
             document.getElementById("displayName").innerHTML = localStorage.name;
@@ -79,78 +79,57 @@ if (isset($_POST["checkOut"])) {                   // If the checkOut form is no
   </nav>
   
   <div class="todayHeader">
-   <h3>- Order Summary -</h3>  <!-- Page Header  -->
+   <h3>- Order Summary -</h3>                             <!-- Page Header  -->
   </div>
-
-
-
-
-  <div class="row">       
+   <div class="row">       
      <div class="col-50">
        <div class="container"> 
             <div class="row">
                <div class="col-502">
-                 <h3>Shipping Address</h3>                                               <!-- Shipping Information -->                  
+                 <h3>Shipping Address</h3>                <!-- Shipping Information -->                  
 
                  <div class = "row2" > 
-                 <p><b>Name: </b></p>
+                 <p><b>Name: </b></p>                     <!-- Name -->
                  <p id="displayName" > </p>     
                      </div>
-
                      <div class = "row2" > 
-                        <p><b>Address: </b></p>
+                        <p><b>Address: </b></p>           <!-- Address -->
                          <p id="displayAddress" > </p>  
                     </div> 
-
                     <div class = "row2" > 
                         <p><b>City & State : </b></p>
 
-                        <p id="displayCity"> </p> 
+                        <p id="displayCity"> </p>         <!-- City -->
                         <p>, </p>
-                        <p id="displayState"> </p>
+                        <p id="displayState"> </p>        <!-- State -->
                         <p>  </p>
-                        <p id="displayZip"> </p>
-                        
-
+                        <p id="displayZip"> </p>          <!-- Zip -->
                     </div> 
              </div>
           <div class="col-502">
-            <h3>Payment Information</h3>                                                                 <!-- Payment Information -->           
+            <h3>Payment Information</h3>      <!-- Payment Information -->           
             <div class = "row2" > 
-            <p><b>Card Name: </b></p>
+            <p><b>Card Name: </b></p>         <!-- Card Name -->
             <p id="displayNameCC" > </p>     
             </div>
             <div class = "row2"> 
-            <p><b>Card Number: </b></p>
+            <p><b>Card Number: </b></p>       <!-- Card Number -->
             <p id="displayCardNumber"> </p> 
             </div> 
-            
             <div class = "row2"> 
-            <p><b>Expiration Date:   </b></p>
-            <p id="displayExpMonth"> </p> 
+            <p><b>Expiration Date:   </b></p> <!-- Expiration Date -->
+            <p id="displayExpMonth"> </p>     <!-- Month  -->
             <p> / </p>    
-            <p id="displayExpYear"> </p> 
-            <p><b>   CVV: </b></p>
+            <p id="displayExpYear"> </p>      <!-- Year  -->
+            <p><b>   CVV: </b></p>            <!-- Card CCV -->
             <p id="displayCardCVV"> </p>     
         </div> 
-            
-
           </div>
         </div>
         <a href= "./php/paymentSuccess.php"> 
-        <input type="button" value="COMPLETE CHECKOUT" class="btn" >                      <!-- Checkout button that will store the form data and send user to paymentSuccesful page -->
+        <input type="button" value="COMPLETE CHECKOUT" class="btn" >       <!-- Checkout button sends user to  paymentSuccesful page -->
           </a> 
-
-
-
-
-
-
-
-
-
-
-    </div>
+        </div>
   </div>
 
 

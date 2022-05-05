@@ -40,20 +40,21 @@ include_once('connection.php');
     </nav>
     <div class>
         <div class="todayHeader">
-            <h3>-   ABOUT UFS   -</h3>
+            <h3>-   ABOUT US   -</h3>
         </div>
 		<br><div class="aboutDiv">
 			<h2> Our Story</h2>
-			<p style="text-align:left;"> &emsp; Shopster started in 2022 by a group of classmates who had a vision of making an online shopping service taylored towards university students. Our founders: George Landyn, Zongxin Ouyang, Matt Morris, and Logan </p>
-			<p style="text-align:left;"> &emsp; Whitley saw how products such as shoes were often hard to find or sold out and shopster was our solution. </p>
+			<p style="text-align:center;"> &emsp; Shopster was started in 2022 by a group of classmates who had a vision of making an online shopping service taylored towards getting the most high-end apparel and sneakers for screamingly good deals.  </p>
+			<p style="text-align:center;"> &emsp; Our founders saw how products such as shoes were often hard to find or sold out and shopster was our solution. </p>
 		</div>
 		<br><div class="aboutDiv">
 			<h2> Our Mission</h2>
-			<p style="text-align:left;"> &emsp; To keep shopping simple and fun by always putting the customer first and never compromising on quality.</p>
+			<p style="text-align:center;"> &emsp; To keep shopping simple, fast, and affordable through keeping the customer first and never compromising on quality.</p>
 		</div>
 		<br><div class="aboutDiv">
 			<h2> Our Name</h2>
-			<p style="text-align:left;"> &emsp; As simple as our mission. We wanted to provide monster deals to our shoppers. Shopping + monster = shopster.</p>
+			<p style="text-align:center;"> &emsp; As simple as our mission. We wanted to provide monster deals to our shoppers. </p>
+            <p style="text-align:center;"> <b> shopping + monster = shopster. </b> </p>
 		</div>
 
     </div>
