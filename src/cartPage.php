@@ -1,4 +1,5 @@
 <?php
+//include classes
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
@@ -15,6 +16,7 @@ if (isset($_POST["checkOut"])) {
 <html lang="en">
 
 <head>
+    <!-- dependency -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

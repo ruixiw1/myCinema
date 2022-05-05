@@ -1,9 +1,13 @@
 <?php
+//session_start
 session_start();
+//include classes
 require_once('./php/component.php');
 require_once('./connection.php');
 require_once('./php/cartFunction.php');
+//get DB connection instance
 $database = DBConnection::get_instance();
+//recieve passed informtion
 $category_id = filter_input(INPUT_GET, 'categoryID', FILTER_VALIDATE_INT);
 $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
 ?>
@@ -49,6 +53,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
         <div class="checkoutCon">
             <div></div>
             <?php
+            //display cart button by reading the cookie_data
             if (isset($_COOKIE["shopping_cart"])) {
                 $quantity = 0;
                 $cookie_data = stripslashes($_COOKIE['shopping_cart']);
@@ -70,11 +75,14 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
         <div class="itemDisplayContainer">
             <?php
             $result;
+            //when no filter is set call getAllItem to get all products
             if (($category_id == NULL || $category_id ==  FALSE) && ($sort_id == NULL || $sort_id ==  FALSE)) {
                 $result = $database->getAllItem();
             } else {
+                //otherwise execute getItemFilter to return products respectively
                 $result = $database->getItemFilter($category_id, $sort_id);
             }
+            //call displayAllproduct to generate DOM element
             while ($row = mysqli_fetch_assoc($result)) {
                 displayAllProduct($row['product_name'], $row['price'], $row['image'], $row['product_id'], $row['special']);
             }
@@ -82,6 +90,7 @@ $sort_id = filter_input(INPUT_GET, 'sortID', FILTER_VALIDATE_INT);
         </div>
         <div class="catDropDown">
             <form action="">
+                <!-- filter section -->
                 <div class="filter">
                     <label for="">Category:</label>
                     <select id="category_list" name="categoryID">

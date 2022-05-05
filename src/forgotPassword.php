@@ -1,9 +1,9 @@
 <?php
+
 require_once('connection.php');
 if(isset($_GET['msg'])){
 $msgCode = htmlspecialchars($_GET['msg']);
-
-
+//error handling
 if ($msgCode == 'success') {
     $msg = "Email Sent";
 } else if ($msgCode == 'nofound') {
@@ -26,6 +26,7 @@ if ($msgCode == 'success') {
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- css only apply to this page -->
     <style>
         input {
             margin: auto;
@@ -65,6 +66,7 @@ if ($msgCode == 'success') {
     <div class="main">
         <div class="loginWindow">
             <div class="loginForm">
+                <!-- form for user to enter email address -->
                 <form method="post" action="php/sendResetEmail.php">
                     <p> Enter the E-mail of your account to reset your password...</p>
                     <br>

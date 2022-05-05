@@ -1,7 +1,7 @@
 <?php
 
 
-
+//include dependency
 use PHPMailer\PHPMailer\PHPMailer;
 require_once('../connection.php');
 require_once('component.php');
@@ -10,12 +10,12 @@ require_once('component.php');
 $name = "Shopster";  // Name of your website or yours
 $to = htmlspecialchars($_POST['email']);  // mail of reciever
 
-$connection = DBConnection::get_instance()->get_connection();
-$sql = "SELECT * FROM user_info WHERE email = '". encrypt_decrypt($to) . "'";
+$connection = DBConnection::get_instance()->get_connection();//connection instance
+$sql = "SELECT * FROM user_info WHERE email = '". encrypt_decrypt($to) . "'";//query string
 
-$result = mysqli_query($connection, $sql);
+$result = mysqli_query($connection, $sql);//execute query
 
-if ($result != false) {
+if ($result != false) {//error handling
     if ($result->num_rows < 1) {
         header("Location:../forgotPassword.php?msg=nofound");
         die();
@@ -26,14 +26,14 @@ else{
     die();
 }
 $path = 'http://localhost/test/Shopster-main/src/resetPassword.php';//change path to match your local directory path of resetPassword.php
-$encrypt_email= encrypt_decrypt($to,'encrypt');
+$encrypt_email= encrypt_decrypt($to,'encrypt');//encrypt_email
 $subject = "Shopster: Password Reset";
-$body = "Shopster password reset link: $path?email=$encrypt_email";
+$body = "Shopster password reset link:\n $path?email=$encrypt_email";
 $from = "csci4300grouphub@gmail.com";  // you mail
 $password = "shopster1";  // your mail password
 
-// Ignore from here
 
+//include dependency
 require_once "PHPMailer/PHPMailer.php";
 require_once "PHPMailer/SMTP.php";
 require_once "PHPMailer/Exception.php";
