@@ -4,7 +4,7 @@ Shopster-main/src/index.html
 
 == HOW TO START ==
 
-1) Run XAMPP as Administrator 
+1) Run XAMPP as Administrator ( Download XAMPP here: https://www.apachefriends.org/index.html ) 
 
 2) Start Apache and MySQL 
 
