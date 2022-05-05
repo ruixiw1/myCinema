@@ -18,11 +18,10 @@ Shopster-main/src/index.html
 
 7) Done ! You should be on the website's homepage now . 
 
-
 == FUNCTIONALITY == 
 
--Shopster acts as a website for users to visit in order to purchase high-end & sought-after sneakers and apparrel in a simply, fast, and affordable process.
--Users are able to create accounts, loing, browse products and their details, add products to their cart, modify their cart, and place orders. 
+-Shopster acts as a website for users to visit in order to purchase high-end & sought-after sneakers and apparel in a simply, fast, and affordable process.
+-Users are able to create accounts, login, browse products and their details, add products to their cart, modify their cart, and place orders. 
 
 == SUPPORTED BROWSERS/ OS == 
 
@@ -50,3 +49,5 @@ Shopster was built using :
 The only framework used is Bootstrap 5 on CSS3.
 
 == README == 
+
+
