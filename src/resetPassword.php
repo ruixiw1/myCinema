@@ -39,7 +39,7 @@ ex:
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | Reset</title>
+    <title>Ecinema | Reset</title>
     <link href="./style/main.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="./style/misc-style.css" rel="stylesheet">
@@ -54,26 +54,7 @@ ex:
     ?>
 </head>
 
-<body class="background">
-    <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
-        <div class="navbar" id="navbarNavAltMarkup">
-            <ul>
-                <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</a></li>
-                <?php
-                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</i></a></li>';
-                } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </nav>
+
     <div class="main">
         <div class="loginWindow">
             <div class="loginForm">
@@ -104,12 +85,8 @@ ex:
                 </form>
             </div>
         </div>
-    </div>
 
 </body>
 
-<footer>
-    Shopster &copy; 2022
-</footer>
 
 </html>

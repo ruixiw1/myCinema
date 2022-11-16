@@ -6,9 +6,8 @@ class DBConnection
 	private $servername = "localhost";
 	private $username = "root";
 	private $password = "";
-	private $dbname = "shopster";
+	private $dbname = "mycinema";
 	private $usertb = "user_info";
-	private $producttb =  "product";
 
 	public  $connection;
 
@@ -38,88 +37,6 @@ class DBConnection
 	{
 		return $this->connection;
 	}
-	//method to run query on Database return item has special==1, on sale item
-	public function getSpecialItem()
-	{
-		$sql = "SELECT * FROM $this->producttb where special=1";
-
-		$result = mysqli_query($this->connection, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			return $result;
-		}
-	}
-	//method to run query and return all products
-	public function getAllItem()
-	{
-		$sql = "SELECT * FROM $this->producttb";
-
-		$result = mysqli_query($this->connection, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			return $result;
-		}
-	}
-	//run query to return products respect to the option passed from filter
-	public function getItemFilter($catId, $sortID)
-	{
-		$sql = '';
-		if ($catId == 0 || $catId == NULL) {
-			switch ($sortID) {
-				case 1: {
-						$sql = "SELECT * FROM $this->producttb order by date_added desc";
-						break;
-					}
-				case 2: {
-						$sql = "SELECT * FROM $this->producttb order by price desc ";
-						break;
-					}
-				case 3: {
-						$sql = "SELECT * FROM $this->producttb order by price asc";
-						break;
-					}
-				default: {
-						$sql = "SELECT * FROM $this->producttb";
-					}
-			}
-		} else {
-			switch ($sortID) {
-				case 1: {
-						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by date_added desc";
-						break;
-					}
-				case 2: {
-						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by price desc ";
-						break;
-					}
-				case 3: {
-						$sql = "SELECT * FROM $this->producttb where category_id = $catId order by price asc";
-						break;
-					}
-				default: {
-						$sql = "SELECT * FROM $this->producttb where category_id = $catId";
-					}
-			}
-		}
-
-
-		$result = mysqli_query($this->connection, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			return $result;
-		}
-	}
-	//get single item respect to the product ID
-	public function getSingleItem($product_id)
-	{
-		$sql = "SELECT * FROM $this->producttb where product_id = $product_id";
-
-		$result = mysqli_query($this->connection, $sql);
-
-		if (mysqli_num_rows($result) > 0) {
-			return $result;
-		}
-	}
 	//check on if email is existing
 	public function emailNotExist($email){
 		$sql1 = "SELECT * FROM $this->usertb where `email` = '".$email."' ";
@@ -138,6 +55,16 @@ class DBConnection
 			return false;
 		}
 		return true;
+	}
+	public function userInfo($userName)
+	{
+		$sql = "SELECT * FROM $this->usertb where `username` = '".$userName."' ";
+
+		$result = mysqli_query($this->connection, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			return $result;
+		}
 	}
 
 }	

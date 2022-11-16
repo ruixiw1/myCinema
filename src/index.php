@@ -3,127 +3,239 @@
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
-require_once('./php/cartFunction.php');
 $database = DBConnection::get_instance();
-$numberOfSpecial = 0; //number Special items
-$result = $database->getSpecialItem();
-while ($row = mysqli_fetch_assoc($result)) {
-    $numberOfSpecial++;
-}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <!-- dependency -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | Home</title>
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
-    <link href="./style/main.css" rel="stylesheet">
-    <link href="./style/misc-style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/866d4fbcee.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./style/scroll.css">
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
+    <title>CineFlix</title>
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
+
+    <link rel="stylesheet" href="./assets/css/main.css">
+    <link rel="stylesheet" href="./assets/css/media_query.css">
+    <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
     <style>
-        @keyframes bannermove {
-            0% {
-                transform: translate(0, 0);
-            }
-
-            100% {
-                transform: translate(-50%, 0);
-            }
+        iframe {
+            width: 100%;
+            height: 100%;
         }
 
-        .scrollContainer{
-            animation: bannermove <?php echo $numberOfSpecial * 10; ?>s linear infinite;
+        .bookLink {
+            position: absolute;
+            color: white;
+            z-index: 20;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            border: 1px solid white;
+            padding: 3px;
+            border-radius: 2px;
+
         }
 
-        .scrollContainer:hover {
-            animation-play-state: paused;
+        .category-card:hover .bookLink {
+            opacity: 1;
         }
     </style>
 </head>
 
-<body class="todayDeal">
-    <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
-        <div class="navbar" id="navbarNavAltMarkup">
-            <ul>
-                <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</a></li>
-                <!-- if statement to generate nav bar elememnt by login status -->
-                <?php
-                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
-                    echo "<li style='margin:center'><a class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
-                } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </nav>
-    <div>
-        <div class="checkoutCon">
-            <div></div>
-            <!-- dynamically shows number of item in cart -->
-            <?php
-            if (isset($_COOKIE["shopping_cart"])) {
-                $quantity = 0;
-                $cookie_data = stripslashes($_COOKIE['shopping_cart']);
-                $cart_data = json_decode($cookie_data, true);
-                foreach ($cart_data as $keys => $values) {
-                    $quantity += $values["product_quantity"];
-                }
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[$quantity]</a>";
-            } else {
-                echo "<a class=\"checkoutButt\" href=\"./cartPage.php\"><i class=\"fa fa-shopping-cart\" style=\"font-size:24px\"></i>Cart[0]</a>";
-            }
+<body>
 
-            ?>
-        </div>
-        <div class="todayHeader">
-            <h3>TODAY'S DEALS</h3>
-        </div>
-        <div class="itemDisplayContainer">
-            <!-- get special items by running query on the dasebase an call function to generate as DOM element and set speed of animation by number of items-->
-            <div class="scrollContainer">
-                <?php
-                $result = $database->getSpecialItem();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
-                }
-                ?>
-                <?php
-                $result = $database->getSpecialItem();
-                while ($row = mysqli_fetch_assoc($result)) {
-                    displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
-                }
-                //   In case that dont have enough to special items to maintain scolling display continuously
-                if ($numberOfSpecial <= 3) {
-                    $extra1 = $database->getSpecialItem();
-                    $extra2 = $database->getSpecialItem();
-                    while ($row = mysqli_fetch_assoc($extra1)) {
-                        displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
-                    }
-                    while ($row = mysqli_fetch_assoc($extra2)) {
-                        displaySpecialProduct($row['product_name'], $row['price'], $row['image'], $row['product_id']);
-                    }
-                }
-                ?>
+    <div class="container">
+
+        <header class="">
+            <div class="navbar">
+
+
+                <button class="navbar-menu-btn">
+                    <span class="one"></span>
+                    <span class="two"></span>
+                    <span class="three"></span>
+                </button>
+
+                <nav class="">
+                    <ul class="navbar-nav">
+
+                        <li> <a href="#" class="navbar-link">Home</a> </li>
+                        <li> <a href="#category" class="navbar-link">Category</a> </li>
+                        <?php
+                        if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+                            echo "<li style='margin:center'><a href='./editProfile.php' class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
+                        }
+                        ?>
+                    </ul>
+
+                </nav>
+
+                <div class="navbar-actions">
+
+                    <form action="#" class="navbar-form">
+                        <input type="text" name="search" placeholder="I'm looking for..." class="navbar-form-search">
+
+                        <button class="navbar-form-btn">
+                            <ion-icon name="search-outline"></ion-icon>
+                        </button>
+
+                        <button class="navbar-form-close">
+                            <ion-icon name="close-circle-outline"></ion-icon>
+                        </button>
+                    </form>
+
+                    <button class="navbar-search-btn">
+                        <ion-icon name="search-outline"></ion-icon>
+                    </button>
+
+                    <a href="./login.html" class="navbar-signin">
+                        <?php
+                        if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+                            echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</a></li>';
+                        } else {
+                            echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
+                        }
+                        ?>
+                        <ion-icon name="log-in-outline"></ion-icon>
+                    </a>
+
+
+                </div>
+
+            </div>
+        </header>
+        <main>
+            <section class="banner">
+                <div class="banner-card">
+
+                    <!-- <img src="./assets/images/John-Wick-3.jpg" class="banner-img" alt=""> -->
+                    <iframe src="https://www.youtube.com/embed/M7XM597XO94" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+                    <div class="card-content">
+
+                        <h2 class="card-title">John Wick: Chapter 3 - Parabellum</h2>
+                    </div>
+
+                </div>
+            </section>
+            <section class="category" id="category">
+
+                <h2 class="section-heading">Category</h2>
+
+                <div class="category-grid">
+
+                    <div class="category-card">
+                        <img src="./assets/images/action.jpg" alt="" class="card-img">
+                        <div class="name">Action</div>
+                        <div class="total">100</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/comedy.jpg" alt="" class="card-img">
+                        <div class="name">Comedy</div>
+                        <div class="total">50</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/thriller.webp" alt="" class="card-img">
+                        <div class="name">Thriller</div>
+                        <div class="total">20</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/horror.jpg" alt="" class="card-img">
+                        <div class="name">Horror</div>
+                        <div class="total">80</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/adventure.jpg" alt="" class="card-img">
+                        <div class="name">Adventure</div>
+                        <div class="total">100</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/animated.jpg" alt="" class="card-img">
+                        <div class="name">Animated</div>
+                        <div class="total">50</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/crime.jpg" alt="" class="card-img">
+                        <div class="name">Crime</div>
+                        <div class="total">20</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/sci-fi.jpg" alt="" class="card-img">
+                        <div class="name">SCI-FI</div>
+                        <div class="total">80</div>
+                    </div>
+
+                </div>
+
+            </section>
+            <section class="category" id="category">
+
+                <h2 class="section-heading">Currently Showing</h2>
+
+                <div class="category-grid">
+
+                    <div class="category-card">
+                        <img src="./assets/images/action.jpg" alt="" class="card-img">
+                        <div class='bookLink'>Book Movie</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/comedy.jpg" alt="" class="card-img">
+                        <div class='bookLink'>Book Movie</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/thriller.webp" alt="" class="card-img">
+                        <div class='bookLink'>Book Movie</div>
+                    </div>
+
+                    <div class="category-card">
+                        <img src="./assets/images/horror.jpg" alt="" class="card-img">
+                        <<div class='bookLink'>Book Movie
+                    </div>
+                </div>
+
+
+    </div>
+
+    </section>
+    <section class="category" id="category">
+        <h2 class="section-heading">Upcoming</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <img src="./assets/images/adventure.jpg" alt="" class="card-img">
+            </div>
+
+            <div class="category-card">
+                <img src="./assets/images/animated.jpg" alt="" class="card-img">
+            </div>
+
+            <div class="category-card">
+                <img src="./assets/images/crime.jpg" alt="" class="card-img">
+            </div>
+
+            <div class="category-card">
+                <img src="./assets/images/sci-fi.jpg" alt="" class="card-img">
             </div>
         </div>
-        <footer>
-            Shopster &copy; 2022
-        </footer>
+    </section>
     </div>
+
+
+    <script src="./assets/js/main.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

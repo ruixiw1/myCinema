@@ -20,7 +20,7 @@ if ($msgCode == 'success') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | Forgot Password</title>
+    <title>My Cinema| Forgot Password</title>
     <link href="./style/main.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
     <link href="./style/misc-style.css" rel="stylesheet">
@@ -43,31 +43,13 @@ if ($msgCode == 'success') {
     </style>
 </head>
 
-<body class="background">
-    <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
-        <div class="navbar" id="navbarNavAltMarkup">
-            <ul>
-                <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</a></li>
-                <?php
-                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</i></a></li>';
-                } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </nav>
-    <div class="main">
+<body>
+   
+    <div>
         <div class="loginWindow">
             <div class="loginForm">
                 <!-- form for user to enter email address -->
-                <form method="post" action="php/sendResetEmail.php">
+                <form method="post" action="./resetPassword.php">
                     <p> Enter the E-mail of your account to reset your password...</p>
                     <br>
                     <div class="form-div">
@@ -92,8 +74,6 @@ if ($msgCode == 'success') {
 
 </body>
 
-<footer>
-    Shopster &copy; 2022
-</footer>
+
 
 </html>

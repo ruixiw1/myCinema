@@ -1,32 +1,21 @@
 <?php
+
+
+//include dependency
 use PHPMailer\PHPMailer\PHPMailer;
 require_once('../connection.php');
 require_once('component.php');
 
-$name = "ecinema";  // Name of your website or yours
+
 $to = htmlspecialchars($_POST['email']);  // mail of reciever
 
-$connection = DBConnection::get_instance()->get_connection();//connection instance
-$sql = "SELECT * FROM user_info WHERE email = '". $to . "'";//query string
 
-$result = mysqli_query($connection, $sql);//execute query
-
-if ($result != false) {//error handling
-    if ($result->num_rows < 1) {
-        header("Location:../forgotPassword.php?msg=nofound");
-        die();
-    } 
-} 
-else{
-    header("Location:../forgotPassword.php?msg=dbfail");
-    die();
-}
 $path = 'http://localhost/test/Shopster-main/src/resetPassword.php';//change path to match your local directory path of resetPassword.php
 $encrypt_email= encrypt_decrypt($to,'encrypt');//encrypt_email
-$subject = "Password Reset";
-$body = "password reset link:\n $path?email=$encrypt_email";
-$from = "csci4300grouphub@gmail.com";  // you mail
-$password = "shopster1";  // your mail password
+$subject = "ecinema activation";
+$body = "activation link:\n $path?email=$encrypt_email";
+$from = "ouyangzongxin@gmail.com";  // you mail
+$password = "Oyzxnzs123";  // your mail password
 
 
 //include dependency
@@ -61,10 +50,7 @@ $mail->addAddress($to); // enter email address whom you want to send
 $mail->Subject = ("$subject");
 $mail->Body = $body;
 if ($mail->send()) {
-    header("Location:../forgotPassword.php?msg=success");
+    header("Location:../registerPage.php?msg=sent");
 } else {
-    header("Location:../forgotPassword.php?msg=fail");
+    header("Location:../registerPage.php?msg=fail");
 }
-
-
-//include dependency

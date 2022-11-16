@@ -9,9 +9,9 @@ require_once('./php/component.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopster | Log in</title>
+    <title>Ecinema | Log in</title>
     <link href="./style/main.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
     <link href="./style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -23,14 +23,14 @@ require_once('./php/component.php');
     <?php
     //when form is submit
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
-        if (isset($_POST['user_name']) && isset($_POST['user_password'])) {
+        if (isset($_POST['email']) && isset($_POST['user_password'])) {
             //receive username and password
-            $username = htmlspecialchars($_POST['user_name']);
+            $email = htmlspecialchars($_POST['email']);
             $password = htmlspecialchars($_POST['user_password']);
             //DB instance
             $connection = DBConnection::get_instance()->get_connection();
             //query string
-            $sql = "SELECT * FROM user_info WHERE username = '" . $username . "' AND password = '" . encrypt_decrypt($password) . "'";
+            $sql = "SELECT * FROM user_info WHERE email = '" . $email. "' AND password = '" . encrypt_decrypt($password) . "'";
             //execute query
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
@@ -39,7 +39,7 @@ require_once('./php/component.php');
                     $row = $result->fetch_assoc();
                     session_start();
                     $_SESSION["id"] = $row["id"];
-                    $_SESSION["username"] = $username;
+                    $_SESSION["username"] = $row["username"];
                     $_SESSION["logged_in"] = true;
 
                     setcookie("username", $username, time() + (86400 * 30), "/");
@@ -60,26 +60,8 @@ require_once('./php/component.php');
     ?>
 </head>
 
-<body class="background">
-    <nav>
-        <a href="index.php"><span>
-                <h1 class="logo">shopster.</h1>
-            </span></a>
-        <div class="navbar" id="navbarNavAltMarkup">
-            <ul>
-                <li><a class="button-header" href="./index.php"><i>home</a></li>
-                <li><a class="button-header" href="./productPage.php">products</a></li>
-                <li><a class="button-header" href="./aboutPage.php">about</a></li>
-                <?php
-                if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                    echo '<li style="float:right"><a class="button-header" href="./logout.php">Log Out</i></a></li>';
-                } else {
-                    echo '<li style="float:right"><a class="button-header" href="./loginPage.php">Log In</i></a></li>';
-                }
-                ?>
-            </ul>
-        </div>
-    </nav>
+<body>
+   
     <div class="main">
         <div class="loginWindow">
             <div class="toggleContainer">
@@ -89,8 +71,8 @@ require_once('./php/component.php');
             <div class="loginForm">
                 <form method="POST" action="">
                     <div class="form-group">
-                        <label for="user-name">Username</label>
-                        <input type="text" name="user_name" class="form-control" id="user-name" placeholder="Username" required>
+                        <label for="user-name">Email</label>
+                        <input type="text" name="email" class="form-control" id="user-name" placeholder="Email" required>
                     </div>
                     <br>
                     <div class="form-group">
@@ -119,9 +101,5 @@ require_once('./php/component.php');
     </div>
 
 </body>
-
-<footer >
-        Shopster &copy; 2022
-</footer>
 
 </html>

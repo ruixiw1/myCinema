@@ -824,7 +824,7 @@ class PHPMailer
         //Close any open SMTP connection nicely
         $this->smtpClose();
     }
-
+   
     /**
      * Call mail() in a safe_mode-aware fashion.
      * Also, unless sendmail_path points to sendmail (or something that
