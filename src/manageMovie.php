@@ -87,8 +87,9 @@ $statement->closeCursor();
             <?php endforeach; ?>
             <tr>
                  <td colspan="4">
-                 <a class="addMovie" href="addMovie.php">Add movie</a>
-                 <a class="addMovie" href="setShowDate.php">Set Showtime</a>
+                 <a  href="addMovie.php"  class="btn btn-primary">Add movie</a>
+                 <a href="setShowDate.php"  class="btn btn-primary">Set Showtime</a>
+                 <a  href="adminMain.php"  class="btn btn-primary">Admin Main</a>
                  </td>
             </tr>
 
