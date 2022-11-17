@@ -4,7 +4,26 @@ session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
 $database = DBConnection::get_instance();
+try {
+    $dsn = 'mysql:host=localhost;dbname=mycinema';
+    $username = 'root';
+    $password = '';
+    $db = new PDO($dsn, $username, $password);
+} catch (PDOException $e) {
+    $error_message = $e->getMessage();
+    echo "<p> An error occured while connecting to the database: $error_message </p>";
+}
+$date = date('Y-m-d');
+//Product of a category
+$queryProducts = 'SELECT * FROM  all_movie where `date` > "'.$date.'" ORDER BY `date` ASC' ;
+$statement = $db->prepare($queryProducts);
+$statement->execute();
+$movies = $statement->fetchAll();
+$statement->closeCursor();
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -37,11 +56,25 @@ $database = DBConnection::get_instance();
             border: 1px solid white;
             padding: 3px;
             border-radius: 2px;
+            text-align:center;
 
+        }
+        .cardText{
+            position: absolute;
+            color: white;
+            z-index: 21;
+            bottom:0;
+            left:50%;
+            transform: translate(-50%, -50%);
+            opacity: 1;
+            text-align:center;
         }
 
         .category-card:hover .bookLink {
             opacity: 1;
+        }
+        .category-card:hover .cardText{
+            opacity: 0;
         }
     </style>
 </head>
@@ -181,29 +214,21 @@ $database = DBConnection::get_instance();
             </section>
             <section class="category" id="category">
 
-                <h2 class="section-heading">Currently Showing</h2>
+                <h2 class="section-heading">Upcoming</h2>
 
                 <div class="category-grid">
-
-                    <div class="category-card">
-                        <img src="./assets/images/action.jpg" alt="" class="card-img">
-                        <div class='bookLink'>Book Movie</div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="./assets/images/comedy.jpg" alt="" class="card-img">
-                        <div class='bookLink'>Book Movie</div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="./assets/images/thriller.webp" alt="" class="card-img">
-                        <div class='bookLink'>Book Movie</div>
-                    </div>
-
-                    <div class="category-card">
-                        <img src="./assets/images/horror.jpg" alt="" class="card-img">
-                        <<div class='bookLink'>Book Movie
-                    </div>
+                <?php foreach ($movies as $movie) : ?>
+                        <?php echo '
+                                <div class="category-card">
+                                <img src="'.$movie['image'].'" alt="" class="card-img">
+                                <div class="bookLink">Book Movie</div>
+                                <div class="cardText">
+                                    <div>'.$movie['movie_name'].'</div>
+                                    <div>'.$movie['date'].'</div>
+                                </div>
+                                </div>'
+                        ?>
+                    <?php endforeach; ?>
                 </div>
 
 
@@ -211,7 +236,7 @@ $database = DBConnection::get_instance();
 
     </section>
     <section class="category" id="category">
-        <h2 class="section-heading">Upcoming</h2>
+        <h2 class="section-heading">Currently Showing</h2>
         <div class="category-grid">
             <div class="category-card">
                 <img src="./assets/images/adventure.jpg" alt="" class="card-img">
@@ -224,7 +249,6 @@ $database = DBConnection::get_instance();
             <div class="category-card">
                 <img src="./assets/images/crime.jpg" alt="" class="card-img">
             </div>
-
             <div class="category-card">
                 <img src="./assets/images/sci-fi.jpg" alt="" class="card-img">
             </div>

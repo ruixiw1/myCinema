@@ -8,6 +8,7 @@ class DBConnection
 	private $password = "";
 	private $dbname = "mycinema";
 	private $usertb = "user_info";
+	private $movietb = "all_movie";
 
 	public  $connection;
 
@@ -65,6 +66,18 @@ class DBConnection
 		if (mysqli_num_rows($result) > 0) {
 			return $result;
 		}
+	}
+
+	public function findDate($date)
+	{
+		$sql = "SELECT * FROM $this->movietb where `date` = '".$date."' ";
+
+		$result = mysqli_query($this->connection, $sql);
+
+		if (mysqli_num_rows($result) > 0) {
+			return true;
+		}
+		return false;
 	}
 
 }	

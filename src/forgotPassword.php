@@ -1,5 +1,4 @@
 <?php
-
 require_once('connection.php');
 if(isset($_GET['msg'])){
 $msgCode = htmlspecialchars($_GET['msg']);
@@ -49,7 +48,7 @@ if ($msgCode == 'success') {
         <div class="loginWindow">
             <div class="loginForm">
                 <!-- form for user to enter email address -->
-                <form method="post" action="./resetPassword.php">
+                <form method="post" action="sendMail.php">
                     <p> Enter the E-mail of your account to reset your password...</p>
                     <br>
                     <div class="form-div">
