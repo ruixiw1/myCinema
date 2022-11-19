@@ -1,4 +1,5 @@
 <?php
+include './sendMail.php';
 try {
     $dsn = 'mysql:host=localhost;dbname=mycinema';
     $username = 'root';
@@ -49,13 +50,19 @@ $statement->closeCursor();
             padding: 1em;
         }
     </style>
+<?php
+        if($_SERVER["REQUEST_METHOD"]=="POST"){
+            sendPromotion();
+        }
+
+?>
 </head>
 
 <body>
     <div class="main">
         <h1 class="header">Send Promotion</h1>
 
-        <form method="post" action="sendMail.php">
+        <form method="post">
             <div class="form-group col">
                 <label for="">Movie</label>
                 <select class="form-select" name="movie" aria-label="Default select example" required>

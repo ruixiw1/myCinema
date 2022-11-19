@@ -90,6 +90,9 @@ require_once('./php/component.php');
                     <a href="./forgotPassword.php">Forgot Password</a>
                     </div>
                     <br>
+                    <div id = "forgotPwd">
+                    <a href="./adminLogin.php">admin</a>
+                    </div>
                     <br>
 
                     <div class='buttonBox'>

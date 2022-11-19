@@ -99,7 +99,11 @@ $statement->closeCursor();
                         <li> <a href="#" class="navbar-link">Home</a> </li>
                         <li> <a href="#category" class="navbar-link">Category</a> </li>
                         <?php
-                        if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
+                        if(isset($_SESSION['admin']) && $_SESSION["admin"] = true){
+                            echo "<li style='margin:center'><a href='./adminMain.php' class='userHello'>Admin</i></a></li>";
+
+                        }
+                        else if(isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
                             echo "<li style='margin:center'><a href='./editProfile.php' class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                         }
                         ?>

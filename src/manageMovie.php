@@ -62,7 +62,6 @@ $statement->closeCursor();
                 <th>Movie</th>
                 <th>Description</th>
                 <th>Date</th>
-                <th></th>
             </tr>
             <?php foreach ($movies as $movie) : ?>
                 <tr>
@@ -79,7 +78,6 @@ $statement->closeCursor();
                         <form action="deleteProduct.php" method="post">
                             <input type="hidden" name="productID" value="<?php echo $product['productID']; ?>">
                             <input type="hidden" name="categoryID" value="<?php echo $product['categoryID']; ?>">
-                            <input type="submit" value="Delete">
                         </form>
                     </td>
                 </tr>

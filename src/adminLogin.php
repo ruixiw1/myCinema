@@ -44,6 +44,7 @@ require_once('./php/component.php');
                     session_start();
                     $_SESSION["username"] = $row["user_name"];
                     $_SESSION["logged_in"] = true;
+                    $_SESSION["admin"] =true;
 
                     setcookie("username", $username, time() + (86400 * 30), "/");
 
