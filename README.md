@@ -5,7 +5,8 @@ Development stack: php + MySQL + JS + html/css + composer
 
 ## ENTRY POINT  ##
 
-Shopster-main/src/index.html
+myCinema/src/index.html
+
 ## HOW TO START ##
 
 1) Run XAMPP as Administrator ( Download XAMPP here: https://www.apachefriends.org/index.html ) 
