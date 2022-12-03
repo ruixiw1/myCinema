@@ -76,6 +76,14 @@ $statement->closeCursor();
         .category-card:hover .cardText{
             opacity: 0;
         }
+        .link {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
     </style>
 </head>
 
@@ -225,14 +233,19 @@ $statement->closeCursor();
                         <?php echo '
                                 <div class="category-card">
                                 <img src="'.$movie['image'].'" alt="" class="card-img">
-                                <div class="bookLink">Book Movie</div>
+                                <div class="bookLink">
+                                    Book Movie
+                                    <a href="./bookingTicket.php?id='.$movie['id'].'&time='.$movie['date'].'&theatre=">
+                                    <span class="link"></span>
+                                    </a>
+                                </div>
                                 <div class="cardText">
                                     <div>'.$movie['movie_name'].'</div>
                                     <div>'.$movie['date'].'</div>
                                 </div>
                                 </div>'
                         ?>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
                 </div>
 
 

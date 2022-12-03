@@ -62,11 +62,11 @@ CREATE TABLE `all_movie` (
 --
 
 INSERT INTO `all_movie` (`id`, `movie_name`, `movie_description`, `date`, `genre`, `image`, `trailerURL`) VALUES
-(1, 'BLACK PANTHER: WAKANDA FOREVER (2022)', 'No description', '2022-11-27', 'Action', 'https://lumiere-a.akamaihd.net/v1/images/h_blackpanther_mobile_19754_57fe2288.jpeg?region=0,0,640,480', NULL),
-(2, 'She Said', 'No description', '2022-11-23', 'Romance', 'https://i.ytimg.com/vi/i5pxUQecM3Y/maxresdefault.jpg', NULL),
-(3, 'Strange World', 'No description for', '2022-11-24', 'Adventure', 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4AE5B5C650E5CB97D5AA97CB2B1207CB27E5AF880218DC6C5DE0FA178EE89D28/scale?width=1200&aspectRatio=1.78&format=jpeg', NULL),
-(8, 'Johnny English', 'comedy', '2022-11-25', 'Comedy', './assets/images/comedy.jpg', 'none'),
-(9, 'John Wick:3', 'John Wick', '2022-12-07', 'Action', './assets/images/action.jpg', 'none'),
+(1, 'BLACK PANTHER', 'No description', '2022-11-27', 'Action', 'https://lumiere-a.akamaihd.net/v1/images/h_blackpanther_mobile_19754_57fe2288.jpeg?region=0,0,640,480', NULL),
+(2, 'She Said', 'No description', '2022-12-10', 'Romance', 'https://i.ytimg.com/vi/i5pxUQecM3Y/maxresdefault.jpg', NULL),
+(3, 'Strange World', 'No description for', '2022-12-11', 'Adventure', 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4AE5B5C650E5CB97D5AA97CB2B1207CB27E5AF880218DC6C5DE0FA178EE89D28/scale?width=1200&aspectRatio=1.78&format=jpeg', NULL),
+(8, 'Johnny English', 'comedy', '2022-12-12', 'Comedy', './assets/images/comedy.jpg', 'none'),
+(9, 'John Wick:3', 'John Wick', '2022-12-25', 'Action', './assets/images/action.jpg', 'none'),
 (10, 'movie temp', 'Description', NULL, 'Action', NULL, NULL),
 (11, 'Movie1', 'Movie Description', NULL, 'Romance', NULL, NULL),
 (12, 'Movie 2', 'Description', NULL, 'Romance', NULL, NULL);
@@ -120,6 +120,34 @@ INSERT INTO `user_info` (`id`, `username`, `password`, `email`, `active`, `cardN
 (11, 'ouou', 'V1d0OG5Cd3VHVkNDMlFOK0RTRFZNdz09', 'ouou8386@gmail.com', 0, NULL, NULL, NULL, NULL, 1, NULL, NULL),
 (12, 'wqewq', '2e21213', 'zzzongxin@gmail.com', 1, '1', NULL, NULL, NULL, 1, NULL, NULL);
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `bookingtable`
+--
+
+CREATE TABLE `bookingtable` (
+  `id` int(11) NOT NULL,
+  `username` varchar(233) NOT NULL,
+  `moviename` varchar(233) NOT NULL,
+  `theatre` varchar(233) NOT NULL,
+  `type` varchar(233) NOT NULL,
+  `bookingDate` date NOT NULL,
+  `showtime` int(4) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `hasPayed` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `bookingtable`
+--
+
+INSERT INTO `bookingtable` (`id`, `username`, `moviename`, `theatre`, `type`, `bookingDate`, `showtime`, `quantity`, `hasPayed`) VALUES
+(3, 'testuser', 'She Said', 'vip-hall', '2D', '2022-12-10', 2030, 2, 1),
+(5, 'testuser', 'Strange World', 'main-hall', 'IMAX', '2022-12-10', 2030, 1, 0),
+(6, 'testuser', 'Strange World', 'private-hall', '2D', '2022-12-10', 2100, 1, 1);
+
+
 --
 -- Indexes for dumped tables
 --
@@ -149,8 +177,11 @@ ALTER TABLE `user_info`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- Indexes for table `bookingtable`
 --
+ALTER TABLE `bookingtable`
+  ADD PRIMARY KEY (`id`);
+
 
 --
 -- AUTO_INCREMENT for table `admin`
@@ -175,8 +206,13 @@ ALTER TABLE `Genre`
 --
 ALTER TABLE `user_info`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-COMMIT;
 
+--
+-- AUTO_INCREMENT for table `bookingtable`
+--
+ALTER TABLE `bookingtable`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
