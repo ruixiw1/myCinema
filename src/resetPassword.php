@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $login_err = "Password must have at least 8 characters, a number, a capital letter, and a special character";
         } else {
             $connection = DBConnection::get_instance()->get_connection();
-            $sql = "UPDATE user_info SET `password` ='" . encrypt_decrypt($password) . "' WHERE `email` = '" . $email . "' ";
+            $sql = "UPDATE user_info SET `password` ='" . encrypt_decrypt($password) . "' WHERE `email` = '" . encrypt_decrypt($email,"decrypt") . "' ";
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
                 header('Location: static/resetSuccess.html');

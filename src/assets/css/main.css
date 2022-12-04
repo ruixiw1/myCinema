@@ -702,3 +702,18 @@ ul .link-item:not(:last-child) { margin-bottom: 10px; }
 .wrapper { display: flex; }
 
 .wrapper a:not(:last-child) { margin-right: 30px; }
+
+.CartIcon{
+  position:sticky;
+  top: 20px;
+  width:fit-content;
+  margin-right:1em;
+  float:right;
+  background-color:var(--oxford-blue);
+  padding:1em 2em;
+  border-radius:15px;
+}
+
+.CartIcon:hover{
+  color:blue;
+}

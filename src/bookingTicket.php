@@ -66,6 +66,10 @@ $movies = mysqli_fetch_array($movieInfo);
                         <td>RELEASE DATE</td>
                         <td><?php echo $movies['date']; ?></td>
                     </tr>
+                    <tr>
+                        <td>Price:</td>
+                        <td>$50 / ticket</td>
+                    </tr>
                 </table>
             </div>
             <div class="booking-form-container">
@@ -74,8 +78,8 @@ $movies = mysqli_fetch_array($movieInfo);
                     <select name="theatre" required>
                         <option value="" disabled <?php if($theatre=="") {echo 'selected';} ?>>THEATRE</option>
                         <option value="main-hall" <?php if($theatre=="1") {echo 'selected';} ?>>Main Hall</option>
-                        <option value="vip-hall" <?php if($theatre=="2") {echo 'selected';} ?>>VIP Hall</option>
-                        <option value="private-hall" <?php if($theatre=="3") {echo 'selected';} ?>>Private Hall</option>
+                        <option value="vip-hall" <?php if($theatre=="2") {echo 'selected';} ?>>VIP Hall +$10ea</option>
+                        <option value="private-hall" <?php if($theatre=="3") {echo 'selected';} ?>>Private Hall </option>
                     </select>
 
                     <select name="showtime" required>
@@ -85,7 +89,7 @@ $movies = mysqli_fetch_array($movieInfo);
                         <option value="2100" <?php if($time=="2100") {echo 'selected';} ?>>9:00 PM</option>
                     </select>
 
-                    <input type="date" id="start" name="bookingDate" <?php if($id<=6) {echo 'min="'; $currentDate = new DateTime(); echo $currentDate->format('Y-m-d'); echo '"';} else if ($id>6) {echo 'min="'; echo $movies['movie_release_date']; echo '"';} ?> max="9999-12-31" <?php if($time!="") {echo 'value="'; echo $currentDate->format('Y-m-d'); echo '"';} ?>>
+                    <input type="date" id="start" name="bookingDate" <?php if($id<=6) {echo 'min="'; $currentDate = new DateTime(); echo $currentDate->format('Y-m-d'); echo '"';}  ?>>
 
                     <select name="type" required>
                         <option value="" disabled selected>TYPE</option>
@@ -93,7 +97,7 @@ $movies = mysqli_fetch_array($movieInfo);
                         <option value="IMAX">IMAX</option>
                     </select>
 
-                    <input placeholder="Number of Tickets" id="12.50" name="quantity" type="number">
+                    <input placeholder="Number of Tickets" id="12.50" name="quantity" type="number" min="0">
 
                     <button type="submit" value="submit" name="submit" class="form-btn"><i class="fa-solid fa-book-open"></i><b> Book Now</b></button>
                     <?php

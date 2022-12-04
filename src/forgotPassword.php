@@ -1,5 +1,6 @@
 <?php
 require_once('connection.php');
+require_once('sendMail.php');
 if(isset($_GET['msg'])){
 $msgCode = htmlspecialchars($_GET['msg']);
 //error handling
@@ -40,6 +41,22 @@ if ($msgCode == 'success') {
             justify-content: center;
         }
     </style>
+
+    <?php
+        if($_SERVER['REQUEST_METHOD'] == 'POST'){
+            $email;
+            if(isset($_POST['email'])){
+            $email = htmlspecialchars($_POST['email']);
+            }
+            else{
+                $msg="please enter a valid email";
+                return;
+            }
+
+            sendResetPassword($email);
+            $msg="Email sent";
+        }
+    ?>
 </head>
 
 <body>
@@ -48,7 +65,7 @@ if ($msgCode == 'success') {
         <div class="loginWindow">
             <div class="loginForm">
                 <!-- form for user to enter email address -->
-                <form method="post" action="sendMail.php">
+                <form method="post">
                     <p> Enter the E-mail of your account to reset your password...</p>
                     <br>
                     <div class="form-div">

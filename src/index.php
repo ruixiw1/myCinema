@@ -88,6 +88,7 @@ $statement->closeCursor();
 </head>
 
 <body>
+<a class="CartIcon" href="./checkOutPage.php">Check Out</a>
 
     <div class="container">
 
