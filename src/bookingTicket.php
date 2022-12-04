@@ -5,6 +5,8 @@
 session_start();
 require_once('./php/component.php');
 require_once('./connection.php');
+require_once('./php/cartFunction.php');
+
 try {
     $dsn = 'mysql:host=localhost;dbname=mycinema';
     $username = 'root';
@@ -77,19 +79,26 @@ $movies = mysqli_fetch_array($movieInfo);
 
                     <select name="theatre" required>
                         <option value="" disabled <?php if($theatre=="") {echo 'selected';} ?>>THEATRE</option>
-                        <option value="main-hall" <?php if($theatre=="1") {echo 'selected';} ?>>Main Hall</option>
-                        <option value="vip-hall" <?php if($theatre=="2") {echo 'selected';} ?>>VIP Hall +$10ea</option>
-                        <option value="private-hall" <?php if($theatre=="3") {echo 'selected';} ?>>Private Hall </option>
+                        <option value="hall-1" <?php if($theatre=="1") {echo 'selected';} ?>>Hall 1</option>
+                        <option value="hall-2" <?php if($theatre=="2") {echo 'selected';} ?>>Hall 2</option>
+                        <option value="hall-3" <?php if($theatre=="3") {echo 'selected';} ?>>Hall 3 </option>
                     </select>
-
+                    <?php
+                        echo "
+                        <input type='hidden' name='movie_price' value='50'>
+                        <input type='hidden' name='movie_name' value='".$movies['movie_name']."'>
+                        <input type='hidden' name='movie_img' value=".$movies['image'].">
+                        <input type='hidden' name='movie_id' value=".$movies['id'].">
+                        ";
+                    ?>
                     <select name="showtime" required>
                         <option value="" disabled <?php if($time=="") {echo 'selected';} ?>>TIME</option>
-                        <option value="1900" <?php if($time=="1900") {echo 'selected';} ?>>7:00 PM</option>
-                        <option value="2030" <?php if($time=="2030") {echo 'selected';} ?>>8:30 PM</option>
-                        <option value="2100" <?php if($time=="2100") {echo 'selected';} ?>>9:00 PM</option>
+                        <option value="19:00" <?php if($time=="1900") {echo 'selected';} ?>>7:00 PM</option>
+                        <option value="20:30" <?php if($time=="2030") {echo 'selected';} ?>>8:30 PM</option>
+                        <option value="21:00" <?php if($time=="2100") {echo 'selected';} ?>>9:00 PM</option>
                     </select>
 
-                    <input type="date" id="start" name="bookingDate" <?php if($id<=6) {echo 'min="'; $currentDate = new DateTime(); echo $currentDate->format('Y-m-d'); echo '"';}  ?>>
+                    <input type="date" id="start" name="date" <?php if($id<=6) {echo 'min="'; $currentDate = new DateTime(); echo $currentDate->format('Y-m-d'); echo '"';}  ?>>
 
                     <select name="type" required>
                         <option value="" disabled selected>TYPE</option>
@@ -97,9 +106,11 @@ $movies = mysqli_fetch_array($movieInfo);
                         <option value="IMAX">IMAX</option>
                     </select>
 
-                    <input placeholder="Number of Tickets" id="12.50" name="quantity" type="number" min="0">
+                    <input placeholder="Number of Tickets" name="quantity" type="number" min="0">
 
-                    <button type="submit" value="submit" name="submit" class="form-btn"><i class="fa-solid fa-book-open"></i><b> Book Now</b></button>
+                    <button type="submit" value="submit" name="add_to_cart" class="form-btn"><i class="fa-solid fa-book-open"></i><b> Add to cart</b></button>
+
+                    
                     <?php
                     
                     if (isset($_POST['submit'])) { 

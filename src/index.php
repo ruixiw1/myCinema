@@ -33,7 +33,7 @@ $statement->closeCursor();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
-    <title>CineFlix</title>
+    <title>myCinema</title>
     <link href="https://fonts.googleapis.com/css?family=Inter:100,200,300,regular,500,600,700,800,900" rel="stylesheet" />
 
     <link rel="stylesheet" href="./assets/css/main.css">

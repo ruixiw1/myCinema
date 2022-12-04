@@ -142,9 +142,8 @@ function displayItemDetail($productId, $productName, $productPrice, $productimg,
     echo $element;
 }
 //generate DOM element for items in cart
-function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg,$special){
+function displayCartItem($productId,$productName,$productPrice,$productQuantity,$productimg,$date,$time,$theatre,$type){
     $element='';
-    if($special==0){
     $element="<div class='cartItem'>
     <div class=\"cartItemPic\">
         <div class=\"cartPicWrap\">
@@ -153,56 +152,26 @@ function displayCartItem($productId,$productName,$productPrice,$productQuantity,
     </div>
 
     <form class=\"itemText\" method=\"POST\">
-        <h2>$productName</h2>
-        <h3>Price: $productPrice </h3>
+        <h2>$productName  $type</h2>
+        <h3>Price:$ $productPrice </h3>
+        <h3>Date: $date Time: $time</h3>
+        <h3>Theatre: $theatre</h3>
         <div class=\"quantity\">
-            <p>Quantitiy: </p>
             <div class=\"counter\">
-                <button type='button' class=\"minus\" onclick=\"minusCheck('$productId')\">-</button>
+            Quantitiy:
+
                 <input type=\"number\" id=\"$productId\" name='quantity' class=\"num\" value=\"$productQuantity\" min='0'>
-                <button type='button' class=\"add\"  onclick=\"getElementById('$productId').value++\">+</button>
             </div>
         </div>
         <div class=\"cartButtonDiv\">
-            <input type='hidden' name='product_id' value='$productId'>
+            <input type='hidden' name='movie_id' value='$productId'>
             <button class=\"cartModButton\" name=\"update_product\" type='submit'>Update</button>
             <button class=\"cartModButton\" name=\"remove_product\" type='submit'>Remove</button>
         </div>
     </form>
 
-</div>
-<hr>";}
-else{
-    $originalprice = $productPrice+50;
-    $element="<div class='cartItem'>
-    <div class=\"cartItemPic\">
-        <div class=\"cartPicWrap\">
-            <img src=\"$productimg\">
-        </div>
-    </div>
+</div>";
 
-    <form class=\"itemText\" method=\"POST\">
-        <h2>$productName</h2>
-        <h3>Price: <s class=\"originalPrice\">$$originalprice</s> $productPrice </h3>
-        <div class=\"quantity\">
-            <p>Quantitiy: </p>
-            <div class=\"counter\">
-                <button type='button' class=\"minus\" onclick=\"minusCheck('$productId')\">-</button>
-                <input type=\"number\" id=\"$productId\" name='quantity' class=\"num\" value=\"$productQuantity\" min='0'>
-                <button type='button' class=\"add\"  onclick=\"getElementById('$productId').value++\">+</button>
-            </div>
-        </div>
-        <div class=\"cartButtonDiv\">
-            <input type='hidden' name='product_id' value='$productId'>
-            <button class=\"cartModButton\" name=\"update_product\" type='submit'>Update</button>
-            <button class=\"cartModButton\" name=\"remove_product\" type='submit'>Remove</button>
-        </div>
-    </form>
-
-</div>
-<hr>";
-
-}
 
 echo $element;
 

@@ -1,0 +1,89 @@
+.mainContainer{
+    display: flex;
+    justify-content: space-around;
+    width: 95%;
+    margin: auto;
+    margin-top: 1em;
+    background-color: transparent;
+    color:white; 
+}
+.cartItemPic{
+    max-width: 40%;
+    max-height: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+.cartItem{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 1em;
+    height: max-content;
+    max-height: 300px;
+    
+}
+.itemText{
+    display: block;
+    height: max-content;
+    width:60%;
+}
+
+.cartPicWrap img{
+    margin: auto;
+}
+.cartPicWrap{
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+    max-height: 350px;
+}
+.itemsContainer{
+    width: 70%;
+    margin-left: 0;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    margin-bottom: 2em;
+    background-color: hsl(218, 39%, 14%);
+
+}
+.orderDetail{
+    width: 30%;
+    text-align: center;
+    height: fit-content;
+    border-radius: 20px;
+    margin-left: 1em;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.5);
+    position: sticky;
+    top: 0;
+    background-color:hsl(218, 39%, 14%);
+}
+.cartButtonDiv{
+    margin-top: 1em;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: fit-content;
+}
+.cartButtonDiv button{
+    width: 40%;
+    padding: 0;
+    width: 30%;
+    font-size: larger;
+    border-radius: 0.15em;
+    cursor: pointer;
+}
+.checkOutButton {
+    margin-top: 10px;;
+    transition: 1s;
+    width: 40%;
+    border-radius: 20px;
+    border:2px solid white;
+    margin-bottom: 1em;
+    background-color:hsl(218, 39%, 14%);
+}
+
+.checkOutButton:hover {
+    box-shadow: inset 400px 0 0 0 #0b2d66;
+    color: white;
+}
+

@@ -50,32 +50,40 @@ $statement->closeCursor();
             padding: 1em;
         }
     </style>
-<?php
-        if($_SERVER["REQUEST_METHOD"]=="POST"){
-            sendPromotion();
-        }
 
-?>
 </head>
+<?php
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    if (isset($_POST['code']) && isset($_POST['percentage']) && isset($_POST['message'])) {
+        $code = $_POST['code'];
+        $percent = $_POST['percentage'];
+        $message = $_POST['message'];
+        sendPromotion($message);
+        $promotionQuery = "INSERT INTO promotion (`Code`, `Percent`) VALUES ('" . $code ."','" .$percent. "')";
+        $statement1 = $db->prepare($promotionQuery);
+        $statement1->execute();
+    }
+}
+?>
 
 <body>
     <div class="main">
-        <h1 class="header">Send Promotion</h1>
-
+        <h1 class="header">Manage Promotion</h1>
         <form method="post">
             <div class="form-group col">
-                <label for="">Movie</label>
-                <select class="form-select" name="movie" aria-label="Default select example" required>
-                    <option selected>Select a movie</option>
-                    <?php foreach ($movies as $movie) : ?>
-                        <?php echo '
-                                <option value=' . $movie['id'] . '>
-                                ' . $movie["movie_name"] . '
-                                </option>
-                                ';
-                        ?>
-                    <?php endforeach; ?>
-                </select>
+                <label for="">Promotion Code:</lable>
+                    <input type="text" name="code">
+            </div>
+            <br>
+            <div class="form-group col">
+                <label for="">Percentage:</lable>
+                    <select name="percentage">
+                        <option value="0.1">0.1</option>
+                        <option value="0.1">0.2</option>
+                        <option value="0.1">0.3</option>
+                        <option value="0.1">0.4</option>
+                        <option value="0.1">0.5</option>
+                    </select>
             </div>
             <br>
             <div class="form-group col">

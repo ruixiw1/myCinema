@@ -7,7 +7,7 @@ require_once './php/component.php';
 require '../vendor/autoload.php';
 //Import PHPMailer classes into the global namespace
 //These must be at the top of your script, not inside a function
-function sendPromotion(){
+function sendPromotion($message){
 try {
     $dsn = 'mysql:host=localhost;dbname=mycinema';
     $username = 'root';
@@ -25,16 +25,6 @@ $statement2->closeCursor();
 //Load Composer's autoloader
 //Create an instance; passing `true` enables exceptions
 
-if(isset($_POST['movie'])&&isset($_POST['message'])){
-$movieID = htmlspecialchars($_POST['movie']);
-$message = htmlspecialchars($_POST['message']);
-}
-
-$queryMovie = 'SELECT * FROM  `all_movie` where `id` = '.$movieID.' ';
-$statement1 = $db->prepare($queryMovie);
-$statement1->execute();
-$movieName = $statement1->fetchAll();
-$statement1->closeCursor();
 
 $mail = new PHPMailer(true);
 
@@ -63,7 +53,7 @@ try {
 
     //Content
     $mail->isHTML(true);                                  //Set email format to HTML
-    $mail->Subject = "Upcoming:".$movieName[0]['movie_name'];
+    $mail->Subject = "Promotion from myCinema";
     $mail->Body    = $message;
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
