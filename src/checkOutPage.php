@@ -147,7 +147,9 @@ try {
                             }
                             if(isset($promotionPercent)){
                                 $total -= $total * $promotionPercent;
+
                             }
+                            setcookie('order_detail', $total, time() + (86400 * 30), '/');
                             echo "<h3>Tickets: ($quantity)</h3>";
                         } else {
                             echo "<h3>Tickets: (0)</h3>";
@@ -184,9 +186,9 @@ try {
                         <?php
                         $des;
                         if (isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] == true)
-                            $des = '"./checkoutPage.php"';
+                            $des = '"./paymentPage.php"';
                         else
-                            $des = '"./loginPageCheckOut.php"';
+                            $des = '"./loginPage.php"';
                         ?>
                         <form action=<?php echo $des; ?>>
                             <button class='checkOutButton' type="submit">

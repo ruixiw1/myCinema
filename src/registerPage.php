@@ -1,6 +1,7 @@
 <?php
 require_once('connection.php');
 require_once('./php/component.php');
+require_once('./sendMail.php');
 $database = DBConnection::get_instance();
 ?>
 
@@ -58,8 +59,9 @@ $database = DBConnection::get_instance();
                 $result = mysqli_query($connection, $sql);
                 if ($result != false) {
                     //erroe handling
-                    echo ("<script type='text/javascript'> console.log($msg);</script>");
+                    if(sendVerifcation($email)){
                     header('Location: static/redirectSignUp.html');
+                }
                 } else {
                     $login_err = "Invalid Info.";
                 }

@@ -80,6 +80,15 @@ class DBConnection
 		return false;
 	}
 
+	public function checkCurrentPassword($email,$password){
+		$sql = "SELECT * FROM $this->usertb where `email` = '".$email."' AND `password` = '".$password."' ";
+		$result = mysqli_query($this->connection, $sql);
+		if(mysqli_num_rows($result) > 0){
+			return true;
+		}
+		return false;
+	}
+
 }	
 
 ?>

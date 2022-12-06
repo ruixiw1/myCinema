@@ -63,7 +63,9 @@ header, nav { background: var(--rich-black-fogra-29); }
 }
 
 
-
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 
 /*-------------------------------------*\

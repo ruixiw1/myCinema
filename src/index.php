@@ -75,6 +75,7 @@ $statement->closeCursor();
         }
         .category-card:hover .cardText{
             opacity: 0;
+            display: none;
         }
         .link {
             position: absolute;
@@ -113,7 +114,7 @@ $statement->closeCursor();
 
                         }
                         else if(isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
-                            echo "<li style='margin:center'><a href='./editProfile.php' class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
+                            echo "<li style='margin:center'><a href='./userPortalMain.php' class='userHello'>Hello, " . $_SESSION['username'] . "</i></a></li>";
                         }
                         ?>
                     </ul>
@@ -235,9 +236,8 @@ $statement->closeCursor();
                                 <div class="category-card">
                                 <img src="'.$movie['image'].'" alt="" class="card-img">
                                 <div class="bookLink">
-                                    Book Movie
                                     <a href="./bookingTicket.php?id='.$movie['id'].'&time='.$movie['date'].'&theatre=">
-                                    <span class="link"></span>
+                                    Book Movie
                                     </a>
                                 </div>
                                 <div class="cardText">

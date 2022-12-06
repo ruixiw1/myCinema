@@ -34,17 +34,22 @@ require_once('./php/component.php');
             //execute query
             $result = mysqli_query($connection, $sql);
             if ($result != false) {
+                
                 //session_start when credential found in database
                 if ($result->num_rows > 0) {
+                    if($row['active']==0){
+                        $login_err = "Account not activated";
+                    }
+                    else{
                     $row = $result->fetch_assoc();
                     session_start();
                     $_SESSION["id"] = $row["id"];
                     $_SESSION["username"] = $row["username"];
+                    $_SESSION["email"] = $row["email"];
                     $_SESSION["logged_in"] = true;
-
                     setcookie("username", $username, time() + (86400 * 30), "/");
-
-                    header('Location:static/redirectLogin.html');
+                    header('Location:index.php');
+                    }
                 } else {
                     // Password is not valid, display a generic error message
                     $login_err = "Invalid username or password.";

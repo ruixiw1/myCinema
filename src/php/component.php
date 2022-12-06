@@ -1,21 +1,6 @@
 <?php
 //generate DOM element for special products
-function displaySpecialProduct($productname, $productprice, $productimg, $productid)
-{
-    $originalprice = $productprice + 50;
 
-    $element = "<form method=\"post\" class=\"dealItem\">
-    <a href=\"./singleProduct.php?product_id=$productid\"><img src=\"$productimg\"></a>
-    <p class=\"product-text\">$productname</p>
-    <p style=\"text-align:center\">
-            <s class=\"originalPrice\">$$originalprice</s>
-            <span class=\"price\">$$productprice</span>
-    </p>
-    <div>
-    </div>
-    </form>";
-    echo $element;
-}
 //generate DOM element for all products
 function displayAllProduct($productname, $productprice, $productimg, $productid, $special)
 {
@@ -211,4 +196,12 @@ function encrypt_decrypt($string, $action = 'encrypt')
         $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
     }
     return $output;
+}
+
+function printOrderSummary($name,$quantity){
+    $ele = "
+        <h2>$name * $quantity</h2>
+    ";
+
+    echo $ele;
 }

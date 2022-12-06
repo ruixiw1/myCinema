@@ -59,18 +59,21 @@ $statement->closeCursor();
             $genre = htmlspecialchars($_POST['genre']);
             $movie_name = htmlspecialchars($_POST['movie_name']);
             $description = htmlspecialchars($_POST['description']);
+            $image = htmlspecialchars($_POST['movie_image']);
             //DB instance
             $connection = DBConnection::get_instance()->get_connection();
             //query string
             $sql = "INSERT INTO `all_movie`(
                 `movie_name`,
                 `movie_description`,
-                `genre`
+                `genre`,
+                `image`
             )
             VALUES(
                 '". $movie_name . "',
                 '". $description . "',
-                '". $genre . "'
+                '". $genre . "',
+                '". $image . "'
             )";
             //execute query
             $result = mysqli_query($connection, $sql);
@@ -111,6 +114,11 @@ $statement->closeCursor();
                     </select>
                 </div>
             </div>
+            <br/>
+            <div class="form-group col">
+                    <label for="">Movie Image Url</label>
+                    <input type="text" class="form-control" name="movie_image" placeholder="url" required>
+                </div>
             <br>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Movie Description</label>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once('connection.php');
-require_once('./php/component.php');
+require_once('../connection.php');
+require_once('../php/component.php');
 $database = DBConnection::get_instance();
 
 if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
@@ -28,9 +28,8 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecinema | Log in</title>
-    <link href="./style/main.css" rel="stylesheet">
     <link rel="shortcut icon" href="./assets/images/icon.png" type="image/png">
-    <link href="./style/misc-style.css" rel="stylesheet">
+    <link href="../style/misc-style.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
@@ -41,6 +40,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
 
         * {
             box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            background-color: hsl(222, 25%, 10%);
         }
 
         /* Add padding to containers */
@@ -80,14 +84,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
 
         /* Set a style for the submit button */
         .registerbtn {
-            color: white;
             padding: 16px 20px;
             margin: 8px auto;
             border: none;
             cursor: pointer;
-            width: 100%;
             opacity: 1;
-            background-color: lightskyblue;
 
         }
 
@@ -132,9 +133,6 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
     //when form is submit
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $username = htmlspecialchars($_POST['username']);
-        $currentPassword = htmlspecialchars($_POST['currentPassword']);
-        $password = htmlspecialchars($_POST['newPassword']);
-        $repeatPwd = htmlspecialchars($_POST['repeatPassword']);
         $cardNumber = htmlspecialchars($_POST['cardNumber']);
         $nameOnCard = htmlspecialchars($_POST['nameOnCard']);
         $billingAddress = htmlspecialchars($_POST['address']);
@@ -142,16 +140,11 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
         $expMonth = htmlspecialchars($_POST['expMonth']);
         $expYear = htmlspecialchars($_POST['expYear']);
         $promotion = isset($_POST['promotion']) ? 1 : 0;
-        $usernameNotExist = DBConnection::get_instance()->usernameNotExist($username);
-        if ($repeatPwd != $password) {
-            $login_err = "Password not matched";
-            goto end;
-        } 
+        $usernameNotExist = $database->usernameNotExist($username);
         $sql = "UPDATE
                 `user_info`
             SET
                 `username` = '" . $username . "',
-                `password` = '" . encrypt_decrypt($password) . "',
                 `cardNumber` = '" . encrypt_decrypt($cardNumber) . "',
                 `cvv` = '" . $cvv . "',
                 `expMonth` = '" . $expMonth . "',
@@ -162,12 +155,12 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
             WHERE
                 `email` = '" . $email . "'
                 ";
-        $result = mysqli_query($database, $sql);
+        $result = mysqli_query($database->get_connection(), $sql);
         if ($result != false) {
-           header("Refresh:0");
+            header("Refresh:0");
         } else {
             echo ("<script type='text/javascript'> console.log($msg);</script>");
-            $login_err = "Invalid Info.";
+            $err = "Invalid Info.";
         }
     }
     end:
@@ -184,45 +177,36 @@ if (isset($_SESSION['logged_in']) && $_SESSION["logged_in"] = true) {
             <hr>
             <div class="input_row">
                 <label><b>Email</b></label>
-                <input type="text" readonly name="email"  <?php echo 'value = "' . $email . '" ' ?>required>
+                <input type="text" readonly name="email" <?php echo 'value = "' . $email . '" ' ?>required>
             </div>
             <label><b>Username</b></label>
-            <input type="text" placeholder="Username" name="username"  <?php echo 'value = "' . $username . '" ' ?>required>
-
-            <label ><b>Current Password</b></label>
-            <input type="password" placeholder="Current Password" name="currentPassword"  required>
-            <label ><b>New Password</b></label>
-            <input type="password" placeholder="Enter Password" name="newPassword"  required>
-            <label ><b>Repeat Password</b></span></label>
-            <input type="password" placeholder="Repeat Password" name="repeatPassword"  required>
+            <input type="text" placeholder="Username" name="username" <?php echo 'value = "' . $username . '" ' ?>required>
             <label for="text"><b>Card number</b></label>
-            <input type="text" placeholder="Card Number" name="cardNumber"  <?php echo 'value = "' . $cardNumber . '" ' ?> >
-            <label ><b>Name on card<span></label>
+            <input type="text" placeholder="Card Number" name="cardNumber" <?php echo 'value = "' . encrypt_decrypt($cardNumber, 'decrypt') . '" ' ?>>
+            <label><b>Name on card<span></label>
             <input type="text" placeholder="Name on card" name="nameOnCard" <?php echo 'value = "' . $nameOnCard . '" ' ?>>
             <div class="Row">
-                <label ><b>CVV</label>
-                <input type="text" name="cvv"  <?php echo 'value = "' . $cvv . '" ' ?> required>
-                <label ><b>Exp Year</label>
+                <label><b>CVV</label>
+                <input type="text" name="cvv" <?php echo 'value = "' . $cvv . '" ' ?> required>
+                <label><b>Exp Year</label>
                 <input type="text" name="expYear" <?php echo 'value = "' . $expYear . '" ' ?> required>
-                <label ><b>Exp Month</label>
+                <label><b>Exp Month</label>
                 <input type="text" name="expMonth" <?php echo 'value = "' . $expMonth . '" ' ?> required>
             </div>
-            <label ><b>Billing Address</label>
+            <label><b>Billing Address</label>
             <input type="text" name="address" <?php echo 'value = "' . $billingAddress . '" ' ?> required>
-            <label ><b>Promotion</label>
-            <input type="checkbox" name="promotion" >
+            <label><b>Promotion</label>
+            <input type="checkbox" name="promotion" <?php if ($promotion == 1) echo 'checked' ?>>
             <hr>
             <?php
-            if (!empty($login_err)) {
-                echo '<div style="text-align:center">' . $login_err . '</div>';
+            if (!empty($err)) {
+                echo '<div style="text-align:center">' . $err . '</div>';
             } else {
                 echo '<br>';
             }
             ?>
-            <div class="button-wrapper">
-                <button type="submit" class="registerbtn">Save</button>
-            </div>
-
+            <button type="submit" class="registerbtn">Save</button>
+            <a href="../userPortalMain.php" class="registerbtn">Back</a>
 
         </div>
 
