@@ -65,11 +65,15 @@ $movies = mysqli_fetch_array($movieInfo);
                         <td><?php echo $movies['genre']; ?></td>
                     </tr>
                     <tr>
+                        <td>DESCRIPTION</td>
+                        <td><?php echo $movies['movie_description']; ?></td>
+                    </tr>
+                    <tr>
                         <td>RELEASE DATE</td>
                         <td><?php echo $movies['date']; ?></td>
                     </tr>
                     <tr>
-                        <td>Price:</td>
+                        <td>PRICE:</td>
                         <td>$50 / ticket</td>
                     </tr>
                 </table>
@@ -104,6 +108,16 @@ $movies = mysqli_fetch_array($movieInfo);
                         <option value="" disabled selected>TYPE</option>
                         <option value="2D">2D</option>
                         <option value="IMAX">IMAX</option>
+                    </select>
+
+                    <select name="seat" required>
+                        <option value="" disabled selected>SEAT</option>
+                        <option value="row1">Row 1</option>
+                        <option value="row2">Row 2</option>
+                        <option value="row3">Row 3</option>
+                        <option value="row4">Row 4</option>
+                        <option value="row5">Row 5</option>
+                        <option value="row6">Row 6</option>
                     </select>
 
                     <input placeholder="Number of Tickets" name="quantity" type="number" min="0">
