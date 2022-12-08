@@ -37,11 +37,11 @@ require_once('./php/component.php');
                 
                 //session_start when credential found in database
                 if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
                     if($row['active']==0){
                         $login_err = "Account not activated";
                     }
                     else{
-                    $row = $result->fetch_assoc();
                     session_start();
                     $_SESSION["id"] = $row["id"];
                     $_SESSION["username"] = $row["username"];
