@@ -62,15 +62,27 @@ CREATE TABLE `all_movie` (
 --
 
 INSERT INTO `all_movie` (`id`, `movie_name`, `movie_description`, `date`, `genre`, `image`, `trailerURL`) VALUES
-(1, 'BLACK PANTHER', 'No description', '2022-11-27', 'Action', 'https://lumiere-a.akamaihd.net/v1/images/h_blackpanther_mobile_19754_57fe2288.jpeg?region=0,0,640,480', NULL),
-(2, 'She Said', 'No description', '2022-12-10', 'Romance', 'https://i.ytimg.com/vi/i5pxUQecM3Y/maxresdefault.jpg', NULL),
-(3, 'Strange World', 'No description for', '2022-12-11', 'Adventure', 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4AE5B5C650E5CB97D5AA97CB2B1207CB27E5AF880218DC6C5DE0FA178EE89D28/scale?width=1200&aspectRatio=1.78&format=jpeg', NULL),
-(8, 'Johnny English', 'comedy', '2022-12-12', 'Comedy', './assets/images/comedy.jpg', 'none'),
-(9, 'John Wick:3', 'John Wick', '2022-12-25', 'Action', './assets/images/action.jpg', 'none'),
+(1, 'BLACK PANTHER', 
+'Queen Ramonda, Shuri, M Baku, Okoye, and the Dora Milaje fight to protect their nation from intervening world powers in the wake of the death of King T Challa. As the Wakandans strive to embrace their next chapter, the heroes must band together with the help of War Dog Nakia and Everett Ross and forge a new path for the kingdom of Wakanda.', 
+'2022-11-27', 'Action', 'https://lumiere-a.akamaihd.net/v1/images/h_blackpanther_mobile_19754_57fe2288.jpeg?region=0,0,640,480', NULL),
+(2, 'She Said', 
+'New York Times reporters Megan Twohey and Jodi Kantor, who together broke one of the most important stories in a generation--a story that helped propel the Metoo movement, shattered decades of silence around the subject of sexual assault in Hollywood and altered American culture forever.', 
+'2022-12-10', 'Romance', 'https://i.ytimg.com/vi/i5pxUQecM3Y/maxresdefault.jpg', NULL),
+(3, 'Strange World', 
+'A legendary family of explorers, the Clades, as they attempt to navigate an uncharted, treacherous land alongside a motley crew that includes a mischievous blob, a three-legged dog, and a slew of ravenous creatures.', 
+'2022-12-11', 'Adventure', 'https://prod-ripcut-delivery.disney-plus.net/v1/variant/disney/4AE5B5C650E5CB97D5AA97CB2B1207CB27E5AF880218DC6C5DE0FA178EE89D28/scale?width=1200&aspectRatio=1.78&format=jpeg', NULL),
+(8, 'Johnny English', 
+'Pascal Sauvage, a villain intent on stealing Britain Crown Jewels, has murdered the country top undercover agents, and mediocre spy Johnny English is ordered to prevent further mayhem. But even with help from quick-thinking sidekick Bough, the goofy agent lands himself in one precarious situation after another. Only when he meets up with Interpol crime-fighter Lorna Campbell is Johnny able to chip away at Pascal defenses.', 
+'2022-12-12', 'Comedy', './assets/images/comedy.jpg', 'none'),
+(9, 'John Wick:3', 
+'John Wick uncovers a path to defeating The High Table. But before he can earn his freedom, Wick must face off against a new enemy with powerful alliances across the globe and forces that turn old friends into foes.', 
+'2022-12-25', 'Action', './assets/images/action.jpg', 'none'),
 (10, 'movie temp', 'Description', NULL, 'Action', NULL, NULL),
 (11, 'Movie1', 'Movie Description', NULL, 'Romance', NULL, NULL),
 (12, 'Movie 2', 'Description', NULL, 'Romance', NULL, NULL),
-(13, 'The Shawshank Redemption', 'fav movie all time', '2022-12-15', 'Action', 'https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg', NULL);
+(13, 'The Shawshank Redemption', 
+'Andy Dufresne is sentenced to two consecutive life terms in prison for the murders of his wife and her lover and sentenced to a tough prison. However, only Andy knows he did not commit the crimes. While there, he forms a friendship with Red, experiences the brutality of prison life, adapts, helps the warden, etc., all in 19 years.', 
+'2022-12-15', 'Action', 'https://m.media-amazon.com/images/M/MV5BMDFkYTc0MGEtZmNhMC00ZDIzLWFmNTEtODM1ZmRlYWMwMWFmXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_FMjpg_UX1000_.jpg', NULL);
 
 -- --------------------------------------------------------
 
